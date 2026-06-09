@@ -77,6 +77,7 @@ export default function Hero() {
       >
         <div className={styles.blob} />
         <img src={arjita} alt="Arjita — WeNourish nutritionist" className={styles.photo} />
+        <p className={styles.caption}>Arjita · Clinical Nutritionist</p>
       </motion.div>
     </section>
   );

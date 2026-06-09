@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS, CALENDLY } from '../data/content';
+import Logo from './Logo';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -25,10 +26,7 @@ export default function Navbar() {
         animate={{ y: 0,   opacity: 1 }}
         transition={{ duration: .5, ease: 'easeOut' }}
       >
-        <Link to="/" className={styles.logo} aria-label="WeNourish home">
-          <span className={styles.logoWe}>we</span>
-          <span className={styles.logoNourish}>nourish</span>
-        </Link>
+        <Logo variant="nav" className={styles.logo} />
 
         <div className={styles.links}>
           {NAV_LINKS.map(({ label, path }) => (

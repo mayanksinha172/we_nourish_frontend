@@ -19,23 +19,24 @@ export default function Shop() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: .5, ease: [.22,1,.36,1], delay: i * .1 }}
+            transition={{ duration: .5, ease: [.22, 1, .36, 1], delay: i * .1 }}
             whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(0,0,0,.2)' }}
           >
-            <div className={`${styles.cover} ${styles[p.accent]}`} />
-            <div className={styles.info}>
+            <span className={styles.badge}>Premium</span>
+            <img src={p.img} alt={p.title} className={styles.cover} loading="lazy" />
+            <div className={styles.body}>
               <h3>{p.title}</h3>
               <p>{p.desc}</p>
-              <div className={styles.footer}>
-                <span className={styles.price}>{p.price}</span>
-                <motion.button
-                  className="btn-primary sm"
-                  whileHover={{ scale: 1.05 }} whileTap={{ scale: .95 }}
-                  onClick={() => alert('Razorpay checkout coming soon')}
-                >
-                  Buy
-                </motion.button>
-              </div>
+              <p className={styles.price}>{p.price}</p>
+              <motion.button
+                type="button"
+                className={styles.buyBtn}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: .98 }}
+                onClick={() => alert('Razorpay checkout coming soon')}
+              >
+                Buy — {p.price}
+              </motion.button>
             </div>
           </motion.div>
         ))}

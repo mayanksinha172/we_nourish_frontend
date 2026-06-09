@@ -10,6 +10,40 @@ export const WA_NUTRITION = 'https://wa.me/919100347380?text=Hi%2C%20I%27d%20lik
 export const WA_COLLAB    = 'https://wa.me/919963697412?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20brand%20collaboration';
 export const EMAIL        = 'hello@wenourish.in';
 export const CALENDLY     = 'https://calendly.com'; // replace with real link
+export const LOGO_SRC     = '/logo.png';
+
+export const PLATE_IMAGE = 'https://www.fitmeals.co.in/wp-content/uploads/2019/10/plate_rounded.jpg';
+
+export const NUTRITION_PLANS = [
+  {
+    id: 'weight-loss',
+    title: 'Weight Loss Plan',
+    kcal: 'Personalised macros',
+    image: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/weight.jpg',
+    description: 'A gradual, healthy approach to weight loss with balanced meals, regular check-ins and sustainable habits.',
+  },
+  {
+    id: 'pcos',
+    title: 'PCOS Management Plan',
+    kcal: 'Hormone-balancing nutrition',
+    image: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/keto.jpg',
+    description: 'Specialised nutrition support for PCOS with evidence-based meal plans and lifestyle guidance.',
+  },
+  {
+    id: 'athletic',
+    title: 'Athletic Performance Plan',
+    kcal: '1400-1800 Kcal',
+    image: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/athletic.jpg',
+    description: 'High-protein nutrition for muscle building, recovery and peak athletic performance.',
+  },
+  {
+    id: 'maintenance',
+    title: 'Maintenance Plan',
+    kcal: '1400-1600 Kcal',
+    image: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/maintenance.jpg',
+    description: 'Maintain your results with moderately portioned meals and ongoing nutritionist support.',
+  },
+];
 
 export const STEPS = [
   { num: '01', icon: 'fa-phone',          title: 'Book a free call',        body: 'A 15-minute call to understand your goals and see if we\'re a good fit — no commitment needed.' },
@@ -19,27 +53,68 @@ export const STEPS = [
 ];
 
 export const TESTIMONIALS = [
-  { quote: '"I lost 8 kg in 3 months without feeling deprived once. The plan fit my family\'s lifestyle completely."', name: 'Priya S., 34', tag: 'Weight Loss' },
-  { quote: '"My PCOS symptoms have improved dramatically. Finally a nutritionist who actually listens."',              name: 'Ananya K., 28', tag: 'PCOS Management' },
-  { quote: '"Following the plan from Singapore was seamless. The WhatsApp check-ins made all the difference."',        name: 'Rohan M., 41', tag: 'NRI Client, Singapore' },
+  {
+    quote: 'The perfect combination of healthy and delicious food. Arjita made sure I reached my fitness goals with frequent follow-up calls — she always checked on my progress. Excellent service, really happy with the results.',
+    name: 'Priya S.',
+    displayName: 'Priya Sharma',
+    outcome: 'Lost 8kg in 3 months',
+  },
+  {
+    quote: 'Living abroad in Singapore, I was worried online consultations wouldn\'t work. Arjita made it seamless — personalised meal plans, easy recipes, and regular check-ins. My energy and digestion have completely transformed.',
+    name: 'Rahul M.',
+    displayName: 'Rahul Mehta',
+    outcome: 'Improved energy and digestion',
+  },
+  {
+    quote: 'I finally found a nutritionist who understands PCOS. The personalised plan made all the difference.',
+    name: 'Ananya K.',
+    displayName: 'Ananya Kapoor',
+    outcome: 'PCOS symptoms improved',
+  },
+  {
+    quote: 'The weekly check-ins kept me accountable. I\'ve never stuck to a plan this long before.',
+    name: 'Deepak V.',
+    displayName: 'Deepak Verma',
+    outcome: '12kg weight loss over 5 months',
+  },
 ];
 
 export const PRESS = ['Indian Express', 'NDTV Food', 'India Today', 'Slurrp'];
 
 export const RECIPES_TEASER = [
-  { tag: 'High-Protein', title: 'Quinoa Power Bowl',         img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80' },
-  { tag: 'Fat-Loss',     title: 'Green Detox Salad',         img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80' },
-  { tag: 'Breakfast',    title: 'Overnight Oats with Berries',img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80' },
+  { tag: 'High-Protein', title: 'Quinoa Power Bowl',          desc: 'A balanced high-protein bowl packed with greens, grains and flavour.', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80' },
+  { tag: 'Fat-Loss',     title: 'Green Detox Salad',          desc: 'Light, refreshing salad designed for sustainable fat loss.',             img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&q=80' },
+  { tag: 'Breakfast',    title: 'Overnight Oats with Berries', desc: 'Make-ahead breakfast that keeps you full until lunch.',               img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80' },
   { tag: 'Snacks',       title: 'Almond Date Energy Balls',  img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80' },
   { tag: 'Soups',        title: 'Tomato Lentil Soup',        img: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80' },
   { tag: 'Drinks',       title: 'Turmeric Golden Milk',      img: 'https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=600&q=80' },
 ];
 
 export const PRODUCTS = [
-  { title: 'The 30-Day Reset',        desc: '30 days of nourishing recipes designed to reset your gut and energy.',                   price: '₹499', accent: 'green' },
-  { title: 'High-Protein Vegetarian', desc: '50+ vegetarian recipes hitting 30 g+ protein per meal.',                                 price: '₹399', accent: 'stone' },
-  { title: 'PCOS Nutrition Guide',    desc: 'Evidence-based meal plans and recipes for hormonal balance and PCOS management.',         price: '₹599', accent: 'green' },
+  {
+    title: '30-Day Fat Loss Recipe Book',
+    desc: '60 easy recipes for sustainable weight loss without deprivation.',
+    price: '₹499',
+    img: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/weight.jpg',
+  },
+  {
+    title: 'High-Protein Indian Meals',
+    desc: '40 protein-packed recipes for muscle building and energy.',
+    price: '₹399',
+    img: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/athletic.jpg',
+  },
+  {
+    title: 'PCOS-Friendly Recipe Collection',
+    desc: 'Hormone-balancing meals designed for PCOS management.',
+    price: '₹599',
+    img: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/keto.jpg',
+  },
 ];
+
+export const EVENTS_BG =
+  'https://www.fitmeals.co.in/wp-content/uploads/2018/02/trial_parallax.jpg';
+
+export const EVENTS_NOTIFY_MESSAGE = 'Notify me about upcoming sessions';
 
 export const FAQS = [
   { q: 'How much do nutrition plans cost?',                              a: 'Plans start from a 4-week programme. Pricing depends on plan length and check-in frequency — book a free call to discuss what works for your budget.' },

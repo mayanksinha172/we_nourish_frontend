@@ -1,6 +1,49 @@
 .section {
-  background: white; text-align: center; padding: 100px 5vw;
-  border-top: 1px solid var(--stone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  padding: 80px 5vw;
+  color: white;
+  background: linear-gradient(rgba(56, 24, 72, 0.85), rgba(56, 24, 72, 0.85)),
+    url('https://www.fitmeals.co.in/wp-content/uploads/2018/02/trial_parallax.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-.section h2 { margin-bottom: 14px; }
-.section p  { max-width: 480px; margin: 0 auto 32px; color: var(--muted-plum); }
+
+.inner {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.inner h2 {
+  color: white;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.inner p {
+  max-width: 480px;
+  margin: 0 auto 32px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 600px) {
+  .section {
+    min-height: 360px;
+    padding: 64px 5vw;
+    background-attachment: scroll;
+  }
+}

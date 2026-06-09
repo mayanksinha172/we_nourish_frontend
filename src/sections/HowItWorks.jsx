@@ -22,15 +22,17 @@ export default function HowItWorks() {
             transition={{ duration: .5, ease: [.22,1,.36,1], delay: i * .1 }}
             whileHover={{ y: -6, boxShadow: '0 12px 36px rgba(56,24,72,.12)' }}
           >
-            <div className={styles.num}>{step.num}</div>
-            <div className={styles.icon}>
-              <i className={`fa-solid ${step.icon}`} />
-            </div>
+            <div className={styles.circle}>{i + 1}</div>
             <h3>{step.title}</h3>
             <p>{step.body}</p>
           </motion.div>
         ))}
       </div>
+
+      <FadeUp className={styles.videoSlot} delay={.15}>
+        <span className={styles.videoLeaf} aria-hidden="true">🌿</span>
+        <p>Video: Arjita explaining her approach (slot ready — upload via Admin)</p>
+      </FadeUp>
 
       <FadeUp className="section-cta" delay={.2}>
         <motion.a

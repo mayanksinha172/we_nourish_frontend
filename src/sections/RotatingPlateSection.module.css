@@ -1,0 +1,238 @@
+/* Override global `section { padding: 80px 5vw }` — full-bleed FitMeals block */
+.block {
+  padding: 0;
+  background: var(--stone);
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+}
+
+.plateWrap {
+  background: var(--stone);
+  text-align: center;
+  padding-top: 8px;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.plateInner {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  max-height: 420px;
+}
+
+.plateImg {
+  display: block;
+  width: 90%;
+  max-width: 780px;
+  margin: 0 auto;
+  border-radius: 50%;
+  animation: plateRotate 20s linear infinite;
+  transform-origin: center center;
+  position: relative;
+  bottom: -60px;
+}
+
+@keyframes plateRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.greenPanel {
+  width: 100%;
+  min-height: 800px;
+  background: var(--green);
+  padding-top: 100px;
+  padding-bottom: 56px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.greenPanel::before,
+.greenPanel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 380px;
+  height: 520px;
+  background: url('https://www.fitmeals.co.in/wp-content/uploads/2019/10/nutrion-left.png') no-repeat left bottom;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.greenPanel::before { left: 0; }
+
+.greenPanel::after {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.card {
+  display: block;
+  margin: 0 auto;
+  background: white;
+  width: 90%;
+  max-width: 1100px;
+  min-height: 650px;
+  border-radius: 50px;
+  padding: 50px 40px 60px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.logoWrap {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.heading {
+  color: var(--plum);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  margin: 12px 0 24px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.tab {
+  box-sizing: border-box;
+  width: auto;
+  min-width: 150px;
+  max-width: 220px;
+  min-height: 44px;
+  padding: 12px 20px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  background: transparent;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tab:hover,
+.tabActive {
+  border-color: var(--green);
+  color: var(--green);
+  background: var(--green-tint);
+}
+
+.mealPlan {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  width: 90%;
+  height: auto;
+  margin: 50px auto 0;
+  padding-top: 0;
+  gap: 24px;
+}
+
+.mealImgWrap {
+  flex-shrink: 0;
+  width: 50%;
+  max-width: 500px;
+}
+
+.mealImg {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.mealText {
+  flex: 1;
+  padding-left: 30px;
+  padding-top: 8px;
+}
+
+.mealText h3 {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.kcal {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.desc {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .plateInner { max-height: 300px; }
+
+  .plateImg { bottom: -40px; }
+
+  .greenPanel {
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .card {
+    border-radius: 32px;
+    padding: 36px 24px 40px;
+    min-height: auto;
+  }
+
+  .mealPlan {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .mealImgWrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mealImg {
+    height: auto;
+    max-height: 280px;
+  }
+
+  .mealText {
+    padding-left: 0;
+  }
+
+  .greenPanel::before,
+  .greenPanel::after {
+    width: 200px;
+    height: 280px;
+  }
+}

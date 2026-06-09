@@ -17,9 +17,9 @@
   box-shadow: 0 1px 0 rgba(0,0,0,.08);
 }
 
-.logo { font-weight: 800; font-size: 22px; letter-spacing: -.3px; flex-shrink: 0; }
-.logoWe      { color: var(--green); }
-.logoNourish { color: var(--plum); }
+.logo {
+  flex-shrink: 0;
+}
 
 .links { display: flex; gap: 32px; align-items: center; }
 
