@@ -1,0 +1,6 @@
+.section {
+  background: white; text-align: center; padding: 100px 5vw;
+  border-top: 1px solid var(--stone);
+}
+.section h2 { margin-bottom: 14px; }
+.section p  { max-width: 480px; margin: 0 auto 32px; color: var(--muted-plum); }

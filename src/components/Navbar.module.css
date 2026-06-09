@@ -1,0 +1,85 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-h);
+  padding: 0 5vw;
+  gap: 24px;
+  background: transparent;
+  transition: background .3s, box-shadow .3s;
+}
+
+.scrolled {
+  background: white;
+  box-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+
+.logo { font-weight: 800; font-size: 22px; letter-spacing: -.3px; flex-shrink: 0; }
+.logoWe      { color: var(--green); }
+.logoNourish { color: var(--plum); }
+
+.links { display: flex; gap: 32px; align-items: center; }
+
+.link {
+  font-weight: 600; font-size: 14px; color: var(--ink);
+  position: relative; transition: color .2s;
+}
+.link::after {
+  content: ''; position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--green);
+  transition: width .2s;
+}
+.link:hover { color: var(--green); }
+.link:hover::after { width: 100%; }
+.active { color: var(--green) !important; }
+.active::after { width: 100% !important; }
+
+.actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+
+.hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; background: none; border: none; padding: 6px; cursor: pointer;
+}
+.bar {
+  display: block; width: 22px; height: 2px;
+  background: var(--plum); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.barOpen:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.barOpen:nth-child(2) { opacity: 0; }
+.barOpen:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45); z-index: 998;
+}
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 280px;
+  background: white; z-index: 999;
+  display: flex; flex-direction: column;
+  padding: 80px 32px 32px; gap: 4px;
+  box-shadow: -4px 0 24px rgba(0,0,0,.12);
+}
+.drawerClose {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none;
+  font-size: 22px; color: var(--plum); cursor: pointer;
+}
+.mobileLink {
+  font-weight: 600; font-size: 16px; color: var(--ink);
+  padding: 12px 0; border-bottom: 1px solid var(--stone);
+  display: block; transition: color .2s;
+}
+.mobileLink:hover { color: var(--green); }
+.mobileBook { margin-top: 20px; text-align: center; display: block; }
+
+@media (max-width: 900px) {
+  .links  { display: none; }
+  .hamburger { display: flex; }
+}

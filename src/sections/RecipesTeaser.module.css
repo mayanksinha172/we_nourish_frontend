@@ -1,0 +1,21 @@
+.section { padding: 80px 5vw; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card {
+  display: block; border-radius: var(--radius-card);
+  overflow: hidden; background: white;
+  border: 1px solid var(--stone);
+  transition: box-shadow .25s, transform .25s;
+}
+.card:hover { box-shadow: 0 10px 36px rgba(56,24,72,.1); transform: translateY(-4px); }
+.img {
+  height: 200px; background-size: cover; background-position: center;
+  transition: transform .45s;
+}
+.card:hover .img { transform: scale(1.05); }
+.info { padding: 20px; }
+.info .recipe-tag { margin-bottom: 8px; }
+.info h3 { font-size: 16px; color: var(--plum); }

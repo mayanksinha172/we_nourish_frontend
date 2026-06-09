@@ -1,0 +1,13 @@
+.section { padding: 80px 5vw; }
+.list { max-width: 720px; margin: 0 auto; }
+.item { border-bottom: 1px solid var(--stone); }
+.item:first-child { border-top: 1px solid var(--stone); }
+.q {
+  width: 100%; background: none; border: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 20px 0; cursor: pointer; text-align: left;
+  font-family: var(--font-main); font-weight: 600; font-size: 16px; color: var(--plum);
+}
+.icon { font-size: 22px; font-weight: 300; color: var(--green); flex-shrink: 0; line-height: 1; }
+.aWrap { overflow: hidden; }
+.a { padding-bottom: 20px; font-size: 15px; color: var(--ink); }

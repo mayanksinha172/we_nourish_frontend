@@ -1,0 +1,77 @@
+.hero {
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 60px 8vw 0;
+  height: 620px;
+  overflow: hidden;
+  margin-top: var(--nav-h);
+}
+
+.content { flex: 1; max-width: 560px; padding-bottom: 60px; }
+.content .eyebrow { margin-bottom: 16px; }
+.content h1 { margin-bottom: 20px; }
+
+.sub {
+  color: var(--muted-plum); font-size: 18px;
+  margin-bottom: 36px; max-width: 460px; line-height: 1.7;
+}
+
+.btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+
+.cred { display: flex; flex-direction: column; gap: 14px; }
+.credRow { display: flex; gap: 32px; }
+.credStat { display: flex; flex-direction: column; }
+.credNum  { font-weight: 800; font-size: 28px; color: var(--plum); line-height: 1; }
+.credLabel{ font-weight: 500; font-size: 13px; color: var(--muted-plum); margin-top: 4px; }
+
+.pressRow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.pressLabel { font-size: 12px; font-weight: 600; color: var(--muted-plum); letter-spacing: .05em; }
+.pressChip {
+  font-weight: 700; font-size: 12px; color: var(--plum);
+  background: var(--stone); padding: 4px 12px;
+  border-radius: 50px; border: 1px solid rgba(56,24,72,.1);
+}
+
+/* Photo */
+.photoWrap {
+  flex: 0 0 auto;
+  position: relative;
+  width: 38%; max-width: 420px;
+  height: 520px;
+  align-self: flex-end;
+  overflow: hidden;
+}
+.blob {
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; height: 88%;
+  background: var(--green-tint);
+  border-radius: 50% 50% 0 0 / 55% 55% 0 0;
+  z-index: 0;
+}
+.photo {
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; height: 100%; width: auto;
+  max-width: none; object-fit: contain;
+  object-position: bottom center;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    padding: 0 5vw; height: auto; gap: 0;
+  }
+  .content { padding: 32px 0 56px; max-width: 100%; }
+  .photoWrap { width: 70%; max-width: 300px; height: 360px; margin: 0 auto; }
+}
+
+@media (max-width: 600px) {
+  .photoWrap { width: 80%; max-width: 260px; height: 300px; }
+  .btns { flex-direction: column; }
+  .credRow { gap: 20px; }
+  .credNum { font-size: 22px; }
+}

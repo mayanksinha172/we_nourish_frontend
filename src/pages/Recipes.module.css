@@ -1,0 +1,54 @@
+.hero {
+  background: var(--paper); text-align: center;
+  padding: calc(var(--nav-h) + 48px) 5vw 40px;
+}
+.heroSub { max-width: 480px; margin: 12px auto 28px; color: var(--muted-plum); }
+.searchWrap { position: relative; max-width: 520px; margin: 0 auto; }
+.searchIcon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--muted-plum); pointer-events: none; }
+.search {
+  width: 100%; padding: 15px 20px 15px 46px;
+  border: 1.5px solid var(--stone); border-radius: var(--radius-pill);
+  font-family: var(--font-main); font-size: 15px; color: var(--ink);
+  background: white; transition: border-color .2s, box-shadow .2s;
+}
+.search:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(40,120,48,.1); }
+
+.filterBar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 16px 5vw;
+  background: var(--paper);
+  position: sticky; top: var(--nav-h); z-index: 100;
+  border-bottom: 1px solid var(--stone);
+}
+.chip {
+  font-family: var(--font-main); font-weight: 600; font-size: 13px;
+  padding: 8px 16px; border-radius: 50px;
+  border: 1.5px solid var(--stone); background: white; color: var(--ink);
+  cursor: pointer; white-space: nowrap;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.chip:hover    { border-color: var(--green); color: var(--green); }
+.chipActive    { background: var(--green); color: white; border-color: var(--green); }
+
+.grid_section { padding-top: 32px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card {
+  border-radius: var(--radius-card); overflow: hidden;
+  background: white; border: 1px solid var(--stone);
+  transition: box-shadow .25s, transform .25s;
+}
+.card:hover { box-shadow: 0 10px 36px rgba(56,24,72,.1); transform: translateY(-4px); }
+.img { height: 200px; background-size: cover; background-position: center; transition: transform .45s; }
+.card:hover .img { transform: scale(1.05); }
+.info { padding: 20px; }
+.infoTop { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.badge {
+  font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px;
+  background: var(--green-tint); color: var(--green);
+}
+.info h3 { font-size: 16px; color: var(--plum); margin-bottom: 4px; }
+.meta { font-size: 12px; color: var(--muted-plum); }

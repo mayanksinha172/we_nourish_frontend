@@ -1,0 +1,10 @@
+.bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  padding: 12px 20px;
+  background: white;
+  border-top: 1px solid var(--stone);
+  z-index: 800; text-align: center;
+  box-shadow: 0 -4px 16px rgba(0,0,0,.08);
+}
+@media (max-width: 900px) { .bar { display: block; } }
