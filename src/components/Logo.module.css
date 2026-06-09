@@ -1,0 +1,33 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.img {
+  display: block;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav {
+  height: 42px;
+}
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.boxed {
+  height: 52px;
+}
+
+.center {
+  height: 48px;
+  margin: 0 auto;
+}

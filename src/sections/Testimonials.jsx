@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TESTIMONIALS } from '../data/content';
-import FadeUp from '../components/FadeUp';
 import styles from './Testimonials.module.css';
+
+function avatarUrl(name) {
+  const encoded = encodeURIComponent(name.replace('.', ''));
+  return `https://ui-avatars.com/api/?name=${encoded}&background=287830&color=fff&size=128&bold=true`;
+}
 
 export default function Testimonials() {
   const [idx, setIdx] = useState(0);
@@ -13,60 +17,63 @@ export default function Testimonials() {
     setIdx(i => (i + d + TESTIMONIALS.length) % TESTIMONIALS.length);
   };
 
+  const t = TESTIMONIALS[idx];
+
   const variants = {
-    enter: d => ({ opacity: 0, x: d * 60 }),
-    center:    { opacity: 1, x: 0 },
-    exit:  d => ({ opacity: 0, x: d * -60 }),
+    enter: d => ({ opacity: 0, x: d * 40 }),
+    center: { opacity: 1, x: 0 },
+    exit: d => ({ opacity: 0, x: d * -40 }),
   };
 
   return (
-    <section className={`section-stone ${styles.section}`}>
-      <FadeUp className="section-header">
-        <span className="eyebrow">CLIENT STORIES</span>
-        <h2>What clients say</h2>
-      </FadeUp>
+    <section className={styles.section}>
+      <div className={styles.header}>
+        <p className={styles.label}>Testimonials</p>
+        <h2>What our clients say</h2>
+      </div>
 
-      <div className={styles.carousel}>
-        <button className={styles.btn} onClick={() => go(-1)} aria-label="Previous">
-          <i className="fa-solid fa-arrow-left-long" />
-        </button>
+      <div className={styles.slideshow}>
+        <div className={styles.slideRow}>
+          <button type="button" className={styles.btn} onClick={() => go(-1)} aria-label="Previous testimonial">
+            <svg className={styles.btnIcon} viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 12H5M12 19l-7-7 7-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
 
-        <div className={styles.track}>
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div
               key={idx}
-              className={styles.card}
+              className={styles.content}
               custom={dir}
               variants={variants}
-              initial="enter" animate="center" exit="exit"
-              transition={{ duration: .38, ease: [.22,1,.36,1] }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: .38, ease: [.22, 1, .36, 1] }}
             >
-              <div className={styles.imgSlot} />
-              <blockquote className={styles.quote}>
-                {TESTIMONIALS[idx].quote}
-              </blockquote>
-              <p className={styles.name}>
-                {TESTIMONIALS[idx].name}
-                <span className={styles.tag}>{TESTIMONIALS[idx].tag}</span>
-              </p>
+              <div className={styles.quoteMark} aria-hidden="true">&ldquo;</div>
+              <p className={styles.quote}>{t.quote}</p>
+              <img
+                src={avatarUrl(t.name)}
+                alt={t.displayName || t.name}
+                className={styles.avatar}
+                loading="lazy"
+              />
+              <p className={styles.name}>{t.displayName || t.name}</p>
+              {t.outcome && <p className={styles.outcome}>{t.outcome}</p>}
             </motion.div>
           </AnimatePresence>
-        </div>
 
-        <button className={styles.btn} onClick={() => go(1)} aria-label="Next">
-          <i className="fa-solid fa-arrow-right-long" />
-        </button>
+          <button type="button" className={styles.btn} onClick={() => go(1)} aria-label="Next testimonial">
+            <svg className={styles.btnIcon} viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <div className={styles.dots}>
-        {TESTIMONIALS.map((_, i) => (
-          <button
-            key={i}
-            className={`${styles.dot} ${i === idx ? styles.dotActive : ''}`}
-            onClick={() => { setDir(i > idx ? 1 : -1); setIdx(i); }}
-            aria-label={`Go to testimonial ${i + 1}`}
-          />
-        ))}
+      <div className={styles.veggieWrap}>
+        <img src="/testimonials-bg.png" alt="" loading="lazy" />
       </div>
     </section>
   );
