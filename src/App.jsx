@@ -7,6 +7,7 @@ import EmailPopup   from './components/EmailPopup';
 import Home           from './pages/Home';
 import NutritionPlans from './pages/NutritionPlans';
 import Recipes        from './pages/Recipes';
+import RecipeDetail   from './pages/RecipeDetail';
 import About          from './pages/About';
 import Blog           from './pages/Blog';
 
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/"                 element={<Home />} />
           <Route path="/nutrition-plans"  element={<NutritionPlans />} />
           <Route path="/recipes"          element={<Recipes />} />
+          <Route path="/recipes/:slug"    element={<RecipeDetail />} />
           <Route path="/about"            element={<About />} />
           <Route path="/blog"             element={<Blog />} />
         </Routes>

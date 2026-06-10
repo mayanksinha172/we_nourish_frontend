@@ -6,9 +6,12 @@ import styles from './Blog.module.css';
 export default function Blog() {
   return (
     <>
-      <section className={styles.hero}>
-        <FadeUp>
-          <span className="eyebrow">THE WENOURISH BLOG</span>
+      <section className={styles.banner}>
+        <p className={styles.bannerTitle}>THE WENOURISH BLOG</p>
+      </section>
+
+      <section className={styles.intro}>
+        <FadeUp className={styles.introInner}>
           <h1>Nourishment, explained</h1>
           <p className={styles.heroSub}>Practical nutrition advice, recipe inspiration, and the science behind what you eat — without the jargon.</p>
         </FadeUp>

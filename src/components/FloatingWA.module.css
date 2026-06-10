@@ -3,8 +3,14 @@
   width: 56px; height: 56px;
   background: #25d366; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 26px;
+  color: white;
   box-shadow: 0 4px 16px rgba(37,211,102,.45);
   z-index: 800;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  display: block;
 }
 @media (max-width: 900px) { .fab { bottom: 84px; } }

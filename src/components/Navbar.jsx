@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS, CALENDLY } from '../data/content';
 import Logo from './Logo';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
+  const { pathname } = useLocation();
   const [scrolled, setScrolled]   = useState(false);
   const [menuOpen, setMenuOpen]   = useState(false);
+  const solidNav = pathname !== '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -21,7 +23,7 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}
+        className={`${styles.nav} ${solidNav || scrolled ? styles.scrolled : ''}`}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0,   opacity: 1 }}
         transition={{ duration: .5, ease: 'easeOut' }}
