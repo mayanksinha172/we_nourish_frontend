@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CALENDLY } from '../data/content';
+import { CALENDLY, WA_NUTRITION } from '../data/content';
 import styles from './ClosingCTA.module.css';
 
 export default function ClosingCTA() {
@@ -23,6 +23,17 @@ export default function ClosingCTA() {
           whileTap={{ scale: .97 }}
         >
           Book Free Call
+        </motion.a>
+        <motion.a
+          href={WA_NUTRITION}
+          target="_blank"
+          rel="noopener"
+          className="btn-wa"
+          style={{ marginTop: 16 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: .97 }}
+        >
+          <i className="fa-brands fa-whatsapp" /> Or message on WhatsApp
         </motion.a>
       </motion.div>
     </section>

@@ -1,11 +1,17 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../data/content';
 import FadeUp from '../components/FadeUp';
+import PageMeta from '../components/PageMeta';
 import styles from './Blog.module.css';
 
 export default function Blog() {
   return (
     <>
+      <PageMeta
+        title="Nutrition Blog — WeNourish"
+        description="Practical nutrition advice, recipe tips and wellness science by Arjita at WeNourish."
+      />
       <section className={styles.banner}>
         <p className={styles.bannerTitle}>THE WENOURISH BLOG</p>
       </section>
@@ -20,25 +26,26 @@ export default function Blog() {
       <section className={`section-paper ${styles.grid_section}`}>
         <div className={styles.grid}>
           {BLOG_POSTS.map((post, i) => (
-            <motion.article
-              key={post.title}
-              className={styles.card}
+            <motion.div
+              key={post.slug}
               initial={{ opacity: 0, y: 36 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: .5, ease: [.22,1,.36,1], delay: i * .1 }}
               whileHover={{ y: -5, boxShadow: '0 12px 36px rgba(56,24,72,.1)' }}
             >
-              <div className={styles.img} style={{ backgroundImage: `url(${post.img})` }}>
-                <span className={styles.tag}>{post.tag}</span>
-              </div>
-              <div className={styles.body}>
-                <span className={styles.date}>{post.date}</span>
-                <h3>{post.title}</h3>
-                <p>{post.excerpt}</p>
-                <span className={styles.read}>Read article →</span>
-              </div>
-            </motion.article>
+              <Link to={`/blog/${post.slug}`} className={styles.card}>
+                <div className={styles.img} style={{ backgroundImage: `url(${post.img})` }}>
+                  <span className={styles.tag}>{post.tag}</span>
+                </div>
+                <div className={styles.body}>
+                  <span className={styles.date}>{post.date}</span>
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                  <span className={styles.read}>Read article →</span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
 

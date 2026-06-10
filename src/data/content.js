@@ -12,6 +12,29 @@ export const EMAIL        = 'hello@wenourish.in';
 export const CALENDLY     = 'https://calendly.com'; // replace with real link
 export const LOGO_SRC     = '/logo.png';
 
+export const SOCIAL_LINKS = {
+  instagram: '#', // replace with real URL
+  youtube:   '#', // replace with real URL
+  facebook:  '#', // replace with real URL
+  linkedin:  '#', // replace with real URL
+};
+
+export const PRESS_LINKS = {
+  'Indian Express': '#', // replace with article URL
+  'NDTV Food':      '#', // replace with article URL
+  'India Today':    '#', // replace with article URL
+  'Slurrp':         '#', // replace with article URL
+};
+
+export const ACTIVE_EVENT = {
+  active:   false, // set to true when a session is live
+  title:    'Live Nutrition Masterclass',
+  date:     'Saturday, 28 June 2026',
+  time:     '6:00 PM IST',
+  covered:  ['Understanding macros', 'Meal planning basics', 'Q&A with Arjita'],
+  price:    '₹499',
+};
+
 export const PLATE_IMAGE = 'https://www.fitmeals.co.in/wp-content/uploads/2019/10/plate_rounded.jpg';
 
 export const NUTRITION_PLANS = [
@@ -267,7 +290,43 @@ export function getRecipeBySlug(slug) {
 export const RECIPE_CATS = ['all','high-protein','fat-loss','breakfast','snacks','drinks','desserts','salads','soups','dips','air-fried'];
 
 export const BLOG_POSTS = [
-  { tag: 'Nutrition',    title: 'Why protein matters more than counting calories',               excerpt: 'Most people focus on calories in vs calories out — but the quality of what you eat changes everything.', date: 'June 2025',  img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80' },
-  { tag: 'Myth-Busting', title: '5 reasons you should eat mangoes — even when dieting',          excerpt: 'Mangoes have been unfairly villainised. Here\'s the evidence on why the king of fruits belongs on your plate.', date: 'May 2025', img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&q=80' },
-  { tag: 'Gut Health',   title: 'The gut-hormone connection and what it means for your energy',  excerpt: 'Your gut does a lot more than digest food. Here\'s how the microbiome influences hormones, mood and metabolism.', date: 'April 2025', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80' },
+  {
+    slug:    'why-protein-matters',
+    tag:     'Nutrition',
+    title:   'Why protein matters more than counting calories',
+    excerpt: 'Most people focus on calories in vs calories out — but the quality of what you eat changes everything.',
+    date:    'June 2025',
+    img:     'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80',
+    body: [
+      'Most people begin their health journey by counting calories. It makes intuitive sense — eat less, weigh less. But this view misses something fundamental: not all calories do the same thing inside your body. A 200-calorie handful of almonds and a 200-calorie packet of biscuits trigger entirely different hormonal and metabolic responses.',
+      'Protein is the macronutrient that changes the game. It has the highest thermic effect of any food — your body burns around 25–30% of protein calories just digesting it. It preserves lean muscle mass during weight loss, which is critical because muscle is metabolically active tissue that keeps your resting metabolism high. And it directly reduces hunger by suppressing ghrelin (the hunger hormone) and boosting satiety signals.',
+      'In practice, this means that two people eating the same number of calories can have very different results if their protein intake differs. Aim for 1.2–2g of protein per kilogram of body weight, distributed across meals. Indian food is rich in excellent protein sources — paneer, dal, rajma, eggs, curd, chicken — so hitting this target is more achievable than most people think. Start there before you ever open a calorie-counting app.',
+    ],
+  },
+  {
+    slug:    'eat-mangoes-when-dieting',
+    tag:     'Myth-Busting',
+    title:   '5 reasons you should eat mangoes — even when dieting',
+    excerpt: 'Mangoes have been unfairly villainised. Here\'s the evidence on why the king of fruits belongs on your plate.',
+    date:    'May 2025',
+    img:     'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&q=80',
+    body: [
+      'Every summer, without fail, I get the same question: "Should I avoid mangoes because of the sugar?" The short answer is no — and the full answer reveals a lot about how we\'ve been taught to fear fruit unnecessarily.',
+      'Mangoes are rich in fibre, vitamin C, vitamin A, folate, and a range of polyphenol antioxidants including mangiferin, which has been shown in research to support blood sugar regulation and reduce inflammation. The natural sugar in a mango comes packaged with fibre that slows absorption, making the glycaemic impact far lower than the same amount of sugar from a processed source. One cup of mango (around 165g) contains about 25g of carbohydrates and 3g of fibre — a perfectly reasonable part of a balanced meal.',
+      'The five reasons to keep mangoes in your diet: they support gut health via prebiotic fibre; they provide vitamin A for immune function and skin health; their antioxidant load protects against oxidative stress; they\'re hydrating (83% water) which supports metabolism; and they make eating healthily feel like a pleasure rather than a punishment. Food you enjoy is food you stick with. That is the real secret to sustainable nutrition.',
+    ],
+  },
+  {
+    slug:    'gut-hormone-connection',
+    tag:     'Gut Health',
+    title:   'The gut-hormone connection and what it means for your energy',
+    excerpt: 'Your gut does a lot more than digest food. Here\'s how the microbiome influences hormones, mood and metabolism.',
+    date:    'April 2025',
+    img:     'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80',
+    body: [
+      'The gut is sometimes called the second brain — and for good reason. Your gastrointestinal tract contains over 100 million neurons, produces around 95% of the body\'s serotonin, and hosts roughly 38 trillion microbial cells that influence everything from how you absorb nutrients to how your stress response behaves. When gut health is disrupted, the effects ripple outward in ways that can look like fatigue, mood swings, hormonal imbalance, or stubborn weight that won\'t shift.',
+      'One of the most important gut-hormone links is with cortisol, your primary stress hormone. Chronic gut inflammation signals the immune system to stay on alert, which keeps cortisol elevated. Elevated cortisol disrupts sleep, increases appetite for high-sugar foods, promotes fat storage around the abdomen, and suppresses thyroid function. This is why clients with persistent gut issues often report weight gain, low energy, and difficulty sleeping — even when their diet looks reasonable on paper.',
+      'The practical levers are well established: eat 30 or more distinct plant foods per week (diversity matters more than quantity), include fermented foods like curd, kefir, or homemade pickles regularly, prioritise sleep of 7–9 hours (gut repair happens overnight), and manage stress through whatever reliable method works for you. These are not glamorous interventions, but they consistently produce the kind of sustained energy improvements that no supplement can replicate.',
+    ],
+  },
 ];

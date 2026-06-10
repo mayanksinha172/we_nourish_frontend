@@ -141,6 +141,36 @@
   object-position: bottom center;
 }
 
+.beforeAfter {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 16px 0 8px;
+}
+
+.baSlot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.baSlot img {
+  width: 120px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--stone);
+}
+
+.baLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-plum);
+}
+
 @media (max-width: 700px) {
   .section { padding: 56px 5vw 0; }
 

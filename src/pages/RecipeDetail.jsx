@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { getRecipeBySlug } from '../data/content';
+import PageMeta from '../components/PageMeta';
 import styles from './RecipeDetail.module.css';
 
 const CAT_LABELS = {
@@ -28,7 +29,28 @@ export default function RecipeDetail() {
     );
   }
 
+  const recipeSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Recipe',
+    name: recipe.title,
+    image: recipe.img,
+    description: recipe.description,
+    recipeIngredient: recipe.ingredients,
+    recipeInstructions: recipe.steps.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      text: step,
+    })),
+    author: { '@type': 'Person', name: 'Arjita', url: 'https://wenourish.in' },
+  };
+
   return (
+    <>
+      <PageMeta
+        title={`${recipe.title} Recipe — WeNourish`}
+        description={recipe.description}
+        schema={recipeSchema}
+      />
     <article className={styles.detail}>
       <img src={recipe.img} alt={recipe.title} className={styles.heroImg} loading="lazy" />
       <div className={styles.tags}>
@@ -52,5 +74,6 @@ export default function RecipeDetail() {
       </ol>
       <Link to="/recipes" className={styles.back}>← Back to all recipes</Link>
     </article>
+    </>
   );
 }

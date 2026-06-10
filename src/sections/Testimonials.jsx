@@ -53,6 +53,22 @@ export default function Testimonials() {
             >
               <div className={styles.quoteMark} aria-hidden="true">&ldquo;</div>
               <p className={styles.quote}>{t.quote}</p>
+              {(t.beforeImg || t.afterImg) && (
+                <div className={styles.beforeAfter}>
+                  {t.beforeImg && (
+                    <div className={styles.baSlot}>
+                      <img src={t.beforeImg} alt={`${t.displayName || t.name} before`} loading="lazy" />
+                      <span className={styles.baLabel}>Before</span>
+                    </div>
+                  )}
+                  {t.afterImg && (
+                    <div className={styles.baSlot}>
+                      <img src={t.afterImg} alt={`${t.displayName || t.name} after`} loading="lazy" />
+                      <span className={styles.baLabel}>After</span>
+                    </div>
+                  )}
+                </div>
+              )}
               <img
                 src={avatarUrl(t.name)}
                 alt={t.displayName || t.name}

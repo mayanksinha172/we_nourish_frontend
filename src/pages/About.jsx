@@ -1,8 +1,19 @@
 import { motion } from 'framer-motion';
 import FadeUp from '../components/FadeUp';
 import ClosingCTA from '../sections/ClosingCTA';
+import PageMeta from '../components/PageMeta';
 import arjita from '../assets/arjita.jpg';
 import styles from './About.module.css';
+
+const ABOUT_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Arjita',
+  jobTitle: 'Nutritionist',
+  url: 'https://wenourish.in',
+  description: 'Registered nutritionist with 10+ years of experience. Founder of WeNourish.',
+  worksFor: { '@type': 'Organization', name: 'WeNourish' },
+};
 
 const STATS = [
   { num: '600K+', label: 'Community members' },
@@ -20,6 +31,11 @@ const VALUES = [
 export default function About() {
   return (
     <>
+      <PageMeta
+        title="About Arjita — WeNourish Nutritionist"
+        description="Meet Arjita, registered nutritionist with 10+ years experience, 600K+ community, and founder of WeNourish."
+        schema={ABOUT_SCHEMA}
+      />
       {/* Story */}
       <section className={styles.story}>
         <motion.div

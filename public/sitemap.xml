@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url><loc>https://wenourish.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://wenourish.in/nutrition-plans</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wenourish.in/recipes</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://wenourish.in/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wenourish.in/brand-collaborations</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://wenourish.in/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://wenourish.in/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://wenourish.in/refund-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Recipe detail pages -->
+  <url><loc>https://wenourish.in/recipes/quinoa-power-bowl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/green-detox-salad</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/overnight-oats-with-berries</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/almond-date-energy-balls</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/tomato-lentil-soup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/turmeric-golden-milk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/roasted-beetroot-walnut-salad</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/air-fried-paneer-tikka</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/roasted-garlic-hummus</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/recipes/coconut-chia-pudding</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Blog post pages -->
+  <url><loc>https://wenourish.in/blog/why-protein-matters</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/blog/eat-mangoes-when-dieting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wenourish.in/blog/gut-hormone-connection</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>

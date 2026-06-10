@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CALENDLY, WA_NUTRITION, PRESS } from '../data/content';
+import { CALENDLY, WA_NUTRITION, PRESS, PRESS_LINKS } from '../data/content';
 import arjita from '../assets/arjita.jpg';
 import styles from './Hero.module.css';
 
@@ -62,7 +62,15 @@ export default function Hero() {
           <div className={styles.pressRow}>
             <span className={styles.pressLabel}>As seen in</span>
             {PRESS.map(p => (
-              <span key={p} className={styles.pressChip}>{p}</span>
+              <a
+                key={p}
+                href={PRESS_LINKS[p] || '#'}
+                target="_blank"
+                rel="noopener"
+                className={styles.pressChip}
+              >
+                {p}
+              </a>
             ))}
           </div>
         </motion.div>

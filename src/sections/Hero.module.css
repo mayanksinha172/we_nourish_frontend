@@ -33,7 +33,10 @@
   font-weight: 700; font-size: 12px; color: var(--plum);
   background: var(--stone); padding: 4px 12px;
   border-radius: 50px; border: 1px solid rgba(56,24,72,.1);
+  text-decoration: none;
+  transition: border-color .2s, background .2s;
 }
+.pressChip:hover { background: var(--green-tint); border-color: var(--green); }
 
 /* Photo */
 .photoWrap {

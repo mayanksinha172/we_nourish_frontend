@@ -1,4 +1,4 @@
-import { PRESS } from '../data/content';
+import { PRESS, PRESS_LINKS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import styles from './MediaFeatures.module.css';
 
@@ -11,7 +11,15 @@ export default function MediaFeatures() {
       <div className={styles.track}>
         <div className={styles.inner}>
           {doubled.map((p, i) => (
-            <span key={i} className={styles.item}>{p}</span>
+            <a
+              key={i}
+              href={PRESS_LINKS[p] || '#'}
+              target="_blank"
+              rel="noopener"
+              className={styles.item}
+            >
+              {p}
+            </a>
           ))}
         </div>
       </div>

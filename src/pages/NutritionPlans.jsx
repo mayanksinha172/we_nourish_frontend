@@ -2,12 +2,18 @@ import { motion } from 'framer-motion';
 import { CALENDLY, NUTRITION_PLANS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import ClosingCTA from '../sections/ClosingCTA';
+import Testimonials from '../sections/Testimonials';
+import PageMeta from '../components/PageMeta';
 import arjita from '../assets/arjita.jpg';
 import styles from './NutritionPlans.module.css';
 
 export default function NutritionPlans() {
   return (
     <>
+      <PageMeta
+        title="Nutrition Plans — Online Dietitian India | WeNourish"
+        description="1-on-1 nutrition consulting plans for weight loss, PCOS, and performance. Personalised, evidence-based. Book a free call."
+      />
       {/* Hero */}
       <section className={styles.hero}>
         <motion.div
@@ -85,6 +91,8 @@ export default function NutritionPlans() {
         </div>
         <FadeUp><p className={styles.note}>Prices shared on the free call. International clients welcome.</p></FadeUp>
       </section>
+
+      <Testimonials />
 
       <ClosingCTA />
     </>

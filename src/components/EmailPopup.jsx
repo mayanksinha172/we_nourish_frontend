@@ -52,9 +52,9 @@ export default function EmailPopup() {
             <button className={styles.close} onClick={dismiss} aria-label="Close">
               <i className="fa-solid fa-xmark" />
             </button>
-            <span className="eyebrow" style={{ display: 'block', marginBottom: 8 }}>FREE NUTRITION GUIDE</span>
-            <h2 className={styles.title}>Get our starter guide — free</h2>
-            <p className={styles.sub}>5 nutrition principles that actually work, delivered to your inbox instantly.</p>
+            <span className="eyebrow" style={{ display: 'block', marginBottom: 8 }}>FREE RECIPES & TIPS</span>
+            <h2 className={styles.title}>Join for free recipes & nutrition tips</h2>
+            <p className={styles.sub}>Get weekly recipes, practical tips and a free nutrition starter guide — delivered to your inbox.</p>
             {done ? (
               <motion.p
                 className={styles.success}
@@ -72,7 +72,7 @@ export default function EmailPopup() {
                   style={{ width: '100%', justifyContent: 'center', display: 'flex' }}
                   whileHover={{ scale: 1.02 }} whileTap={{ scale: .97 }}
                 >
-                  Send me the guide
+                  Send me free recipes
                 </motion.button>
                 <p className={styles.note}>No spam, ever. Unsubscribe any time.</p>
               </form>

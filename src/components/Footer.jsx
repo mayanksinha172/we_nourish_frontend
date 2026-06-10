@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { NAV_LINKS, WA_NUTRITION, WA_COLLAB, EMAIL } from '../data/content';
+import { NAV_LINKS, WA_NUTRITION, WA_COLLAB, EMAIL, SOCIAL_LINKS } from '../data/content';
 import Logo from './Logo';
 import styles from './Footer.module.css';
 
@@ -23,10 +23,10 @@ function LinkArrow() {
 
 const MORE_LINKS = [
   { label: 'About', path: '/about' },
-  { label: 'Brand Collaborations', href: WA_COLLAB, external: true },
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms of Service', href: '#' },
-  { label: 'Refund Policy', href: '#' },
+  { label: 'Brand Collaborations', path: '/brand-collaborations' },
+  { label: 'Privacy Policy', path: '/privacy-policy' },
+  { label: 'Terms of Service', path: '/terms' },
+  { label: 'Refund Policy', path: '/refund-policy' },
 ];
 
 export default function Footer() {
@@ -49,12 +49,12 @@ export default function Footer() {
         </p>
         <div className={styles.socials}>
           {[
-            { icon: 'fa-instagram', label: 'Instagram' },
-            { icon: 'fa-youtube', label: 'YouTube' },
-            { icon: 'fa-facebook', label: 'Facebook' },
-            { icon: 'fa-linkedin', label: 'LinkedIn' },
+            { icon: 'fa-instagram', label: 'Instagram', key: 'instagram' },
+            { icon: 'fa-youtube',   label: 'YouTube',   key: 'youtube'   },
+            { icon: 'fa-facebook',  label: 'Facebook',  key: 'facebook'  },
+            { icon: 'fa-linkedin',  label: 'LinkedIn',  key: 'linkedin'  },
           ].map((s) => (
-            <a key={s.icon} href="#" aria-label={s.label} className={styles.socialIcon}>
+            <a key={s.icon} href={SOCIAL_LINKS[s.key]} aria-label={s.label} className={styles.socialIcon} target="_blank" rel="noopener">
               <i className={`fa-brands ${s.icon}`} />
             </a>
           ))}
@@ -81,24 +81,12 @@ export default function Footer() {
 
       <div className={`${styles.col} ${styles.linkCol}`}>
         <h4 className={styles.heading}>Links</h4>
-        {MORE_LINKS.map((item) =>
-          item.external ? (
-            <a key={item.label} href={item.href} target="_blank" rel="noopener" className={styles.link}>
-              <LinkArrow />
-              {item.label}
-            </a>
-          ) : item.path ? (
-            <Link key={item.label} to={item.path} className={styles.link}>
-              <LinkArrow />
-              {item.label}
-            </Link>
-          ) : (
-            <a key={item.label} href={item.href} className={styles.link}>
-              <LinkArrow />
-              {item.label}
-            </a>
-          )
-        )}
+        {MORE_LINKS.map((item) => (
+          <Link key={item.label} to={item.path} className={styles.link}>
+            <LinkArrow />
+            {item.label}
+          </Link>
+        ))}
       </div>
 
       <div className={`${styles.col} ${styles.linkCol}`}>

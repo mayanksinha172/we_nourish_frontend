@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ALL_RECIPES, RECIPE_CATS } from '../data/content';
+import { ALL_RECIPES, RECIPE_CATS, PRODUCTS } from '../data/content';
 import FadeUp from '../components/FadeUp';
+import PageMeta from '../components/PageMeta';
 import styles from './Recipes.module.css';
 
 const CAT_LABELS = {
@@ -20,13 +21,19 @@ export default function Recipes() {
     const q = query.toLowerCase().trim();
     return ALL_RECIPES.filter(r => {
       const catOk  = cat === 'all' || r.tag === cat;
-      const textOk = !q || r.title.toLowerCase().includes(q);
+      const textOk = !q ||
+        r.title.toLowerCase().includes(q) ||
+        r.ingredients?.some(ing => ing.toLowerCase().includes(q));
       return catOk && textOk;
     });
   }, [query, cat]);
 
   return (
     <>
+      <PageMeta
+        title="Healthy Indian Recipes — Free & Premium | WeNourish"
+        description="Browse healthy Indian recipes by nutritionist Arjita. Search by name or ingredient, filter by category. Free to view."
+      />
       {/* Hero */}
       <section className={styles.hero}>
         <FadeUp className={styles.heroInner}>
@@ -39,7 +46,7 @@ export default function Recipes() {
       <FadeUp delay={.1} className={styles.searchWrap}>
         <input
           type="search"
-          placeholder="Search by recipe name…"
+          placeholder="Search by recipe name or ingredient…"
           value={query}
           onChange={e => setQuery(e.target.value)}
           className={styles.search}
@@ -60,7 +67,7 @@ export default function Recipes() {
         ))}
       </div>
 
-      {/* Grid */}
+      {/* Free Recipes Grid */}
       <section className={`section-paper ${styles.grid_section}`}>
         {filtered.length === 0 && (
           <p style={{ textAlign:'center', color:'var(--muted-plum)', padding:'40px 0' }}>
@@ -87,6 +94,47 @@ export default function Recipes() {
                   <p className={styles.meta}>{r.time} · {r.kcal}</p>
                 </div>
               </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Premium Recipe Books */}
+      <section className={`section-plum ${styles.books_section}`}>
+        <FadeUp className="section-header">
+          <span className="eyebrow" style={{ color: 'var(--green-tint)' }}>RECIPE BOOKS</span>
+          <h2 style={{ color: 'white' }}>Take the kitchen with you</h2>
+          <p style={{ color: 'rgba(255,255,255,.75)', maxWidth: 500, margin: '12px auto 0' }}>
+            Curated recipe collections by Arjita — download instantly after purchase.
+          </p>
+        </FadeUp>
+        <div className={styles.booksGrid}>
+          {PRODUCTS.map((p, i) => (
+            <motion.div
+              key={p.title}
+              className={styles.bookCard}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: .5, ease: [.22, 1, .36, 1], delay: i * .1 }}
+              whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(0,0,0,.25)' }}
+            >
+              <span className={styles.bookBadge}>Premium</span>
+              <img src={p.img} alt={p.title} className={styles.bookCover} loading="lazy" />
+              <div className={styles.bookBody}>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+                <p className={styles.bookPrice}>{p.price}</p>
+                <motion.button
+                  type="button"
+                  className={styles.buyBtn}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: .98 }}
+                  onClick={() => alert('Razorpay checkout coming soon')}
+                >
+                  Buy — {p.price}
+                </motion.button>
+              </div>
             </motion.div>
           ))}
         </div>
