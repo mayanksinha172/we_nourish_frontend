@@ -1,6 +1,5 @@
 .section {
   background: var(--stone);
-  overflow: hidden;
   padding: 80px 5vw 0;
 }
 
@@ -128,13 +127,18 @@
 .veggieWrap {
   margin-top: 0;
   line-height: 0;
-  width: 100%;
+  width: calc(100% + 10vw);
+  margin-left: calc(-5vw);
+  margin-right: calc(-5vw);
 }
 
 .veggieWrap img {
   width: 100%;
+  max-width: none;
+  height: auto;
   display: block;
-  margin-bottom: -4px;
+  object-fit: cover;
+  object-position: bottom center;
 }
 
 @media (max-width: 700px) {
@@ -154,4 +158,12 @@
   }
 
   .quoteMark { font-size: 56px; }
+}
+
+@media (max-width: 480px) {
+  .slideRow { gap: 6px; }
+  .btn { width: 36px; height: 36px; }
+  .btnIcon { width: 16px; height: 16px; }
+  .quote { font-size: 15px; }
+  .quoteMark { font-size: 44px; }
 }

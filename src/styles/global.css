@@ -140,3 +140,49 @@ section.section-fullbleed { padding: 0; }
 .footer-wa-btn:hover { background: rgba(37,211,102,.35); }
 .footer-wa-btn.alt { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.15); }
 .footer-wa-btn.alt:hover { background: rgba(255,255,255,.15); }
+
+/* ---- Responsive layout (spacing & overflow only) ---- */
+main {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  main {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+
+  section:not(.section-fullbleed) {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .btn-primary,
+  .btn-outline,
+  .btn-outline-white,
+  .btn-wa {
+    white-space: normal;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  section:not(.section-fullbleed) {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .btn-primary {
+    padding: 13px 22px;
+    font-size: 14px;
+  }
+
+  .btn-primary.lg {
+    padding: 15px 24px;
+    font-size: 15px;
+  }
+
+  .btn-wa {
+    justify-content: center;
+  }
+}

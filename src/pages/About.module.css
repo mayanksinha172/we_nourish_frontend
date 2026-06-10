@@ -70,3 +70,9 @@
   .storyPhoto { width: 75%; max-width: 280px; height: 320px; align-self: center; }
   .stat { flex-basis: 45%; border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); }
 }
+
+@media (max-width: 600px) {
+  .stat { flex-basis: 100%; }
+  .statNum { font-size: 34px; }
+  .valuesGrid { grid-template-columns: 1fr; }
+}

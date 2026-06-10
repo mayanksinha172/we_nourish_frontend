@@ -52,3 +52,14 @@
   color: var(--plum);
   line-height: 1.6;
 }
+
+@media (max-width: 900px) {
+  .section { padding: 56px 5vw; }
+  .card { max-width: 100%; min-width: min(100%, 280px); }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 48px 5vw; }
+  .grid { gap: 16px; }
+  .card { padding: 28px 20px; }
+}
