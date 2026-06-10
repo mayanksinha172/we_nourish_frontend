@@ -11,3 +11,13 @@
 .icon { font-size: 22px; font-weight: 300; color: var(--green); flex-shrink: 0; line-height: 1; }
 .aWrap { overflow: hidden; }
 .a { padding-bottom: 20px; font-size: 15px; color: var(--ink); }
+
+@media (max-width: 900px) {
+  .section { padding: 56px 5vw; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 48px 5vw; }
+  .q { font-size: 15px; padding: 16px 0; gap: 12px; }
+  .a { font-size: 14px; }
+}

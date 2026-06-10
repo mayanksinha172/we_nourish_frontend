@@ -80,6 +80,8 @@
 .mobileBook { margin-top: 20px; text-align: center; display: block; }
 
 @media (max-width: 900px) {
-  .links  { display: none; }
+  .nav { padding: 0 4vw; gap: 12px; }
+  .links { display: none; }
   .hamburger { display: flex; }
+  .actions :global(.btn-primary) { display: none; }
 }

@@ -76,3 +76,18 @@
 .notFound h1 {
   margin-bottom: 20px;
 }
+
+@media (max-width: 600px) {
+  .detail {
+    padding: calc(var(--nav-h) + 24px) 5vw 64px;
+  }
+
+  .heroImg {
+    border-radius: 16px;
+    max-height: 260px;
+  }
+
+  .detail h2 {
+    font-size: 20px;
+  }
+}

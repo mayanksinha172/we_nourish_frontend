@@ -236,3 +236,30 @@
     height: 280px;
   }
 }
+
+@media (max-width: 600px) {
+  .tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 12px;
+  }
+
+  .tab {
+    min-width: 0;
+    flex: 1 1 calc(50% - 8px);
+    max-width: 100%;
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .greenPanel::before,
+  .greenPanel::after {
+    display: none;
+  }
+
+  .card {
+    width: calc(100% - 24px);
+    padding: 28px 18px 32px;
+  }
+}

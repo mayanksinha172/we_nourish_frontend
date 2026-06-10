@@ -40,10 +40,20 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
+@media (max-width: 900px) {
+  .section {
+    background-attachment: scroll;
+  }
+}
+
 @media (max-width: 600px) {
   .section {
     min-height: 360px;
     padding: 64px 5vw;
-    background-attachment: scroll;
+  }
+
+  .inner p {
+    font-size: 16px;
+    margin-bottom: 24px;
   }
 }
