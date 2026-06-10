@@ -65,12 +65,15 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  font-size: 14px;
+  width: 100%;
+  max-width: 340px;
+  padding: 0 8px 4px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--muted-plum);
   text-align: center;
-  white-space: nowrap;
-  letter-spacing: 0.05em;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
 }
 
 @media (max-width: 900px) {

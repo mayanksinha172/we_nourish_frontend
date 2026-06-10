@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ALL_RECIPES, RECIPE_CATS } from '../data/content';
 import FadeUp from '../components/FadeUp';
@@ -28,23 +29,23 @@ export default function Recipes() {
     <>
       {/* Hero */}
       <section className={styles.hero}>
-        <FadeUp>
+        <FadeUp className={styles.heroInner}>
           <span className="eyebrow">THE RECIPE LIBRARY</span>
           <h1>Recipes that love you back</h1>
           <p className={styles.heroSub}>Free recipes, open to everyone. Premium books available to buy — delivered instantly.</p>
         </FadeUp>
-        <FadeUp delay={.1} className={styles.searchWrap}>
-          <i className={`fa-solid fa-magnifying-glass ${styles.searchIcon}`} />
-          <input
-            type="search"
-            placeholder="Search by recipe name…"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            className={styles.search}
-            aria-label="Search recipes"
-          />
-        </FadeUp>
       </section>
+
+      <FadeUp delay={.1} className={styles.searchWrap}>
+        <input
+          type="search"
+          placeholder="Search by recipe name…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          className={styles.search}
+          aria-label="Search recipes"
+        />
+      </FadeUp>
 
       {/* Filter chips */}
       <div className={styles.filterBar}>
@@ -69,22 +70,23 @@ export default function Recipes() {
         <div className={styles.grid}>
           {filtered.map((r, i) => (
             <motion.div
-              key={r.title}
-              className={styles.card}
+              key={r.slug}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: .38, ease: [.22,1,.36,1], delay: i * .04 }}
               layout
             >
-              <div className={styles.img} style={{ backgroundImage: `url(${r.img})` }} />
-              <div className={styles.info}>
-                <div className={styles.infoTop}>
-                  <span className="recipe-tag">{r.tag}</span>
-                  <span className={styles.badge}>{r.free ? 'Free' : 'Premium'}</span>
+              <Link to={`/recipes/${r.slug}`} className={styles.card}>
+                <div className={styles.img} style={{ backgroundImage: `url(${r.img})` }} />
+                <div className={styles.info}>
+                  <div className={styles.infoTop}>
+                    <span className="recipe-tag">{CAT_LABELS[r.tag] || r.tag}</span>
+                    <span className={styles.badge}>{r.free ? 'Free' : 'Premium'}</span>
+                  </div>
+                  <h3>{r.title}</h3>
+                  <p className={styles.meta}>{r.time} · {r.kcal}</p>
                 </div>
-                <h3>{r.title}</h3>
-                <p className={styles.meta}>{r.time} · {r.kcal}</p>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
