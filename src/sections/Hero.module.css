@@ -285,7 +285,6 @@
 
 .photoWrap {
   position: relative;
-  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -320,17 +319,18 @@
 
 .photo {
   position: absolute;
-  bottom: 40px;
-  left: 47%;
-  transform: translateX(-50%);
-  z-index: 1;
+  left: 44%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.4);
+  z-index: 4;
   display: block;
   width: 118%;
   height: auto;
   max-height: 126%;
   object-fit: contain;
-  object-position: center bottom;
-  mix-blend-mode: multiply;
+  object-position: center center;
+  background: transparent;
+  filter: drop-shadow(0 16px 28px rgba(56, 24, 72, 0.14));
 }
 
 .caption {
