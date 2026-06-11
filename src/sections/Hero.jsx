@@ -218,13 +218,9 @@ export default function Hero() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: .7, ease: [.22,1,.36,1], delay: .2 }}
       >
-        {/* Concentric rings behind the arch */}
-        <div className={styles.ringOuter} aria-hidden="true" />
-        <div className={styles.ringInner} aria-hidden="true" />
-
         <div className={styles.photoWrap}>
-          <div className={styles.archWindow}>
-            <div className={styles.archClip}>
+          <div className={styles.photoStack}>
+            <div className={styles.photoFrame}>
               <img
                 src={arjita}
                 alt="Arjita — WeNourish nutritionist"
@@ -233,8 +229,6 @@ export default function Hero() {
             </div>
             <p className={styles.caption}>Arjita — Guiding your journey to better health.</p>
           </div>
-
-          <div className={styles.counterShadow} aria-hidden="true" />
         </div>
       </motion.div>
 
