@@ -365,6 +365,7 @@
 
 .photoWrap {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -438,7 +439,7 @@
   height: auto;
   object-fit: contain;
   object-position: center bottom;
-  filter: drop-shadow(0 20px 32px rgba(56,24,72,0.18));
+  mix-blend-mode: multiply;
 }
 
 /* Caption pill — frosted green tint */
