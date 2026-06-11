@@ -6,8 +6,8 @@ export const NAV_LINKS = [
   { label: 'Blog',             path: '/blog' },
 ];
 
-export const WA_NUTRITION = 'https://wa.me/918368798448?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20nutrition%20consulting';
-export const WA_COLLAB    = 'https://wa.me/918368798448?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20brand%20collaboration';
+export const WA_NUTRITION = 'https://wa.me/919100347380?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20nutrition%20consulting';
+export const WA_COLLAB    = 'https://wa.me/919963697412?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20brand%20collaboration';
 export const EMAIL        = 'wenourish.arjita@gmail.com';
 export const CALENDLY     = 'https://calendly.com'; // replace with real link
 export const LOGO_SRC     = '/logo.png';
@@ -152,36 +152,6 @@ export const TESTIMONIALS = [
     name: 'Shazia Dalvi',
     displayName: 'Shazia Dalvi',
     outcome: 'Age: 33, Female',
-  },
-  {
-    quote: 'I was very skeptical about online nutrition consulting but Arjita changed my perspective completely. The plan was practical, easy to follow and fit my busy schedule. Lost 6 kgs in 8 weeks and feel so much lighter and energetic!',
-    name: 'Rhea Kapoor',
-    displayName: 'Rhea Kapoor',
-    outcome: 'Age: 28, Female',
-  },
-  {
-    quote: 'Being a working mom I had no time for elaborate meal plans. Arjita designed something that worked around my life, not the other way. My PCOS symptoms have improved significantly and I finally have energy throughout the day.',
-    name: 'Sunita Sharma',
-    displayName: 'Sunita Sharma',
-    outcome: 'Age: 36, Female',
-  },
-  {
-    quote: 'The weekly check-ins kept me accountable in a way I never experienced before. Arjita genuinely cares about your progress. I\'ve tried so many diets before — this is the first time I\'ve actually stuck to a plan and seen real results.',
-    name: 'Karan Mehta',
-    displayName: 'Karan Mehta',
-    outcome: 'Age: 29, Male',
-  },
-  {
-    quote: 'I joined with the goal of improving my thyroid health through diet. Within 10 weeks my levels improved and my doctor was pleasantly surprised. The meal plans are delicious and never feel restrictive.',
-    name: 'Deepa Nair',
-    displayName: 'Deepa Nair',
-    outcome: 'Age: 42, Female',
-  },
-  {
-    quote: 'What I loved most is how Arjita explains the science behind every recommendation. I feel educated, not just instructed. My relationship with food has completely transformed and I no longer fear carbs!',
-    name: 'Tanvi Joshi',
-    displayName: 'Tanvi Joshi',
-    outcome: 'Age: 27, Female',
   },
 ];
 

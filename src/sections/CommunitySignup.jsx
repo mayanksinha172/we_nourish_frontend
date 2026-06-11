@@ -1,35 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import FadeUp from '../components/FadeUp';
 import styles from './CommunitySignup.module.css';
-import { api } from '../services/api';
 
 export default function CommunitySignup() {
   const [done, setDone] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const nameRef  = useRef();
-  const emailRef = useRef();
-  const phoneRef = useRef();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-    try {
-      await api.subscribe(
-        nameRef.current.value,
-        emailRef.current.value,
-        phoneRef.current.value || null,
-        'community_section',
-      );
-      setDone(true);
-    } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  }
+  const handleSubmit = (e) => { e.preventDefault(); setDone(true); };
 
   return (
     <section className={styles.section}>
@@ -48,21 +24,19 @@ export default function CommunitySignup() {
           className={styles.thanks}
           initial={{ opacity: 0, scale: .9 }} animate={{ opacity: 1, scale: 1 }}
         >
-          You're in! Check your inbox for a welcome from us.
+          🎉 You're in! Check your inbox for a welcome from us.
         </motion.p>
       ) : (
         <FadeUp delay={.1}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <input ref={nameRef}  type="text"  placeholder="Your name"       required className={styles.input} />
-            <input ref={emailRef} type="email" placeholder="Email address"   required className={styles.input} />
-            <input ref={phoneRef} type="tel"   placeholder="Phone (optional)"         className={styles.input} />
-            {error && <p style={{ color: '#ffb3b3', fontSize: 13, margin: '-8px 0 4px' }}>{error}</p>}
+            <input type="text"  placeholder="Your name"     required className={styles.input} />
+            <input type="email" placeholder="Email address"  required className={styles.input} />
+            <input type="tel"   placeholder="Phone (optional)"       className={styles.input} />
             <motion.button
               type="submit" className="btn-outline-white"
               whileHover={{ scale: 1.04 }} whileTap={{ scale: .96 }}
-              disabled={loading}
             >
-              {loading ? 'Signing you up…' : 'Get free recipes'}
+              Get free recipes
             </motion.button>
           </form>
         </FadeUp>

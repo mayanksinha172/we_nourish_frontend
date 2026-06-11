@@ -1,88 +1,90 @@
-import { useRef } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TESTIMONIALS } from '../data/content';
 import styles from './Testimonials.module.css';
 
-function initials(name) {
-  return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-}
-
-function StarRow() {
-  return (
-    <div className={styles.stars} aria-label="5 stars">
-      {[...Array(5)].map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" className={styles.star} aria-hidden="true">
-          <path d="M10 1l2.39 4.84 5.34.78-3.86 3.76.91 5.32L10 13.27l-4.78 2.51.91-5.32L2.27 6.62l5.34-.78z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
-function Card({ t }) {
-  return (
-    <div className={styles.card}>
-      <StarRow />
-      <p className={styles.quote}>&ldquo;{t.quote}&rdquo;</p>
-      <div className={styles.author}>
-        <div className={styles.avatar}>{initials(t.name)}</div>
-        <div className={styles.authorInfo}>
-          <span className={styles.name}>{t.displayName || t.name}</span>
-          {t.outcome && <span className={styles.outcome}>{t.outcome}</span>}
-        </div>
-      </div>
-    </div>
-  );
+function avatarUrl(name) {
+  const encoded = encodeURIComponent(name.replace('.', ''));
+  return `https://ui-avatars.com/api/?name=${encoded}&background=287830&color=fff&size=128&bold=true`;
 }
 
 export default function Testimonials() {
-  const row1Ref = useRef(null);
-  const row2Ref = useRef(null);
+  const [idx, setIdx] = useState(0);
+  const [dir, setDir] = useState(1);
 
-  // Split reviews across two rows
-  const half = Math.ceil(TESTIMONIALS.length / 2);
-  const row1 = TESTIMONIALS.slice(0, half);
-  const row2 = TESTIMONIALS.slice(half);
+  const go = (d) => {
+    setDir(d);
+    setIdx(i => (i + d + TESTIMONIALS.length) % TESTIMONIALS.length);
+  };
 
-  const pause  = (ref) => { if (ref.current) ref.current.style.animationPlayState = 'paused'; };
-  const resume = (ref) => { if (ref.current) ref.current.style.animationPlayState = 'running'; };
+  const t = TESTIMONIALS[idx];
+
+  const variants = {
+    enter: d => ({ opacity: 0, x: d * 40 }),
+    center: { opacity: 1, x: 0 },
+    exit: d => ({ opacity: 0, x: d * -40 }),
+  };
 
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <span className="eyebrow">Testimonials</span>
+        <p className={styles.label}>Testimonials</p>
         <h2>What our clients say</h2>
-        <p className={styles.sub}>Real stories from real people who transformed their health with WeNourish.</p>
       </div>
 
-      <div className={styles.marqueeWrap}>
-        {/* Fade edges */}
-        <div className={styles.fadeLeft}  aria-hidden="true" />
-        <div className={styles.fadeRight} aria-hidden="true" />
+      <div className={styles.slideshow}>
+        <div className={styles.slideRow}>
+          <button type="button" className={styles.btn} onClick={() => go(-1)} aria-label="Previous testimonial">
+            <svg className={styles.btnIcon} viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 12H5M12 19l-7-7 7-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
 
-        {/* Row 1 — scrolls left */}
-        <div
-          className={styles.row}
-          onMouseEnter={() => pause(row1Ref)}
-          onMouseLeave={() => resume(row1Ref)}
-        >
-          <div className={`${styles.track} ${styles.trackLeft}`} ref={row1Ref}>
-            {[...row1, ...row1, ...row1, ...row1].map((t, i) => (
-              <Card key={i} t={t} />
-            ))}
-          </div>
-        </div>
+          <AnimatePresence mode="wait" custom={dir}>
+            <motion.div
+              key={idx}
+              className={styles.content}
+              custom={dir}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: .38, ease: [.22, 1, .36, 1] }}
+            >
+              <div className={styles.quoteMark} aria-hidden="true">&ldquo;</div>
+              <p className={styles.quote}>{t.quote}</p>
+              {(t.beforeImg || t.afterImg) && (
+                <div className={styles.beforeAfter}>
+                  {t.beforeImg && (
+                    <div className={styles.baSlot}>
+                      <img src={t.beforeImg} alt={`${t.displayName || t.name} before`} loading="lazy" />
+                      <span className={styles.baLabel}>Before</span>
+                    </div>
+                  )}
+                  {t.afterImg && (
+                    <div className={styles.baSlot}>
+                      <img src={t.afterImg} alt={`${t.displayName || t.name} after`} loading="lazy" />
+                      <span className={styles.baLabel}>After</span>
+                    </div>
+                  )}
+                </div>
+              )}
+              <img
+                src={avatarUrl(t.name)}
+                alt={t.displayName || t.name}
+                className={styles.avatar}
+                loading="lazy"
+              />
+              <p className={styles.name}>{t.displayName || t.name}</p>
+              {t.outcome && <p className={styles.outcome}>{t.outcome}</p>}
+            </motion.div>
+          </AnimatePresence>
 
-        {/* Row 2 — scrolls right */}
-        <div
-          className={styles.row}
-          onMouseEnter={() => pause(row2Ref)}
-          onMouseLeave={() => resume(row2Ref)}
-        >
-          <div className={`${styles.track} ${styles.trackRight}`} ref={row2Ref}>
-            {[...row2, ...row2, ...row2, ...row2].map((t, i) => (
-              <Card key={i} t={t} />
-            ))}
-          </div>
+          <button type="button" className={styles.btn} onClick={() => go(1)} aria-label="Next testimonial">
+            <svg className={styles.btnIcon} viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
 

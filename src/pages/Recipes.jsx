@@ -4,19 +4,7 @@ import { motion } from 'framer-motion';
 import { ALL_RECIPES, RECIPE_CATS, PRODUCTS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import PageMeta from '../components/PageMeta';
-import { useCheckout } from '../components/BuyModal';
-import { api } from '../services/api';
 import styles from './Recipes.module.css';
-
-function toBackendShape(p, i) {
-  return {
-    id: String(i),
-    title: p.title,
-    description: p.desc,
-    price_inr: parseInt(p.price.replace('₹', ''), 10),
-    img_url: p.img,
-  };
-}
 
 const CAT_LABELS = {
   all: 'All', 'high-protein': 'High-Protein', 'fat-loss': 'Fat-Loss',
@@ -26,11 +14,9 @@ const CAT_LABELS = {
 };
 
 export default function Recipes() {
-  const [query, setQuery]       = useState('');
-  const [cat,   setCat]         = useState('all');
+  const [query, setQuery] = useState('');
+  const [cat,   setCat]   = useState('all');
   const [toolbarHidden, setToolbarHidden] = useState(false);
-  const [products, setProducts] = useState([]);
-  const { openBuy, modals }     = useCheckout();
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -51,16 +37,6 @@ export default function Recipes() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  useEffect(() => {
-    api.getProducts()
-      .then(data => { if (data.length) setProducts(data); })
-      .catch(() => setProducts(PRODUCTS.map(toBackendShape)));
-  }, []);
-
-  const displayProducts = products.length
-    ? products
-    : PRODUCTS.map(toBackendShape);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
@@ -155,9 +131,9 @@ export default function Recipes() {
           </p>
         </FadeUp>
         <div className={styles.booksGrid}>
-          {displayProducts.map((p, i) => (
+          {PRODUCTS.map((p, i) => (
             <motion.div
-              key={p.id}
+              key={p.title}
               className={styles.bookCard}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -166,27 +142,25 @@ export default function Recipes() {
               whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(0,0,0,.25)' }}
             >
               <span className={styles.bookBadge}>Premium</span>
-              <img src={p.img_url} alt={p.title} className={styles.bookCover} loading="lazy" />
+              <img src={p.img} alt={p.title} className={styles.bookCover} loading="lazy" />
               <div className={styles.bookBody}>
                 <h3>{p.title}</h3>
-                <p>{p.description}</p>
-                <p className={styles.bookPrice}>₹{p.price_inr}</p>
+                <p>{p.desc}</p>
+                <p className={styles.bookPrice}>{p.price}</p>
                 <motion.button
                   type="button"
                   className={styles.buyBtn}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: .98 }}
-                  onClick={() => openBuy(p)}
+                  onClick={() => alert('Razorpay checkout coming soon')}
                 >
-                  Buy — ₹{p.price_inr}
+                  Buy — {p.price}
                 </motion.button>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
-
-      {modals}
     </>
   );
 }

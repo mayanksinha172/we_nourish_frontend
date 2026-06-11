@@ -2,25 +2,15 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { EVENTS_BG, EVENTS_NOTIFY_MESSAGE, ACTIVE_EVENT, CALENDLY } from '../data/content';
 import styles from './EventsSection.module.css';
-import { api } from '../services/api';
 
 export default function EventsSection() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      await api.notifyEvent(email);
-      setEmail('');
-      setDone(true);
-    } catch {
-      setDone(true);
-    } finally {
-      setLoading(false);
-    }
+    setEmail('');
+    setDone(true);
   };
 
   return (
@@ -68,7 +58,7 @@ export default function EventsSection() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                You're on the list! We'll email you when the next session opens.
+                You will be notified about upcoming sessions!
               </motion.p>
             ) : (
               <form className={styles.form} onSubmit={handleSubmit}>
@@ -85,9 +75,8 @@ export default function EventsSection() {
                   className="btn-primary"
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: .96 }}
-                  disabled={loading}
                 >
-                  {loading ? 'Saving…' : 'Notify me'}
+                  Notify me
                 </motion.button>
               </form>
             )}
