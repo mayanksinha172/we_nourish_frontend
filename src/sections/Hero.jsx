@@ -2,7 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { CALENDLY, WA_NUTRITION, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
-import arjita from '../assets/arjita.png';
+import arjita from '../assets/arjita.jpg';
 import decor  from '../assets/decor.png';
 import styles from './Hero.module.css';
 
@@ -234,7 +234,6 @@ export default function Hero() {
             <p className={styles.caption}>Arjita — Guiding your journey to better health.</p>
           </div>
 
-          <div className={styles.counterShadow} aria-hidden="true" />
         </div>
       </motion.div>
 
