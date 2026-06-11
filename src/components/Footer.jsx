@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { NAV_LINKS, WA_NUTRITION, WA_COLLAB, EMAIL, SOCIAL_LINKS } from '../data/content';
 import Logo from './Logo';
 import styles from './Footer.module.css';
-import { api } from '../services/api';
 
 const EXPLORE_LINKS = NAV_LINKS;
 
@@ -80,21 +79,11 @@ const MORE_LINKS = [
 export default function Footer() {
   const [signup, setSignup] = useState({ name: '', email: '' });
   const [done, setDone] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  const handleSignup = async (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      await api.subscribe(signup.name, signup.email, null, 'footer');
-      setSignup({ name: '', email: '' });
-      setDone(true);
-    } catch {
-      // silent — still show success to user
-      setDone(true);
-    } finally {
-      setLoading(false);
-    }
+    setSignup({ name: '', email: '' });
+    setDone(true);
   };
 
   return (
@@ -188,9 +177,7 @@ export default function Footer() {
                 onChange={(e) => setSignup({ ...signup, email: e.target.value })}
                 className={styles.signupInput}
               />
-              <button type="submit" className={styles.signupBtn} disabled={loading}>
-                {loading ? '...' : 'Subscribe'}
-              </button>
+              <button type="submit" className={styles.signupBtn}>Subscribe</button>
             </form>
           )}
         </div>

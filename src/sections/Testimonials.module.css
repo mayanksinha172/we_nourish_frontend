@@ -1,184 +1,137 @@
 .section {
   background: var(--stone);
-  padding: 80px 0 0;
-  overflow: hidden;
+  padding: 80px 5vw 0;
 }
 
 .header {
   text-align: center;
-  padding: 0 5vw;
-  margin-bottom: 48px;
-}
-.header h2 { margin: 8px 0 12px; }
-.sub {
-  font-size: 16px;
-  color: var(--muted-plum);
-  max-width: 480px;
-  margin: 0 auto;
-  line-height: 1.65;
+  margin-bottom: 8px;
+  line-height: 1.2;
 }
 
-/* ── Marquee container ── */
-.marqueeWrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  overflow: hidden;
-}
-
-/* Soft fade on left + right edges */
-.fadeLeft,
-.fadeRight {
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
-.fadeLeft  { left: 0;  background: linear-gradient(to right,  var(--stone) 0%, transparent 100%); }
-.fadeRight { right: 0; background: linear-gradient(to left, var(--stone) 0%, transparent 100%); }
-
-/* ── Each row ── */
-.row {
-  overflow: hidden;
-  width: 100%;
-}
-
-.track {
-  display: flex;
-  gap: 16px;
-  width: max-content;
-  will-change: transform;
-}
-
-/* Row 1: scroll left */
-.trackLeft {
-  animation: scrollLeft 40s linear infinite;
-}
-
-/* Row 2: scroll right — start halfway so it appears seamless */
-.trackRight {
-  animation: scrollRight 40s linear infinite;
-}
-
-@keyframes scrollLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes scrollRight {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
-}
-
-/* ── Card ── */
-.card {
-  flex-shrink: 0;
-  width: 320px;
-  background: white;
-  border-radius: 20px;
-  padding: 24px 24px 20px;
-  border: 1px solid rgba(56, 24, 72, 0.07);
-  box-shadow:
-    0 2px 12px rgba(56, 24, 72, 0.05),
-    0 1px 3px rgba(56, 24, 72, 0.04);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: box-shadow .25s, transform .25s;
-  cursor: default;
-}
-.card:hover {
-  box-shadow: 0 8px 32px rgba(56, 24, 72, 0.10);
-  transform: translateY(-3px);
-}
-
-/* Stars */
-.stars {
-  display: flex;
-  gap: 3px;
-}
-.star {
-  width: 16px;
-  height: 16px;
-  fill: var(--gold);
-  flex-shrink: 0;
-}
-
-/* Quote */
-.quote {
+.label {
   font-family: var(--font-accent);
   font-style: italic;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--ink);
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 400;
+  color: var(--green);
+  margin: 0 0 4px;
+}
+
+.header h2 {
   margin: 0;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
-/* Author row */
-.author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 4px;
-  border-top: 1px solid rgba(56, 24, 72, 0.06);
-  padding-top: 14px;
-}
-
-.avatar {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--green);
-  color: white;
-  font-family: var(--font-main);
-  font-weight: 800;
-  font-size: 13px;
+.slideshow {
+  min-height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: 0.02em;
+  padding: 24px 0 0;
 }
 
-.authorInfo {
+.slideRow {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content {
+  flex: 1;
   min-width: 0;
+  text-align: center;
+  max-width: 620px;
+  padding: 0 8px;
+}
+
+.quoteMark {
+  font-family: var(--font-accent);
+  font-size: 72px;
+  line-height: 0.6;
+  color: var(--green);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0 0 28px;
+  font-weight: 400;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 12px;
+  display: block;
+  border: 3px solid white;
+  box-shadow: 0 4px 16px rgba(56, 24, 72, 0.12);
 }
 
 .name {
   font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 800;
   color: var(--plum);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 0 0 4px;
 }
 
 .outcome {
   font-family: var(--font-main);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--green);
+  margin: 0;
 }
 
-/* ── Bottom veggie image ── */
+.btn {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(34, 16, 38, 0.35);
+  background: white;
+  color: var(--plum);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btnIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  pointer-events: none;
+}
+
+.btn:hover {
+  background: var(--plum);
+  color: white;
+  border-color: var(--plum);
+}
+
 .veggieWrap {
-  margin-top: 48px;
+  margin-top: 0;
   line-height: 0;
   width: calc(100% + 10vw);
   margin-left: calc(-5vw);
   margin-right: calc(-5vw);
 }
+
 .veggieWrap img {
   width: 100%;
   max-width: none;
@@ -188,11 +141,59 @@
   object-position: bottom center;
 }
 
-/* ── Responsive ── */
+.beforeAfter {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 16px 0 8px;
+}
+
+.baSlot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.baSlot img {
+  width: 120px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--stone);
+}
+
+.baLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-plum);
+}
+
 @media (max-width: 700px) {
-  .section { padding: 56px 0 0; }
-  .card { width: 270px; padding: 20px; }
-  .fadeLeft, .fadeRight { width: 60px; }
-  .trackLeft  { animation-duration: 28s; }
-  .trackRight { animation-duration: 28s; }
+  .section { padding: 56px 5vw 0; }
+
+  .slideRow { gap: 12px; }
+
+  .btn {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .slideshow {
+    min-height: auto;
+    padding: 16px 0 0;
+  }
+
+  .quoteMark { font-size: 56px; }
+}
+
+@media (max-width: 480px) {
+  .slideRow { gap: 6px; }
+  .btn { width: 36px; height: 36px; }
+  .btnIcon { width: 16px; height: 16px; }
+  .quote { font-size: 15px; }
+  .quoteMark { font-size: 44px; }
 }
