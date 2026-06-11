@@ -2,8 +2,8 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { CALENDLY, WA_NUTRITION, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
-import arjita from '../assets/arjita.png';
-import decor from '../assets/decor.png';
+import arjita from '../assets/arjita.jpg';
+import decor  from '../assets/decor.png';
 import styles from './Hero.module.css';
 
 function PressDropdown({ item }) {
@@ -216,6 +216,7 @@ export default function Hero() {
               aria-hidden="true"
             />
           </div>
+
         </div>
       </motion.div>
 
