@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './EmailPopup.module.css';
-import { api } from '../services/api';
 
 const COOKIE = 'wn_popup_seen';
 
@@ -17,15 +16,10 @@ function setCookie() {
 export default function EmailPopup() {
   const [open, setOpen] = useState(false);
   const [done, setDone] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const nameRef  = useRef();
-  const emailRef = useRef();
-  const phoneRef = useRef();
 
   useEffect(() => {
     if (hasCookie()) return;
-    const timer = setTimeout(() => setOpen(true), 10000);
+    const timer = setTimeout(() => setOpen(true), 15000);
     const onLeave = e => { if (e.clientY <= 0) { setOpen(true); document.removeEventListener('mouseleave', onLeave); } };
     document.addEventListener('mouseleave', onLeave);
     return () => { clearTimeout(timer); document.removeEventListener('mouseleave', onLeave); };
@@ -33,25 +27,11 @@ export default function EmailPopup() {
 
   function dismiss() { setCookie(); setOpen(false); }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setError('');
-    setLoading(true);
-    try {
-      await api.subscribe(
-        nameRef.current.value,
-        emailRef.current.value,
-        phoneRef.current.value || null,
-        'popup',
-      );
-      setCookie();
-      setDone(true);
-      setTimeout(dismiss, 2500);
-    } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    setCookie();
+    setDone(true);
+    setTimeout(dismiss, 2000);
   }
 
   return (
@@ -84,17 +64,15 @@ export default function EmailPopup() {
               </motion.p>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form}>
-                <input ref={nameRef}  type="text"  placeholder="Your name"      required className={styles.input} />
-                <input ref={emailRef} type="email" placeholder="Your email"     required className={styles.input} />
-                <input ref={phoneRef} type="tel"   placeholder="Phone (optional)"       className={styles.input} />
-                {error && <p style={{ color: '#c0392b', fontSize: 13, margin: '4px 0 0' }}>{error}</p>}
+                <input type="text"  placeholder="Your name"  required className={styles.input} />
+                <input type="email" placeholder="Your email" required className={styles.input} />
+                <input type="tel"   placeholder="Phone (optional)" className={styles.input} />
                 <motion.button
                   type="submit" className="btn-primary"
                   style={{ width: '100%', justifyContent: 'center', display: 'flex' }}
                   whileHover={{ scale: 1.02 }} whileTap={{ scale: .97 }}
-                  disabled={loading}
                 >
-                  {loading ? 'Sending…' : 'Send me free recipes'}
+                  Send me free recipes
                 </motion.button>
                 <p className={styles.note}>No spam, ever. Unsubscribe any time.</p>
               </form>
