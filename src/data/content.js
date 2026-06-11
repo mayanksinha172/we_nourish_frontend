@@ -8,22 +8,57 @@ export const NAV_LINKS = [
 
 export const WA_NUTRITION = 'https://wa.me/919100347380?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20nutrition%20consulting';
 export const WA_COLLAB    = 'https://wa.me/919963697412?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20brand%20collaboration';
-export const EMAIL        = 'hello@wenourish.in';
+export const EMAIL        = 'wenourish.arjita@gmail.com';
 export const CALENDLY     = 'https://calendly.com'; // replace with real link
 export const LOGO_SRC     = '/logo.png';
 
 export const SOCIAL_LINKS = {
-  instagram: '#', // replace with real URL
-  youtube:   '#', // replace with real URL
-  facebook:  '#', // replace with real URL
-  linkedin:  '#', // replace with real URL
+  instagram: 'https://www.instagram.com/we_nourish',
+  facebook:  'https://www.facebook.com/wenourish.arjita',
+  youtube:   'https://www.youtube.com/@WeNourish',
 };
 
+export const INDIAN_EXPRESS_ARTICLES = [
+  {
+    label: 'Poha',
+    url: 'https://indianexpress.com/article/lifestyle/food-wine/protein-week-poha-fibre-easy-recipe-8050669/',
+  },
+  {
+    label: 'Fat Loss',
+    url: 'https://indianexpress.com/article/lifestyle/food-wine/easy-fat-loss-snack-evening-cravings-amaranth-benefits-8063461/',
+  },
+  {
+    label: 'Uttapam',
+    url: 'https://indianexpress.com/article/lifestyle/food-wine/veggies-loaded-crunchy-uttapam-recipe-8068742/',
+  },
+];
+
+export const NDTV_FOOD_ARTICLES = [
+  {
+    label: 'Glowing Skin',
+    url: 'https://food.ndtv.com/beauty/tired-of-dull-skin-drink-your-way-to-glowing-healthier-skin-with-this-easy-recipe-5900300',
+  },
+];
+
+export const INDIA_TODAY_ARTICLES = [
+  {
+    label: 'High Protein Spread',
+    url: 'https://www.indiatoday.in/lifestyle/food/story/ditch-unhealthy-mayonnaise-this-high-protein-spread-recipe-is-a-winner-2483632-2024-01-03',
+  },
+];
+
+export const SLURRP_ARTICLES = [
+  {
+    label: 'Monsoon Rasam',
+    url: 'https://www.slurrp.com/article/this-nutritionist-approved-rasam-can-be-your-monsoon-staple-1723814998941',
+  },
+];
+
 export const PRESS_LINKS = {
-  'Indian Express': '#', // replace with article URL
-  'NDTV Food':      '#', // replace with article URL
-  'India Today':    '#', // replace with article URL
-  'Slurrp':         '#', // replace with article URL
+  'Indian Express': INDIAN_EXPRESS_ARTICLES[0].url,
+  'NDTV Food':      NDTV_FOOD_ARTICLES[0].url,
+  'India Today':    INDIA_TODAY_ARTICLES[0].url,
+  'Slurrp':         SLURRP_ARTICLES[0].url,
 };
 
 export const ACTIVE_EVENT = {
@@ -89,32 +124,45 @@ export const STEPS = [
 
 export const TESTIMONIALS = [
   {
-    quote: 'The perfect combination of healthy and delicious food. Arjita made sure I reached my fitness goals with frequent follow-up calls — she always checked on my progress. Excellent service, really happy with the results.',
-    name: 'Priya S.',
-    displayName: 'Priya Sharma',
-    outcome: 'Lost 8kg in 3 months',
+    quote: 'Hi, this is an only appreciation msg. Few months ago on our weekly calls, I told arjita about the dress I was struggling to get into because of my weight gain and now it really does fit me. It\'s all because of you and your holistic approach and a big thank you to Anjali for guiding me everyday through out this journey.',
+    name: 'Amisha Metrani',
+    displayName: 'Amisha Metrani',
+    outcome: 'Age: 25, Female',
   },
   {
-    quote: 'Living abroad in Singapore, I was worried online consultations wouldn\'t work. Arjita made it seamless — personalised meal plans, easy recipes, and regular check-ins. My energy and digestion have completely transformed.',
-    name: 'Rahul M.',
-    displayName: 'Rahul Mehta',
-    outcome: 'Improved energy and digestion',
+    quote: 'These 2 months have been great. I have seen amazing changes in my energy and activity level. I never felt I was on a diet plan as the food options were so vast and were updated every week based on preferences. Thank you so much Arjita & team for being available all the time and answering my queries always. I have gained so much knowledge on the meal plates and will definitely carry forward these learnings.',
+    name: 'Madhu Rathod',
+    displayName: 'Madhu Rathod',
+    outcome: 'Age: 24, Female',
   },
   {
-    quote: 'I finally found a nutritionist who understands PCOS. The personalised plan made all the difference.',
-    name: 'Ananya K.',
-    displayName: 'Ananya Kapoor',
-    outcome: 'PCOS symptoms improved',
+    quote: 'The last one month has been really good, I\'ve lost with a good inch loss. I have been constipated all my life & that issue has been resolved. I am now a lot healthier. My energy levels have been better than before and the best part is that you made diet plan according to what I like to have or make, the dessert recipes are also nice.',
+    name: 'Anjuli Marwah',
+    displayName: 'Anjuli Marwah',
+    outcome: 'Age: 31, Female',
   },
   {
-    quote: 'The weekly check-ins kept me accountable. I\'ve never stuck to a plan this long before.',
-    name: 'Deepak V.',
-    displayName: 'Deepak Verma',
-    outcome: '12kg weight loss over 5 months',
+    quote: 'Everything was so simple to follow. I love that you prioritize knowledge before anything else, as it\'s essential to understand the why and how of diet and health. Thanks arjita!',
+    name: 'Priya',
+    displayName: 'Priya',
+    outcome: 'Age: 25, Female',
+  },
+  {
+    quote: 'I am super grateful too arjita for helping me to reach my target weight without losing my muscle mass. Now every second person in my gym comes up to me & says that u motivate us and you are our inspiration. It\'s a great feeling, wouldn\'t be possible without your guidance! Thank-you!',
+    name: 'Shazia Dalvi',
+    displayName: 'Shazia Dalvi',
+    outcome: 'Age: 33, Female',
   },
 ];
 
-export const PRESS = ['Indian Express', 'NDTV Food', 'India Today', 'Slurrp'];
+export const PRESS_ITEMS = [
+  { name: 'Indian Express', logo: '/press/indian-express.svg', articles: INDIAN_EXPRESS_ARTICLES },
+  { name: 'NDTV Food',      logo: '/press/ndtv.svg', articles: NDTV_FOOD_ARTICLES },
+  { name: 'India Today',    logo: '/press/india-today.svg', articles: INDIA_TODAY_ARTICLES },
+  { name: 'Slurrp',         logo: '/press/slurrp.svg', articles: SLURRP_ARTICLES },
+];
+
+export const PRESS = PRESS_ITEMS.map((item) => item.name);
 
 export const RECIPES_TEASER = [
   { tag: 'High-Protein', title: 'Quinoa Power Bowl',          desc: 'A balanced high-protein bowl packed with greens, grains and flavour.', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80' },

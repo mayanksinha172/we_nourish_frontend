@@ -9,7 +9,12 @@
   padding: 0 5vw;
   gap: 24px;
   background: transparent;
-  transition: background .3s, box-shadow .3s;
+  transition: background .3s, box-shadow .3s, transform .3s ease;
+  will-change: transform;
+}
+
+.homeTop {
+  background: linear-gradient(165deg, #fffaf3 0%, #fbf3e8 55%, #f4eadf 100%);
 }
 
 .scrolled {
