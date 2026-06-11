@@ -21,6 +21,53 @@ function LinkArrow() {
   );
 }
 
+function IconEmail() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M2 7l10 7 10-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconInstagram() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" strokeWidth="2" />
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
+function IconFacebook() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function IconYoutube() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C17.9 5 12 5 12 5s-5.9 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C6.1 19 12 19 12 19s5.9 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+const SOCIAL_ICON_ITEMS = [
+  { label: 'Instagram', key: 'instagram', Icon: IconInstagram },
+  { label: 'Facebook',  key: 'facebook',  Icon: IconFacebook },
+  { label: 'YouTube',   key: 'youtube',   Icon: IconYoutube },
+];
+
 const MORE_LINKS = [
   { label: 'About', path: '/about' },
   { label: 'Brand Collaborations', path: '/brand-collaborations' },
@@ -48,14 +95,9 @@ export default function Footer() {
           delicious recipes and 1-on-1 consulting with Arjita.
         </p>
         <div className={styles.socials}>
-          {[
-            { icon: 'fa-instagram', label: 'Instagram', key: 'instagram' },
-            { icon: 'fa-youtube',   label: 'YouTube',   key: 'youtube'   },
-            { icon: 'fa-facebook',  label: 'Facebook',  key: 'facebook'  },
-            { icon: 'fa-linkedin',  label: 'LinkedIn',  key: 'linkedin'  },
-          ].map((s) => (
-            <a key={s.icon} href={SOCIAL_LINKS[s.key]} aria-label={s.label} className={styles.socialIcon} target="_blank" rel="noopener">
-              <i className={`fa-brands ${s.icon}`} />
+          {SOCIAL_ICON_ITEMS.map(({ label, key, Icon }) => (
+            <a key={key} href={SOCIAL_LINKS[key]} aria-label={label} className={styles.socialIcon} target="_blank" rel="noopener noreferrer">
+              <Icon />
             </a>
           ))}
         </div>
@@ -91,11 +133,27 @@ export default function Footer() {
 
       <div className={`${styles.col} ${styles.linkCol}`}>
         <h4 className={styles.heading}>Contact</h4>
-        <div className={styles.emailRow}>
-          <i className="fa-solid fa-envelope" aria-hidden="true" />
-          <span className={styles.emailLabel}>Email :</span>
+        <div className={styles.contactIcons}>
+          <a
+            href={`mailto:${EMAIL}`}
+            aria-label={`Email ${EMAIL}`}
+            className={styles.contactIcon}
+          >
+            <IconEmail />
+          </a>
+          {SOCIAL_ICON_ITEMS.map(({ label, key, Icon }) => (
+            <a
+              key={key}
+              href={SOCIAL_LINKS[key]}
+              aria-label={label}
+              className={styles.contactIcon}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon />
+            </a>
+          ))}
         </div>
-        <a href={`mailto:${EMAIL}`} className={styles.email}>{EMAIL}</a>
 
         <div className={styles.signup}>
           <p className={styles.signupLabel}>Get new recipes and tips</p>

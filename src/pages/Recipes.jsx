@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ALL_RECIPES, RECIPE_CATS, PRODUCTS } from '../data/content';
@@ -16,6 +16,27 @@ const CAT_LABELS = {
 export default function Recipes() {
   const [query, setQuery] = useState('');
   const [cat,   setCat]   = useState('all');
+  const [toolbarHidden, setToolbarHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y <= 60) {
+        setToolbarHidden(false);
+      } else if (y > lastScrollY.current + 6) {
+        setToolbarHidden(true);
+      } else if (y < lastScrollY.current - 6) {
+        setToolbarHidden(false);
+      }
+      lastScrollY.current = y;
+    };
+
+    lastScrollY.current = window.scrollY;
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
@@ -43,28 +64,29 @@ export default function Recipes() {
         </FadeUp>
       </section>
 
-      <FadeUp delay={.1} className={styles.searchWrap}>
-        <input
-          type="search"
-          placeholder="Search by recipe name or ingredient…"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          className={styles.search}
-          aria-label="Search recipes"
-        />
-      </FadeUp>
+      <div className={`${styles.toolbar} ${toolbarHidden ? styles.toolbarHidden : ''}`}>
+        <FadeUp delay={.1} className={styles.searchWrap}>
+          <input
+            type="search"
+            placeholder="Search by recipe name or ingredient…"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className={styles.search}
+            aria-label="Search recipes"
+          />
+        </FadeUp>
 
-      {/* Filter chips */}
-      <div className={styles.filterBar}>
-        {RECIPE_CATS.map(c => (
-          <button
-            key={c}
-            className={`${styles.chip} ${c === cat ? styles.chipActive : ''}`}
-            onClick={() => setCat(c)}
-          >
-            {CAT_LABELS[c]}
-          </button>
-        ))}
+        <div className={styles.filterBar}>
+          {RECIPE_CATS.map(c => (
+            <button
+              key={c}
+              className={`${styles.chip} ${c === cat ? styles.chipActive : ''}`}
+              onClick={() => setCat(c)}
+            >
+              {CAT_LABELS[c]}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Free Recipes Grid */}

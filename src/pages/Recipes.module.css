@@ -62,6 +62,21 @@
 
 
 
+.toolbar {
+  position: sticky;
+  top: var(--nav-sticky-top);
+  z-index: 100;
+  background: var(--paper);
+  padding-bottom: 4px;
+  transition: transform 0.3s ease, top 0.3s ease;
+  transform: translateY(0);
+}
+
+.toolbarHidden {
+  transform: translateY(calc(-100% - 12px));
+  pointer-events: none;
+}
+
 .searchWrap {
 
   position: relative;
@@ -131,12 +146,6 @@
   margin: 0 auto;
 
   background: var(--paper);
-
-  position: sticky;
-
-  top: var(--nav-h);
-
-  z-index: 100;
 
 }
 

@@ -1,24 +1,33 @@
-import { PRESS, PRESS_LINKS } from '../data/content';
+import { PRESS_ITEMS, PRESS_LINKS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import styles from './MediaFeatures.module.css';
 
-const doubled = [...PRESS, ...PRESS];
+/* Repeat enough times so the track always fills wide screens, then duplicate for seamless -50% loop */
+const HALF_REPEAT = 4;
+const half = Array.from({ length: HALF_REPEAT }, () => PRESS_ITEMS).flat();
+const marquee = [...half, ...half];
 
 export default function MediaFeatures() {
   return (
     <section className={styles.section}>
       <FadeUp><span className="eyebrow" style={{ textAlign: 'center', marginBottom: 24 }}>AS SEEN IN</span></FadeUp>
       <div className={styles.track}>
-        <div className={styles.inner}>
-          {doubled.map((p, i) => (
+        <div className={styles.inner} aria-hidden="false">
+          {marquee.map((item, i) => (
             <a
-              key={i}
-              href={PRESS_LINKS[p] || '#'}
+              key={`${item.name}-${i}`}
+              href={PRESS_LINKS[item.name] || '#'}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className={styles.item}
             >
-              {p}
+              <img
+                src={item.logo}
+                alt=""
+                className={styles.itemLogo}
+                loading="lazy"
+              />
+              <span>{item.name}</span>
             </a>
           ))}
         </div>

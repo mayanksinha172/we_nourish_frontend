@@ -23,9 +23,24 @@ const STATS = [
 ];
 
 const VALUES = [
-  { icon: 'fa-seedling',   title: 'Food is not the enemy',  body: 'No morality around food. No guilt trips. Only an understanding of what your body truly needs to thrive.' },
-  { icon: 'fa-chart-line', title: 'Evidence, not trends',   body: 'Every recommendation is rooted in current nutrition science — not viral headlines or fleeting diet fads.' },
-  { icon: 'fa-handshake',  title: 'Practical above perfect',body: 'Real life is messy. Plans should flex around weddings, travel, stress and celebrations — not the other way around.' },
+  {
+    title: 'Food is not the enemy',
+    body: 'No morality around food. No guilt trips. Only an understanding of what your body truly needs to thrive.',
+    img: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80',
+    alt: 'Colourful wholesome meal spread',
+  },
+  {
+    title: 'Evidence, not trends',
+    body: 'Every recommendation is rooted in current nutrition science — not viral headlines or fleeting diet fads.',
+    img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80',
+    alt: 'Balanced nutrition bowl with fresh ingredients',
+  },
+  {
+    title: 'Practical above perfect',
+    body: 'Real life is messy. Plans should flex around weddings, travel, stress and celebrations — not the other way around.',
+    img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80',
+    alt: 'Simple everyday breakfast on a kitchen table',
+  },
 ];
 
 export default function About() {
@@ -103,7 +118,9 @@ export default function About() {
               transition={{ duration: .5, ease: [.22,1,.36,1], delay: i * .1 }}
               whileHover={{ y: -5 }}
             >
-              <div className={styles.icon}><i className={`fa-solid ${v.icon}`} /></div>
+              <div className={styles.valueImgWrap}>
+                <img src={v.img} alt={v.alt} className={styles.valueImg} loading="lazy" />
+              </div>
               <h3>{v.title}</h3>
               <p>{v.body}</p>
             </motion.div>

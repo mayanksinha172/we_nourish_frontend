@@ -34,13 +34,23 @@
 }
 
 .socialIcon {
-  color: var(--green);
-  font-size: 22px;
-  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.2s, transform 0.2s;
 }
 
 .socialIcon:hover {
-  opacity: 0.8;
+  color: var(--green-tint);
+  transform: translateY(-2px);
+}
+
+.iconSvg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  color: inherit;
 }
 
 .waRow {
@@ -81,20 +91,25 @@
   margin-bottom: 8px;
 }
 
-.link {
+.footer .link {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: rgba(255, 255, 255, 0.92);
   padding: 4px 0;
   line-height: 1.4;
   transition: color 0.2s;
 }
 
-.link:hover {
+.footer .link:hover,
+.footer .link:focus-visible {
   color: var(--green-tint);
+}
+
+.footer .link:visited {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .linkArrow {
@@ -104,25 +119,38 @@
   color: var(--green);
 }
 
-.emailRow {
+.contactIcons {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: var(--green);
-  font-weight: 700;
-  font-size: 14px;
+  gap: 12px;
   margin-top: 4px;
-}
-
-.email {
-  color: white;
-  font-size: 14px;
-  padding-left: 28px;
   margin-bottom: 8px;
 }
 
-.email:hover {
-  color: var(--green-tint);
+.contactIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.95);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.contactIcon .iconSvg {
+  width: 18px;
+  height: 18px;
+  color: inherit;
+}
+
+.contactIcon:hover {
+  background: rgba(40, 120, 48, 0.35);
+  border-color: var(--green-tint);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .signup {

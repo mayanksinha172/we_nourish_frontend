@@ -1,32 +1,65 @@
-import { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS, CALENDLY } from '../data/content';
 import Logo from './Logo';
 import styles from './Navbar.module.css';
 
+const NAV_HIDE_OFFSET = 72;
+
 export default function Navbar() {
   const { pathname } = useLocation();
   const [scrolled, setScrolled]   = useState(false);
+  const [hidden, setHidden]     = useState(false);
   const [menuOpen, setMenuOpen]   = useState(false);
+  const lastScrollY = useRef(0);
   const solidNav = pathname !== '/';
+  const isHomeTop = pathname === '/' && !scrolled;
+  const navVisible = menuOpen || !hidden;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+
+      if (y <= 20) {
+        setHidden(false);
+      } else if (y > lastScrollY.current + 6) {
+        setHidden(true);
+      } else if (y < lastScrollY.current - 6) {
+        setHidden(false);
+      }
+
+      lastScrollY.current = y;
+    };
+
+    lastScrollY.current = window.scrollY;
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--nav-sticky-top',
+      hidden && !menuOpen ? '0px' : `${NAV_HIDE_OFFSET}px`,
+    );
+  }, [hidden, menuOpen]);
+
   // Close drawer on route change
-  useEffect(() => { setMenuOpen(false); }, []);
+  useEffect(() => {
+    setMenuOpen(false);
+    setHidden(false);
+    lastScrollY.current = 0;
+  }, [pathname]);
 
   return (
     <>
       <motion.nav
-        className={`${styles.nav} ${solidNav || scrolled ? styles.scrolled : ''}`}
+        className={`${styles.nav} ${isHomeTop ? styles.homeTop : ''} ${!isHomeTop && (solidNav || scrolled) ? styles.scrolled : ''}`}
         initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0,   opacity: 1 }}
-        transition={{ duration: .5, ease: 'easeOut' }}
+        animate={{ y: navVisible ? 0 : '-100%', opacity: 1 }}
+        transition={{ duration: navVisible ? 0.5 : 0.3, ease: navVisible ? 'easeOut' : 'easeInOut' }}
       >
         <Logo variant="nav" className={styles.logo} />
 

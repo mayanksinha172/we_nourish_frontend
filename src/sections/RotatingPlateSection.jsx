@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { NUTRITION_PLANS, PLATE_IMAGE, CALENDLY } from '../data/content';
 import Logo from '../components/Logo';
 import styles from './RotatingPlateSection.module.css';
@@ -41,13 +40,7 @@ export default function RotatingPlateSection() {
             ))}
           </div>
 
-          <motion.div
-            key={plan.id}
-            className={styles.mealPlan}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: [.22, 1, .36, 1] }}
-          >
+          <div className={styles.mealPlan}>
             <div className={styles.mealImgWrap}>
               <img src={plan.image} alt={plan.title} className={styles.mealImg} loading="lazy" />
             </div>
@@ -59,7 +52,7 @@ export default function RotatingPlateSection() {
                 Book Free Call
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,19 +1,94 @@
-.section { padding: 48px 5vw; background: white; overflow: hidden; }
-.track { overflow: hidden; }
-.inner {
-  display: flex; gap: 32px; width: max-content;
-  animation: scroll 20s linear infinite;
+.section {
+  padding: 48px 0;
+  background: white;
+  overflow: hidden;
 }
-.track:hover .inner { animation-play-state: paused; }
-@keyframes scroll {
+
+.track {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+
+.track:hover .inner {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
 .item {
-  font-weight: 700; font-size: 19px; color: var(--muted-plum);
-  white-space: nowrap; padding: 10px 28px;
-  border: 1.5px solid var(--stone); border-radius: var(--radius-pill);
-  transition: color .2s, border-color .2s; cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--muted-plum);
+  white-space: nowrap;
+  padding: 8px 22px;
+  border: 1.5px solid var(--stone);
+  border-radius: var(--radius-pill);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  cursor: pointer;
   text-decoration: none;
+  background: white;
 }
-.item:hover { color: var(--plum); border-color: var(--plum); }
+
+.item:hover {
+  color: var(--plum);
+  border-color: var(--plum);
+  background: var(--stone);
+}
+
+.itemLogo {
+  display: block;
+  height: 16px;
+  width: auto;
+  max-width: 72px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .item {
+    font-size: 14px;
+    padding: 6px 16px;
+    gap: 8px;
+  }
+
+  .itemLogo {
+    height: 13px;
+    max-width: 56px;
+  }
+
+  .inner {
+    gap: 16px;
+    animation-duration: 35s;
+  }
+}
