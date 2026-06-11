@@ -1,141 +1,643 @@
 .hero {
   background: var(--paper);
-  display: flex; align-items: center; justify-content: space-between; gap: 40px;
-  padding: calc(var(--nav-h) + 20px) 8vw 0;
-  min-height: 580px; overflow: hidden;
-}
-.heroText { flex: 1 1 50%; max-width: 540px; }
-.heroText h1 { margin: 12px 0 16px; }
-.heroSub { color: var(--muted-plum); margin-bottom: 28px; max-width: 440px; }
-.heroPhoto {
-  flex: 0 0 auto; position: relative;
-  width: 36%; max-width: 400px; height: 480px; align-self: flex-end;
-}
-.heroBlob {
-  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 100%; height: 85%;
-  background: var(--green-tint);
-  border-radius: 50% 50% 0 0 / 55% 55% 0 0;
-  z-index: 0;
-}
-.photo {
-  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-  z-index: 1; height: 100%; width: auto; max-width: none;
-  object-fit: contain; object-position: bottom center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: calc(var(--nav-h) + 32px) 8vw 0;
+  min-height: 620px;
+  overflow: hidden;
 }
 
-/* Plans */
-.plans { padding: 60px 5vw 80px; }
+.heroText {
+  flex: 1 1 52%;
+  max-width: 620px;
+}
+
+.heroText h1 {
+  margin: 14px 0 18px;
+}
+
+.heroSub {
+  color: var(--muted-plum);
+  margin-bottom: 30px;
+  max-width: 520px;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.heroPhoto {
+  flex: 0 0 auto;
+  position: relative;
+  width: 36%;
+  max-width: 410px;
+  height: 500px;
+  align-self: flex-end;
+}
+
+.heroBlob {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 0;
+  width: 100%;
+  height: 84%;
+  background: var(--green-tint);
+  border: 1px solid rgba(40, 120, 48, 0.12);
+  border-radius: 999px 999px 0 0;
+  transform: translateX(-50%);
+}
+
+.photo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: bottom center;
+  transform: translateX(-50%);
+}
+
+.plans {
+  padding: 72px 5vw 88px;
+}
 
 .consultIntro {
   text-align: center;
-  max-width: 720px;
-  margin: 0 auto 56px;
+  max-width: 760px;
+  margin: 0 auto 44px;
 }
 
 .consultIntro h2 {
-  margin-bottom: 16px;
+  margin: 10px 0 14px;
 }
 
 .consultIntro p {
   color: var(--muted-plum);
-  font-size: 16px;
-  line-height: 1.7;
-  margin: 0;
+  line-height: 1.75;
 }
 
-.planGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
-  max-width: 1140px;
-  margin: 40px auto 24px;
-}
-
-.planCard {
-  background: white;
-  border: 1px solid var(--stone);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+.choosePlanHead {
+  max-width: 760px;
+  margin: 0 auto 34px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.25s;
 }
 
-.planImg {
+.choosePlanHead h2 {
+  margin: 10px 0 12px;
+  color: var(--plum);
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -0.04em;
+}
+
+.choosePlanHead p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--muted-plum);
+  line-height: 1.75;
+}
+
+/* New image comparison cards */
+.planTypeGridAlt {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  max-width: 1340px;
+  margin: 0 auto 54px;
+  padding-top: 70px;
+}
+
+.planCardAlt {
+  position: relative;
+  min-height: 680px;
+  border: 1px solid rgba(40, 120, 48, 0.28);
+  background: #FBFAF7;
+  padding: 44px 36px 34px;
+  overflow: visible;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.planCardAlt:hover {
+  border-color: rgba(40, 120, 48, 0.48);
+  box-shadow: 0 18px 50px rgba(56, 24, 72, 0.08);
+  background: #FBFAF7;
+}
+.planImageWrap {
+  position: relative;
+  width: 176px;
+  height: 304px;
+  margin: -105px auto 28px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(56, 24, 72, 0.16);
+}
+
+.planImage {
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 16px;
   display: block;
 }
 
-.planCard h3 {
-  color: var(--plum);
-  font-size: clamp(17px, 2vw, 20px);
-  margin-bottom: 6px;
+.planStep {
+  position: absolute;
+  top: 170px;
+  right: 34px;
+  font-size: clamp(82px, 8vw, 96px);
+  line-height: 1;
+  font-weight: 400;
+  color: #C9A24B;
+  font-family: 'Fraunces', serif;
 }
 
-.duration {
-  color: var(--green);
+.planCardBody {
+  position: relative;
+  z-index: 2;
+}
+
+.planCardTitle {
+  max-width: 300px;
+  margin: 0 0 26px;
+  color: #111111;
+  font-size: clamp(24px, 2vw, 28px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 12px;
 }
 
-.planDesc {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--muted-plum);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.includes {
-  list-style: none;
+.planFeatureList {
+  display: grid;
+  gap: 22px;
+  margin: 0;
   padding: 0;
-  margin: 0 0 20px;
-  text-align: left;
-  flex: 1;
+  list-style: none;
 }
 
-.includes li {
+.planFeatureList li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: start;
+  gap: 14px;
+  color: #151515;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+.planCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #b65e35;
+  border-radius: 999px;
+  color: #b65e35;
   font-size: 14px;
-  color: var(--ink);
-  line-height: 1.5;
-  padding: 4px 0;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.includes li::before {
-  content: '✓ ';
+
+.planWhatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  margin-top: 34px;
+  border-radius: 999px;
+  background: #287830;
+  color: #ffffff;
+  padding: 18px 28px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.planWhatsappBtn:hover {
+  transform: translateY(-2px);
+  background: #1f6427;
+  box-shadow: 0 14px 28px rgba(40, 120, 48, 0.24);
+}
+
+.planCardAltSingle .planFeatureList {
+  max-width: 260px;
+}
+
+/* Compare table */
+.compareBlock,
+.includedBlock,
+.oneTimeBlock {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.compareBlock {
+  border: 1px solid rgba(56, 24, 72, 0.12);
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 18px 50px rgba(56, 24, 72, 0.06);
+  overflow: hidden;
+}
+
+.compareHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--stone), var(--green-tint));
+}
+
+.compareHeader h2 {
+  margin-top: 8px;
+}
+
+.compareHeader p {
+  max-width: 360px;
+  color: var(--muted-plum);
+  font-size: 14px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+}
+
+.compareTable th,
+.compareTable td {
+  border-top: 1px solid rgba(56, 24, 72, 0.1);
+  padding: 20px 18px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.compareTable th {
+  color: var(--plum);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--paper);
+}
+
+.compareTable td {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.compareTable td:nth-child(2),
+.compareTable td:nth-child(3) {
   color: var(--green);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* Included section */
+.includedBlock {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 30px;
+  align-items: start;
+  margin-top: 58px;
+}
+
+.includedBlock h2 {
+  margin-top: 8px;
+}
+
+.includedGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.includedGrid li {
+  position: relative;
+  border: 1px solid rgba(56, 24, 72, 0.1);
+  border-radius: 999px;
+  background: var(--green-tint);
+  padding: 12px 16px 12px 40px;
+  color: var(--ink);
+  font-size: 14px;
   font-weight: 700;
 }
 
-.planBtn {
-  width: 100%;
-  margin-top: auto;
+.includedGrid li::before {
+  content: '✓';
+  position: absolute;
+  left: 16px;
+  color: var(--green);
+  font-weight: 900;
+}
+/* One time consultation block */
+.oneTimeBlock {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 36px;
+  align-items: center;
+  margin-top: 34px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 96% 20%, rgba(40, 120, 48, 0.18), transparent 34%),
+    linear-gradient(135deg, #381848 0%, #2b1238 100%);
+  padding: 42px 46px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(56, 24, 72, 0.16);
+}
+
+.oneTimeBlock::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: oneTimeShine 5s ease-in-out infinite;
+}
+
+@keyframes oneTimeShine {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  45% {
+    transform: translateX(120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.oneTimeContent,
+.oneTimeBlock ul {
+  position: relative;
+  z-index: 1;
+}
+
+.oneTimeContent h2 {
+  margin: 8px 0 12px;
+  color: #ffffff;
+  font-size: clamp(32px, 4vw, 46px);
+  letter-spacing: -0.04em;
+}
+
+.oneTimeContent p {
+  max-width: 430px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+.oneTimeBlock ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.oneTimeBlock li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: start;
+  gap: 14px;
+  min-height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.075);
+  padding: 16px 18px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.oneTimeBlock li:hover {
+  transform: translateX(6px);
+  border-color: rgba(127, 208, 137, 0.38);
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.oneTimeBlock li::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border-radius: 999px;
+  background: rgba(229, 240, 230, 0.18);
+  color: #7fd089;
+  font-size: 13px;
+  font-weight: 900;
 }
 
-.note { text-align: center; color: var(--muted-plum); font-size: 13px; margin-top: 4px; }
+/* Responsive */
+@media (max-width: 1180px) {
+  .planTypeGridAlt {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    max-width: 720px;
+  }
 
-@media (max-width: 900px) {
-  .planGrid { grid-template-columns: repeat(2, 1fr); }
+  .planCardAlt {
+    min-height: auto;
+  }
+
+  .planStep {
+    top: 154px;
+    right: 26px;
+    font-size: 80px;
+  }
 }
 
-@media (max-width: 820px) {
-  .hero { flex-direction: column; min-height: auto; padding: calc(var(--nav-h) + 32px) 5vw 0; }
-  .heroPhoto { width: 80%; max-width: 300px; height: 340px; align-self: center; }
-  .heroText { text-align: center; }
-  .heroSub { margin-left: auto; margin-right: auto; }
+@media (max-width: 980px) {
+  .hero {
+    flex-direction: column;
+    min-height: auto;
+    padding: calc(var(--nav-h) + 34px) 5vw 0;
+    text-align: center;
+  }
+
+  .heroSub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroActions {
+    justify-content: center;
+  }
+
+  .heroPhoto {
+    width: 82%;
+    max-width: 320px;
+    height: 360px;
+    align-self: center;
+  }
+
+  .includedBlock,
+  .oneTimeBlock {
+    grid-template-columns: 1fr;
+  }
 }
 
-@media (max-width: 600px) {
-  .planGrid { grid-template-columns: 1fr; }
-  .plans { padding: 48px 5vw 64px; }
-  .consultIntro { margin-bottom: 40px; }
+@media (max-width: 720px) {
+  .plans {
+    padding: 52px 5vw 64px;
+  }
+
+  .choosePlanHead {
+    margin-bottom: 24px;
+  }
+
+  .choosePlanHead h2 {
+    font-size: 30px;
+  }
+
+  .planTypeGridAlt {
+    gap: 22px;
+    padding-top: 62px;
+  }
+
+  .planCardAlt {
+    padding: 34px 24px 26px;
+    min-height: auto;
+  }
+
+  .planImageWrap {
+    width: 148px;
+    height: 250px;
+    margin: -84px auto 24px;
+  }
+
+  .planStep {
+    top: 144px;
+    right: 22px;
+    font-size: 68px;
+  }
+
+  .planCardTitle {
+    font-size: 22px;
+    max-width: 240px;
+  }
+
+  .planFeatureList {
+    gap: 18px;
+  }
+
+  .planFeatureList li {
+    font-size: 15px;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+  }
+
+  .planWhatsappBtn {
+    min-width: 100%;
+    margin-top: 28px;
+    padding: 16px 22px;
+    font-size: 14px;
+  }
+
+  .compareHeader {
+    display: block;
+    padding: 22px;
+  }
+
+  .compareHeader p {
+    margin-top: 12px;
+  }
+
+  .tableWrap {
+    overflow: visible;
+  }
+
+  .compareTable,
+  .compareTable thead,
+  .compareTable tbody,
+  .compareTable th,
+  .compareTable td,
+  .compareTable tr {
+    display: block;
+    min-width: 0;
+  }
+
+  .compareTable thead {
+    display: none;
+  }
+
+  .compareTable tr {
+    border-top: 1px solid rgba(56, 24, 72, 0.12);
+    padding: 14px 18px;
+  }
+
+  .compareTable td {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border: 0;
+    padding: 9px 0;
+    text-align: right;
+  }
+
+  .compareTable td::before {
+    content: attr(data-label);
+    color: var(--muted-plum);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .includedGrid {
+    grid-template-columns: 1fr;
+  }
+
+.oneTimeBlock {
+  grid-template-columns: 1fr;
+  gap: 22px;
+  padding: 28px 22px;
+  border-radius: 22px;
+}
+
+.oneTimeBlock li {
+  grid-template-columns: 24px 1fr;
+  padding: 14px 16px;
+}
 }
