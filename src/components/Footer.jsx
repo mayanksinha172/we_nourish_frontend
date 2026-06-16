@@ -100,7 +100,12 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.col}>
-        <Logo variant="boxed" className={styles.logoWrap} />
+        <img
+          src="/footer-logo.png"
+          alt="We Nourish"
+          className={styles.footerLogo}
+        />
+        
         <p className={styles.about}>
           WeNourish helps you eat well beautifully. Personalised nutrition plans,
           delicious recipes and 1-on-1 consulting with Arjita.

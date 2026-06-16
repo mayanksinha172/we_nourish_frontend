@@ -1,6 +1,8 @@
 .nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0; 
+  left: 0; 
+  right: 0;
   z-index: 900;
   display: flex;
   align-items: center;
@@ -8,18 +10,18 @@
   height: var(--nav-h);
   padding: 0 5vw;
   gap: 24px;
-  background: transparent;
+  background: #381848;
   transition: background .3s, box-shadow .3s, transform .3s ease;
   will-change: transform;
 }
 
 .homeTop {
-  background: linear-gradient(165deg, #fffaf3 0%, #fbf3e8 55%, #f4eadf 100%);
+  background: #381848;
 }
 
 .scrolled {
-  background: white;
-  box-shadow: 0 1px 0 rgba(0,0,0,.08);
+  background: #381848;
+  box-shadow: 0 1px 0 rgba(255,255,255,.12);
 }
 
 .logo {
@@ -29,19 +31,25 @@
 .links { display: flex; gap: 32px; align-items: center; }
 
 .link {
-  font-weight: 600; font-size: 14px; color: var(--ink);
-  position: relative; transition: color .2s;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  position: relative;
+  transition: color .2s;
 }
 .link::after {
-  content: ''; position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 2px;
-  background: var(--green);
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #E5F0E6;
   transition: width .2s;
 }
-.link:hover { color: var(--green); }
+.link:hover { color: #E5F0E6; }
 .link:hover::after { width: 100%; }
-.active { color: var(--green) !important; }
+.active { color: #E5F0E6 !important; }
 .active::after { width: 100% !important; }
 
 .actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
@@ -51,8 +59,11 @@
   gap: 5px; background: none; border: none; padding: 6px; cursor: pointer;
 }
 .bar {
-  display: block; width: 22px; height: 2px;
-  background: var(--plum); border-radius: 2px;
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
   transition: transform .25s, opacity .25s;
 }
 .barOpen:nth-child(1) { transform: translateY(7px) rotate(45deg); }
