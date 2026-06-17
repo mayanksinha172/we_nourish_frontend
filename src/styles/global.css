@@ -31,7 +31,7 @@ body {
   font-size: 17px;
   font-weight: 400;
   color: var(--ink);
-  background: var(--paper);
+  background: #ffffff;
   line-height: 1.65;
   overflow-x: hidden;
 }
@@ -75,7 +75,7 @@ p  { font-size: 16px; color: var(--ink); line-height: 1.7; }
 .section-stone  { background: var(--stone); }
 .section-plum   { background: var(--plum); }
 
-section { padding: 80px 5vw; }
+section { padding: min(120px, 10vw) 5vw; }
 section.section-fullbleed { padding: 0; }
 
 /* ---- Buttons ---- */
@@ -154,8 +154,8 @@ main {
   }
 
   section:not(.section-fullbleed) {
-    padding-top: 56px;
-    padding-bottom: 56px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .btn-primary,
@@ -169,8 +169,8 @@ main {
 
 @media (max-width: 600px) {
   section:not(.section-fullbleed) {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 
   .btn-primary {

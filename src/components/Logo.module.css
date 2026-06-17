@@ -15,18 +15,6 @@
   height: 42px;
 }
 
-.box {
-  display: inline-flex;
-  align-items: center;
-  background: white;
-  border-radius: 8px;
-  padding: 4px 10px;
-}
-
-.boxed {
-  height: 52px;
-}
-
 .center {
   height: 48px;
   margin: 0 auto;
