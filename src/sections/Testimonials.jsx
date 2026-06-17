@@ -22,12 +22,9 @@ function Card({ t }) {
   return (
     <div className={styles.card}>
       <StarRow />
-      {t.photo && (
-        <img src={t.photo} alt="" className={styles.clientPhoto} loading="lazy" />
-      )}
       <p className={styles.quote}>&ldquo;{t.quote}&rdquo;</p>
       <div className={styles.author}>
-        {!t.photo && <div className={styles.avatar}>{initials(t.name)}</div>}
+        <div className={styles.avatar}>{initials(t.name)}</div>
         <div className={styles.authorInfo}>
           <span className={styles.name}>{t.displayName || t.name}</span>
           {t.outcome && <span className={styles.outcome}>{t.outcome}</span>}
@@ -38,34 +35,59 @@ function Card({ t }) {
 }
 
 export default function Testimonials() {
-  const trackRef = useRef(null);
+  const row1Ref = useRef(null);
+  const row2Ref = useRef(null);
 
-  const pause  = () => { if (trackRef.current) trackRef.current.style.animationPlayState = 'paused'; };
-  const resume = () => { if (trackRef.current) trackRef.current.style.animationPlayState = 'running'; };
+  // Split reviews across two rows
+  const half = Math.ceil(TESTIMONIALS.length / 2);
+  const row1 = TESTIMONIALS.slice(0, half);
+  const row2 = TESTIMONIALS.slice(half);
+
+  const pause  = (ref) => { if (ref.current) ref.current.style.animationPlayState = 'paused'; };
+  const resume = (ref) => { if (ref.current) ref.current.style.animationPlayState = 'running'; };
 
   return (
     <section className={styles.section}>
       <div className={styles.header}>
         <span className="eyebrow">Testimonials</span>
-        <h2>Real results, real people</h2>
-        <p className={styles.sub}>Clients who transformed their health with personalised nutrition.</p>
+        <h2>What our clients say</h2>
+        <p className={styles.sub}>Real stories from real people who transformed their health with WeNourish.</p>
       </div>
 
-      <div
-        className={styles.marqueeWrap}
-        onMouseEnter={pause}
-        onMouseLeave={resume}
-      >
+      <div className={styles.marqueeWrap}>
+        {/* Fade edges */}
         <div className={styles.fadeLeft}  aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />
 
-        <div className={styles.row}>
-          <div className={`${styles.track} ${styles.trackLeft}`} ref={trackRef}>
-            {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+        {/* Row 1 — scrolls left */}
+        <div
+          className={styles.row}
+          onMouseEnter={() => pause(row1Ref)}
+          onMouseLeave={() => resume(row1Ref)}
+        >
+          <div className={`${styles.track} ${styles.trackLeft}`} ref={row1Ref}>
+            {[...row1, ...row1, ...row1, ...row1].map((t, i) => (
               <Card key={i} t={t} />
             ))}
           </div>
         </div>
+
+        {/* Row 2 — scrolls right */}
+        <div
+          className={styles.row}
+          onMouseEnter={() => pause(row2Ref)}
+          onMouseLeave={() => resume(row2Ref)}
+        >
+          <div className={`${styles.track} ${styles.trackRight}`} ref={row2Ref}>
+            {[...row2, ...row2, ...row2, ...row2].map((t, i) => (
+              <Card key={i} t={t} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.veggieWrap}>
+        <img src="/testimonials-bg.png" alt="" loading="lazy" />
       </div>
     </section>
   );

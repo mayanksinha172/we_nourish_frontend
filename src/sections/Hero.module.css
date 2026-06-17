@@ -489,37 +489,6 @@
   height: 120px;
 }
 
-/* Press text (replaces logo chips — logos now in CredibilityBand) */
-.pressText {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted-plum);
-  letter-spacing: 0.025em;
-  margin: 0;
-}
-
-/* Video wrapper for HeroMedia */
-.videoWrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-
-.playBtn {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(56, 24, 72, 0.28);
-  color: white;
-  font-size: 28px;
-  border-radius: inherit;
-  transition: background .2s;
-}
-.videoWrap:hover .playBtn { background: rgba(56, 24, 72, 0.40); }
-
 /* ══════════════════════════════════════════════════════════════
    Responsive
 ══════════════════════════════════════════════════════════════ */

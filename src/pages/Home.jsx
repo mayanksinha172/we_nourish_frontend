@@ -1,14 +1,15 @@
-import PageMeta        from '../components/PageMeta';
-import Hero            from '../sections/Hero';
-import HowItWorks      from '../sections/HowItWorks';
-import RecipesTeaser   from '../sections/RecipesTeaser';
-import Shop            from '../sections/Shop';
-import CredibilityBand from '../sections/CredibilityBand';
-import ReelsSlider     from '../sections/ReelsSlider';
-import Testimonials    from '../sections/Testimonials';
+import PageMeta      from '../components/PageMeta';
+import Hero          from '../sections/Hero';
+import HowItWorks    from '../sections/HowItWorks';
+import Testimonials  from '../sections/Testimonials';
+import MediaFeatures from '../sections/MediaFeatures';
+import RotatingPlateSection from '../sections/RotatingPlateSection';
+import RecipesTeaser from '../sections/RecipesTeaser';
+import Shop          from '../sections/Shop';
+import EventsSection from '../sections/EventsSection';
 import CommunitySignup from '../sections/CommunitySignup';
-import FAQ             from '../sections/FAQ';
-import ClosingCTA      from '../sections/ClosingCTA';
+import FAQ           from '../sections/FAQ';
+import ClosingCTA    from '../sections/ClosingCTA';
 
 const HOME_SCHEMA = [
   {
@@ -35,16 +36,17 @@ export default function Home() {
     <>
       <PageMeta
         title="WeNourish — Nutritionist & Dietitian India | Arjita"
-        description="Personalised nutrition consulting by Arjita. Weight loss, PCOS, thyroid support. Book a free call today."
+        description="Personalised nutrition consulting by Arjita. Weight loss, PCOS, athletic performance. Book a free call today."
         schema={HOME_SCHEMA}
       />
       <Hero />
       <HowItWorks />
+      <Testimonials />
+      <MediaFeatures />
+      <RotatingPlateSection />
       <RecipesTeaser />
       <Shop />
-      <CredibilityBand />
-      <ReelsSlider />
-      <Testimonials />
+      <EventsSection />
       <CommunitySignup />
       <FAQ />
       <ClosingCTA />

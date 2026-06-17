@@ -10,8 +10,7 @@ export const WA_NUTRITION = 'https://wa.me/918368798448?text=Hi%2C%20I%27d%20lik
 export const WA_COLLAB    = 'https://wa.me/918368798448?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20brand%20collaboration';
 export const EMAIL        = 'wenourish.arjita@gmail.com';
 export const CALENDLY     = 'https://calendly.com'; // replace with real link
-export const LOGO_SRC       = '/logo.png';
-export const LOGO_SRC_WHITE = '/logo-white.png';
+export const LOGO_SRC     = '/logo.png';
 
 export const SOCIAL_LINKS = {
   instagram: 'https://www.instagram.com/we_nourish',
@@ -125,57 +124,65 @@ export const STEPS = [
 
 export const TESTIMONIALS = [
   {
-    quote: 'I\'ve lost with a good inch loss. I was constipated all my life and that issue is now resolved. My energy levels are better than before and the best part is the plan was built around what I actually like to eat.',
-    name: 'Anjuli Marwah',
-    displayName: 'Anjuli Marwah',
-    outcome: 'Inch loss · Age 31',
+    quote: 'Hi, this is an only appreciation msg. Few months ago on our weekly calls, I told arjita about the dress I was struggling to get into because of my weight gain and now it really does fit me. It\'s all because of you and your holistic approach and a big thank you to Anjali for guiding me everyday through out this journey.',
+    name: 'Amisha Metrani',
+    displayName: 'Amisha Metrani',
+    outcome: 'Age: 25, Female',
   },
   {
-    quote: 'I joined to improve my thyroid health through diet. Within 10 weeks my levels improved and my doctor was pleasantly surprised. The meal plans are delicious and never feel restrictive.',
-    name: 'Deepa Nair',
-    displayName: 'Deepa Nair',
-    outcome: 'Thyroid support · Age 42',
+    quote: 'These 2 months have been great. I have seen amazing changes in my energy and activity level. I never felt I was on a diet plan as the food options were so vast and were updated every week based on preferences. Thank you so much Arjita & team for being available all the time and answering my queries always. I have gained so much knowledge on the meal plates and will definitely carry forward these learnings.',
+    name: 'Madhu Rathod',
+    displayName: 'Madhu Rathod',
+    outcome: 'Age: 24, Female',
+  },
+  {
+    quote: 'The last one month has been really good, I\'ve lost with a good inch loss. I have been constipated all my life & that issue has been resolved. I am now a lot healthier. My energy levels have been better than before and the best part is that you made diet plan according to what I like to have or make, the dessert recipes are also nice.',
+    name: 'Anjuli Marwah',
+    displayName: 'Anjuli Marwah',
+    outcome: 'Age: 31, Female',
+  },
+  {
+    quote: 'Everything was so simple to follow. I love that you prioritize knowledge before anything else, as it\'s essential to understand the why and how of diet and health. Thanks arjita!',
+    name: 'Priya',
+    displayName: 'Priya',
+    outcome: 'Age: 25, Female',
+  },
+  {
+    quote: 'I am super grateful too arjita for helping me to reach my target weight without losing my muscle mass. Now every second person in my gym comes up to me & says that u motivate us and you are our inspiration. It\'s a great feeling, wouldn\'t be possible without your guidance! Thank-you!',
+    name: 'Shazia Dalvi',
+    displayName: 'Shazia Dalvi',
+    outcome: 'Age: 33, Female',
+  },
+  {
+    quote: 'I was very skeptical about online nutrition consulting but Arjita changed my perspective completely. The plan was practical, easy to follow and fit my busy schedule. Lost 6 kgs in 8 weeks and feel so much lighter and energetic!',
+    name: 'Rhea Kapoor',
+    displayName: 'Rhea Kapoor',
+    outcome: 'Age: 28, Female',
   },
   {
     quote: 'Being a working mom I had no time for elaborate meal plans. Arjita designed something that worked around my life, not the other way. My PCOS symptoms have improved significantly and I finally have energy throughout the day.',
     name: 'Sunita Sharma',
     displayName: 'Sunita Sharma',
-    outcome: 'PCOS management · Age 36',
+    outcome: 'Age: 36, Female',
   },
   {
-    quote: 'Arjita helped me reach my target weight without losing muscle mass. Now every second person in my gym says I motivate them. It\'s a great feeling — wouldn\'t be possible without your guidance.',
-    name: 'Shazia Dalvi',
-    displayName: 'Shazia Dalvi',
-    outcome: 'Body recomposition · Age 33',
-  },
-  {
-    quote: 'The weekly check-ins kept me accountable in a way I never experienced before. I\'ve tried so many diets — this is the first time I\'ve actually stuck to a plan and seen real results.',
+    quote: 'The weekly check-ins kept me accountable in a way I never experienced before. Arjita genuinely cares about your progress. I\'ve tried so many diets before — this is the first time I\'ve actually stuck to a plan and seen real results.',
     name: 'Karan Mehta',
     displayName: 'Karan Mehta',
-    outcome: 'Sustainable results · Age 29',
+    outcome: 'Age: 29, Male',
   },
   {
-    quote: 'Lost 6 kgs in 8 weeks. The plan was practical, easy to follow and fit my busy schedule. I feel so much lighter and energetic — and I never felt like I was on a diet.',
-    name: 'Rhea Kapoor',
-    displayName: 'Rhea Kapoor',
-    outcome: 'Weight loss · Age 28',
+    quote: 'I joined with the goal of improving my thyroid health through diet. Within 10 weeks my levels improved and my doctor was pleasantly surprised. The meal plans are delicious and never feel restrictive.',
+    name: 'Deepa Nair',
+    displayName: 'Deepa Nair',
+    outcome: 'Age: 42, Female',
   },
-];
-
-export const BRAND_ASSOCIATIONS = [
-  { name: 'Brand 1', logo: '/brands/brand-1.svg' },
-  { name: 'Brand 2', logo: '/brands/brand-2.svg' },
-  { name: 'Brand 3', logo: '/brands/brand-3.svg' },
-  { name: 'Brand 4', logo: '/brands/brand-4.svg' },
-];
-
-export const REELS = [
-  { thumb: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80', title: 'Quinoa Power Bowl', slug: 'quinoa-power-bowl' },
-  { thumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80', title: 'Overnight Oats', slug: 'overnight-oats-with-berries' },
-  { thumb: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&q=80', title: 'Energy Balls', slug: 'almond-date-energy-balls' },
-  { thumb: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&q=80', title: 'Paneer Tikka', slug: 'air-fried-paneer-tikka' },
-  { thumb: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80', title: 'Lentil Soup', slug: 'tomato-lentil-soup' },
-  { thumb: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80', title: 'Chia Pudding', slug: 'coconut-chia-pudding' },
+  {
+    quote: 'What I loved most is how Arjita explains the science behind every recommendation. I feel educated, not just instructed. My relationship with food has completely transformed and I no longer fear carbs!',
+    name: 'Tanvi Joshi',
+    displayName: 'Tanvi Joshi',
+    outcome: 'Age: 27, Female',
+  },
 ];
 
 export const PRESS_ITEMS = [

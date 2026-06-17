@@ -61,7 +61,7 @@ export default function Navbar() {
         animate={{ y: navVisible ? 0 : '-100%', opacity: 1 }}
         transition={{ duration: navVisible ? 0.5 : 0.3, ease: navVisible ? 'easeOut' : 'easeInOut' }}
       >
-        <Logo variant={isHomeTop ? 'nav' : 'light'} className={styles.logo} />
+        <Logo variant="nav" className={styles.logo} />
 
         <div className={styles.links}>
           {NAV_LINKS.map(({ label, path }) => (

@@ -1,7 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
-import { CALENDLY, WA_NUTRITION } from '../data/content';
+import { CALENDLY, WA_NUTRITION, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
 import arjita from '../assets/arjita.png';
+import decor  from '../assets/decor.png';
 import styles from './Hero.module.css';
 
 function LeafBranch({ className }) {
@@ -19,47 +21,95 @@ function LeafBranch({ className }) {
   );
 }
 
-/* Accepts optional videoSrc; falls back to poster image so adding a video later requires no rebuild */
-function HeroMedia({ videoSrc, posterSrc, alt }) {
-  const [playing, setPlaying] = useState(false);
-  const videoRef = useRef(null);
+function PressDropdown({ item }) {
+  const chipRef    = useRef(null);
+  const closeTimer = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [pos,  setPos]  = useState({ top: 0, left: 0 });
 
-  const handleClick = useCallback(() => {
-    if (!videoRef.current) return;
-    if (playing) {
-      videoRef.current.pause();
-      setPlaying(false);
-    } else {
-      videoRef.current.play();
-      setPlaying(true);
-    }
-  }, [playing]);
+  const updatePosition = useCallback(() => {
+    if (!chipRef.current) return;
+    const rect       = chipRef.current.getBoundingClientRect();
+    const menuHeight = 190;
+    const gap        = 10;
+    let top = rect.bottom + gap;
+    const maxTop = window.innerHeight - menuHeight - 8;
+    if (top > maxTop) top = Math.max(rect.bottom + gap, maxTop);
+    setPos({ top, left: rect.left + rect.width / 2 });
+  }, []);
 
-  if (!videoSrc) {
-    return (
-      <img
-        src={posterSrc}
-        alt={alt}
-        className={styles.photo}
-      />
-    );
-  }
+  const showMenu = useCallback(() => {
+    clearTimeout(closeTimer.current);
+    updatePosition();
+    setOpen(true);
+  }, [updatePosition]);
+
+  const hideMenu = useCallback(() => {
+    closeTimer.current = setTimeout(() => setOpen(false), 120);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const handler = () => updatePosition();
+    window.addEventListener('scroll', handler, true);
+    window.addEventListener('resize', handler);
+    return () => {
+      window.removeEventListener('scroll', handler, true);
+      window.removeEventListener('resize', handler);
+    };
+  }, [open, updatePosition]);
+
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
 
   return (
-    <div className={styles.videoWrap} onClick={handleClick} role="button" aria-label={playing ? 'Pause video' : 'Play video'}>
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        poster={posterSrc}
-        loop
-        muted
-        playsInline
-        className={styles.photo}
-      />
-      {!playing && (
-        <div className={styles.playBtn} aria-hidden="true">
-          <i className="fa-solid fa-play" />
-        </div>
+    <div
+      className={styles.pressDropdown}
+      onMouseEnter={showMenu} onMouseLeave={hideMenu}
+      onFocus={showMenu}     onBlur={hideMenu}
+    >
+      <button
+        ref={chipRef}
+        type="button"
+        className={`${styles.pressChip} ${open ? styles.pressChipActive : ''}`}
+        aria-haspopup="true"
+        aria-expanded={open}
+        aria-label={`${item.name} articles`}
+      >
+        <img src={item.logo} alt="" className={styles.pressLogo} loading="lazy" />
+      </button>
+
+      {open && createPortal(
+        <div
+          className={styles.pressMenuPortal}
+          style={{ top: pos.top, left: pos.left }}
+          role="menu"
+          aria-label={`${item.name} articles`}
+          onMouseEnter={showMenu}
+          onMouseLeave={hideMenu}
+        >
+          <div className={styles.pressMenuPanel}>
+            <div className={styles.pressMenuHeader}>
+              <span className={styles.pressMenuTitle}>{item.name}</span>
+              <span className={styles.pressMenuSub}>Featured articles</span>
+            </div>
+            <div className={styles.pressMenuList}>
+              {item.articles.map((article) => (
+                <a
+                  key={article.label}
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.pressMenuItem}
+                  role="menuitem"
+                >
+                  <span>{article.label}</span>
+                  <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>,
+        document.body,
       )}
     </div>
   );
@@ -77,6 +127,7 @@ const item = {
 export default function Hero() {
   return (
     <section className={styles.hero}>
+      {/* Depth layers */}
       <div className={styles.grain}       aria-hidden="true" />
       <div className={styles.accentLine}  aria-hidden="true" />
       <LeafBranch className={styles.leafShadow} />
@@ -115,6 +166,7 @@ export default function Hero() {
           </motion.a>
         </motion.div>
 
+        {/* Trust note under CTAs */}
         <motion.p className={styles.trustNote} variants={item}>
           <i className="fa-solid fa-shield-halved" aria-hidden="true" />
           Free 15-min call · zero commitment
@@ -134,9 +186,28 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <p className={styles.pressText}>
-            As seen in Indian Express, NDTV Food, India Today &amp; Slurrp
-          </p>
+          <div className={styles.pressBlock}>
+            <span className={styles.pressLabel}>As seen in</span>
+            <div className={styles.pressRow}>
+              {PRESS_ITEMS.map((pressItem) =>
+                pressItem.articles ? (
+                  <PressDropdown key={pressItem.name} item={pressItem} />
+                ) : (
+                  <a
+                    key={pressItem.name}
+                    href={PRESS_LINKS[pressItem.name] || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.pressChip}
+                    title={pressItem.name}
+                    aria-label={pressItem.name}
+                  >
+                    <img src={pressItem.logo} alt="" className={styles.pressLogo} loading="lazy" />
+                  </a>
+                )
+              )}
+            </div>
+          </div>
         </motion.div>
       </motion.div>
 
@@ -150,10 +221,10 @@ export default function Hero() {
         <div className={styles.photoWrap}>
           <div className={styles.photoStack}>
             <div className={styles.photoFrame}>
-              <HeroMedia
-                posterSrc={arjita}
-                videoSrc={null}
+              <img
+                src={arjita}
                 alt="Arjita — WeNourish nutritionist"
+                className={styles.photo}
               />
             </div>
             <p className={styles.caption}>Arjita — Guiding your journey to better health.</p>
@@ -161,16 +232,16 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Wave transition into next section */}
+      {/* Double-layer wave into next section */}
       <div className={styles.heroWave} aria-hidden="true">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M0,60 C200,100 500,20 720,50 C940,80 1200,20 1440,55 L1440,120 L0,120 Z"
-            fill="rgba(255,255,255,0.55)"
+            fill="rgba(251,250,247,0.55)"
           />
           <path
             d="M0,78 C180,108 440,36 720,64 C1000,92 1260,34 1440,72 L1440,120 L0,120 Z"
-            fill="#ffffff"
+            fill="var(--paper)"
           />
         </svg>
       </div>
