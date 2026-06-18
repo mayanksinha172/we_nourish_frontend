@@ -124,6 +124,12 @@ export const STEPS = [
 
 export const TESTIMONIALS = [
   {
+    quote: 'Being a working mom I had no time for elaborate meal plans. Arjita designed something that worked around my life, not the other way. My PCOS symptoms have improved significantly and I finally have energy throughout the day.',
+    name: 'Sunita Sharma',
+    displayName: 'Sunita Sharma',
+    outcome: 'Age: 36, Female',
+  },
+  {
     quote: 'Hi, this is an only appreciation msg. Few months ago on our weekly calls, I told arjita about the dress I was struggling to get into because of my weight gain and now it really does fit me. It\'s all because of you and your holistic approach and a big thank you to Anjali for guiding me everyday through out this journey.',
     name: 'Amisha Metrani',
     displayName: 'Amisha Metrani',
@@ -158,12 +164,6 @@ export const TESTIMONIALS = [
     name: 'Rhea Kapoor',
     displayName: 'Rhea Kapoor',
     outcome: 'Age: 28, Female',
-  },
-  {
-    quote: 'Being a working mom I had no time for elaborate meal plans. Arjita designed something that worked around my life, not the other way. My PCOS symptoms have improved significantly and I finally have energy throughout the day.',
-    name: 'Sunita Sharma',
-    displayName: 'Sunita Sharma',
-    outcome: 'Age: 36, Female',
   },
   {
     quote: 'The weekly check-ins kept me accountable in a way I never experienced before. Arjita genuinely cares about your progress. I\'ve tried so many diets before — this is the first time I\'ve actually stuck to a plan and seen real results.',
