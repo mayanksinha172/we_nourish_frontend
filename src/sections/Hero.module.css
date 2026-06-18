@@ -5,12 +5,14 @@
 ══════════════════════════════════════════════════════════════ */
 
 .hero {
-  background: linear-gradient(165deg, #fffaf3 0%, #fbf2e6 44%, #f3e8da 100%);
+  background:
+    radial-gradient(circle at 82% 38%, rgba(251, 250, 247, 0.95) 0%, rgba(251, 250, 247, 0.55) 32%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 68%, #FCF8F1 100%);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 40px;
-  padding: 20px 7vw 100px;
+  padding: 48px 7vw 118px;
   min-height: 720px;
   height: auto;
   overflow: visible;
