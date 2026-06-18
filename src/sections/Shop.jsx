@@ -32,10 +32,10 @@ export default function Shop() {
 
   return (
     <>
-      <section className={`section-plum ${styles.section}`}>
+      <section className={styles.section}>
         <FadeUp className="section-header">
-          <span className="eyebrow" style={{ color: 'var(--green-tint)' }}>RECIPE BOOKS</span>
-          <h2 style={{ color: 'white' }}>Take the kitchen with you</h2>
+          <span className={styles.eyebrow}>RECIPE BOOKS</span>
+          <h2 className={styles.title}>Take the kitchen with you</h2>
         </FadeUp>
 
         <div className={styles.grid}>

@@ -78,16 +78,16 @@ export default function Navbar() {
         </div>
 
         <div className={styles.actions}>
-          <motion.a
-            href={CALENDLY}
-            target="_blank"
-            rel="noopener"
-            className="btn-primary"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: .97 }}
-          >
-            Book Free Call
-          </motion.a>
+         <motion.a
+           href={CALENDLY}
+           target="_blank"
+           rel="noopener"
+           className={`btn-primary ${styles.bookCall}`}
+           whileHover={{ scale: 1.04 }}
+           whileTap={{ scale: .97 }}
+         >
+           Book Free Call
+         </motion.a>
           <button
             className={styles.hamburger}
             onClick={() => setMenuOpen(o => !o)}

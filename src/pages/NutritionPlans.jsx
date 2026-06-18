@@ -12,7 +12,7 @@ import ClosingCTA from '../sections/ClosingCTA';
 import Testimonials from '../sections/Testimonials';
 import PageMeta from '../components/PageMeta';
 
-import arjita from '../assets/arjita.jpg';
+import arjita from '../assets/arjita.png';
 import sampoornaPlanImg from '../assets/Sampoorna Individual.png';
 import sahayogaPlanImg from '../assets/Sahayoga Couple.png';
 import srijanPlanImg from '../assets/Srijan One Time.png';
