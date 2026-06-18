@@ -72,28 +72,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.65;
+  opacity: 1;
   transition: opacity 0.2s;
-  min-width: 80px;
+  min-width: 100px;
 }
 
 .brandItem:hover {
-  opacity: 1;
+  opacity: 0.85;
 }
 
 .brandLogo {
-  height: 28px;
+  height: 36px;
   width: auto;
-  max-width: 120px;
+  max-width: 140px;
   object-fit: contain;
 }
 
 .brandFallback {
   display: none;
-  font-size: 14px;
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 700;
-  color: var(--muted-plum);
-  letter-spacing: 0.05em;
+  color: var(--plum);
+  letter-spacing: 0.02em;
 }
 
 /* ── Press marquee ── */

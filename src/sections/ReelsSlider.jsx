@@ -1,9 +1,52 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { REELS, SOCIAL_LINKS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import styles from './ReelsSlider.module.css';
 
 const PAGE_SIZE = 4;
+
+function ReelCard({ reel, onOpen, shouldPause, onHover }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (shouldPause) {
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+  }, [shouldPause]);
+
+  return (
+    <button
+      className={styles.card}
+      onClick={() => onOpen(reel)}
+      onMouseEnter={onHover}
+      onFocus={onHover}
+      aria-label={`View recipe for ${reel.caption}`}
+    >
+      <div className={styles.videoWrapper}>
+        <video
+          ref={videoRef}
+          src={reel.src}
+          className={styles.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onLoadedMetadata={(e) => { e.currentTarget.playbackRate = 0.75; }}
+        />
+        <div className={styles.videoFooter}>
+          <span className={styles.cardTag}>{reel.tag}</span>
+          <span className={styles.viewRecipe}>View Recipe</span>
+        </div>
+      </div>
+      <p className={styles.caption}>{reel.caption}</p>
+    </button>
+  );
+}
 
 function RecipeModal({ reel, onClose }) {
   const r = reel.recipe;
@@ -60,6 +103,7 @@ function RecipeModal({ reel, onClose }) {
 export default function ReelsSlider() {
   const [page, setPage] = useState(0);
   const [activeReel, setActiveReel] = useState(null);
+  const [hoveredId, setHoveredId] = useState(null);
 
   const totalPages = Math.ceil(REELS.length / PAGE_SIZE);
   const visible = REELS.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
@@ -87,35 +131,23 @@ export default function ReelsSlider() {
           disabled={page === 0}
           aria-label="Previous videos"
         >
-          <i className="fa-solid fa-chevron-left" />
+          <svg className={styles.arrowIcon} viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
 
-        <div className={styles.track}>
+        <div
+          className={styles.track}
+          onMouseLeave={() => setHoveredId(null)}
+        >
           {visible.map((reel) => (
-            <button
+            <ReelCard
               key={reel.id}
-              className={styles.card}
-              onClick={() => setActiveReel(reel)}
-              aria-label={`View recipe for ${reel.caption}`}
-            >
-              <div className={styles.videoWrapper}>
-                <video
-                  src={reel.src}
-                  className={styles.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-                <div className={styles.playHint}>
-                  <i className="fa-solid fa-book-open" />
-                  <span>View Recipe</span>
-                </div>
-                <span className={styles.cardTag}>{reel.tag}</span>
-              </div>
-              <p className={styles.caption}>{reel.caption}</p>
-            </button>
+              reel={reel}
+              onOpen={setActiveReel}
+              shouldPause={hoveredId !== null && hoveredId !== reel.id}
+              onHover={() => setHoveredId(reel.id)}
+            />
           ))}
         </div>
 
@@ -125,7 +157,9 @@ export default function ReelsSlider() {
           disabled={page >= totalPages - 1}
           aria-label="Next videos"
         >
-          <i className="fa-solid fa-chevron-right" />
+          <svg className={styles.arrowIcon} viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
       </div>
 

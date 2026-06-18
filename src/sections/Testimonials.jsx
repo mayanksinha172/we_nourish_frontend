@@ -35,13 +35,7 @@ function Card({ t }) {
 }
 
 export default function Testimonials() {
-  const row1Ref = useRef(null);
-  const row2Ref = useRef(null);
-
-  // Split reviews across two rows
-  const half = Math.ceil(TESTIMONIALS.length / 2);
-  const row1 = TESTIMONIALS.slice(0, half);
-  const row2 = TESTIMONIALS.slice(half);
+  const trackRef = useRef(null);
 
   const pause  = (ref) => { if (ref.current) ref.current.style.animationPlayState = 'paused'; };
   const resume = (ref) => { if (ref.current) ref.current.style.animationPlayState = 'running'; };
@@ -59,27 +53,13 @@ export default function Testimonials() {
         <div className={styles.fadeLeft}  aria-hidden="true" />
         <div className={styles.fadeRight} aria-hidden="true" />
 
-        {/* Row 1 — scrolls left */}
         <div
           className={styles.row}
-          onMouseEnter={() => pause(row1Ref)}
-          onMouseLeave={() => resume(row1Ref)}
+          onMouseEnter={() => pause(trackRef)}
+          onMouseLeave={() => resume(trackRef)}
         >
-          <div className={`${styles.track} ${styles.trackLeft}`} ref={row1Ref}>
-            {[...row1, ...row1, ...row1, ...row1].map((t, i) => (
-              <Card key={i} t={t} />
-            ))}
-          </div>
-        </div>
-
-        {/* Row 2 — scrolls right */}
-        <div
-          className={styles.row}
-          onMouseEnter={() => pause(row2Ref)}
-          onMouseLeave={() => resume(row2Ref)}
-        >
-          <div className={`${styles.track} ${styles.trackRight}`} ref={row2Ref}>
-            {[...row2, ...row2, ...row2, ...row2].map((t, i) => (
+          <div className={`${styles.track} ${styles.trackLeft}`} ref={trackRef}>
+            {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
               <Card key={i} t={t} />
             ))}
           </div>
