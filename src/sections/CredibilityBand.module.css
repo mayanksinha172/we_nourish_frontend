@@ -1,0 +1,190 @@
+.section {
+  padding: 56px 0;
+  background: white;
+  overflow: hidden;
+}
+
+/* ── Stats strip ── */
+.statsRow {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 0 auto 0;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px;
+  position: relative;
+}
+
+.statItem + .statItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: var(--stone);
+}
+
+.statNum {
+  font-family: var(--font-accent);
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 700;
+  color: var(--plum);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-plum);
+  margin-top: 4px;
+}
+
+/* ── Divider ── */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--stone);
+  margin: 40px auto;
+  border-radius: 2px;
+}
+
+/* ── Brand associations ── */
+.brandRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 0 24px;
+}
+
+.brandItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.65;
+  transition: opacity 0.2s;
+  min-width: 80px;
+}
+
+.brandItem:hover {
+  opacity: 1;
+}
+
+.brandLogo {
+  height: 28px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+}
+
+.brandFallback {
+  display: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-plum);
+  letter-spacing: 0.05em;
+}
+
+/* ── Press marquee ── */
+.track {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+
+.track:hover .inner {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.pressItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--muted-plum);
+  white-space: nowrap;
+  padding: 8px 22px;
+  border: 1.5px solid var(--stone);
+  border-radius: var(--radius-pill);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  text-decoration: none;
+  background: white;
+}
+
+.pressItem:hover {
+  color: var(--plum);
+  border-color: var(--plum);
+  background: var(--stone);
+}
+
+.pressLogo {
+  display: block;
+  height: 16px;
+  width: auto;
+  max-width: 72px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .statsRow {
+    gap: 0;
+  }
+
+  .statItem {
+    padding: 0 24px;
+  }
+
+  .statNum {
+    font-size: 28px;
+  }
+
+  .brandRow {
+    gap: 20px;
+  }
+
+  .pressItem {
+    font-size: 14px;
+    padding: 6px 16px;
+    gap: 8px;
+  }
+
+  .pressLogo {
+    height: 13px;
+    max-width: 56px;
+  }
+
+  .inner {
+    gap: 16px;
+    animation-duration: 35s;
+  }
+}
