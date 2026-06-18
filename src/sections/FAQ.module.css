@@ -1,4 +1,7 @@
-.section { padding: 80px 5vw; }
+.section {
+  padding: 104px 5vw;
+  background: #FFFFFF;
+}
 .list { max-width: 720px; margin: 0 auto; }
 .item { border-bottom: 1px solid var(--stone); }
 .item:first-child { border-top: 1px solid var(--stone); }

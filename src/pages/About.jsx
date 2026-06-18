@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import FadeUp from '../components/FadeUp';
 import ClosingCTA from '../sections/ClosingCTA';
 import PageMeta from '../components/PageMeta';
-import arjita from '../assets/arjita.jpg';
+import arjita from '../assets/arjita.png';
 import styles from './About.module.css';
 
 const ABOUT_SCHEMA = {
