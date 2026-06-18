@@ -1,64 +1,280 @@
-.detail {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: calc(var(--nav-h) + 40px) 5vw 80px;
+.page {
+  padding-top: var(--nav-h);
+  background: var(--white);
 }
 
-.heroImg {
-  width: 100%;
-  max-height: 480px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 12px 40px rgba(56, 24, 72, 0.12);
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 5vw 56px;
+  background: var(--white);
+}
+
+.heroText {
+  min-width: 0;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.detail h1 {
-  margin-bottom: 12px;
+.heroText h1 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  color: var(--plum);
+  line-height: 1.2;
+  margin-bottom: 14px;
 }
 
 .desc {
   color: var(--muted-plum);
-  font-size: 17px;
-  line-height: 1.7;
-  margin-bottom: 8px;
-}
-
-.meta {
-  font-size: 14px;
-  color: var(--muted-plum);
-  margin-bottom: 32px;
-}
-
-.detail h2 {
-  font-size: 22px;
-  margin: 28px 0 14px;
-}
-
-.list,
-.steps {
-  padding-left: 1.25rem;
-  color: var(--ink);
   font-size: 16px;
-  line-height: 1.75;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 480px;
 }
 
-.list li,
-.steps li {
-  margin-bottom: 8px;
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--plum);
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metaIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--green);
+}
+
+.metaDivider {
+  width: 1px;
+  height: 18px;
+  background: rgba(56, 24, 72, 0.18);
+}
+
+.heroImageWrap {
+  min-width: 0;
+}
+
+.heroImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-card);
+  display: block;
+  box-shadow: 0 12px 40px rgba(56, 24, 72, 0.1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 5vw 64px;
+}
+
+.col {
+  padding: 40px 32px 0;
+  border-left: 1px solid rgba(56, 24, 72, 0.08);
+}
+
+.col:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.col:last-child {
+  padding-right: 0;
+}
+
+.colTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--plum);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--green);
+  display: inline-block;
+}
+
+.ingredientList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredientList li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.ingredientList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.methodList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+
+.methodList li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.stepNum {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nutritionSub {
+  font-size: 13px;
+  color: var(--muted-plum);
+  margin-bottom: 16px;
+}
+
+.nutritionGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nutritionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(56, 24, 72, 0.07);
+  border-radius: 999px;
+  padding: 5px 18px 5px 5px;
+  min-height: 44px;
+}
+
+.nutritionValueBubble {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--plum);
+  white-space: nowrap;
+  line-height: 1.2;
+  box-shadow: 0 1px 3px rgba(56, 24, 72, 0.06);
+}
+
+.nutritionLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--plum);
+  padding-right: 2px;
+}
+
+.nutritionNote {
+  margin-top: 16px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted-plum);
+}
+
+.consultPrompt {
+  width: min(680px, calc(100% - 10vw));
+  margin: 48px auto 0;
+  padding: 32px 28px;
+  background: var(--green-tint);
+  border: 1.5px solid rgba(40, 120, 48, 0.18);
+  border-radius: var(--radius-card);
+  text-align: center;
+}
+
+.consultEyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin: 0 0 10px;
+}
+
+.consultTitle {
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--plum);
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+
+.consultText {
+  font-size: 15px;
+  color: var(--muted-plum);
+  line-height: 1.65;
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+
+.footerLink {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 5vw 72px;
 }
 
 .back {
   display: inline-block;
-  margin-top: 36px;
   font-weight: 700;
   color: var(--green);
   transition: opacity 0.2s;
@@ -77,17 +293,56 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
-  .detail {
-    padding: calc(var(--nav-h) + 24px) 5vw 64px;
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px 5vw 40px;
+  }
+
+  .heroImageWrap {
+    order: -1;
   }
 
   .heroImg {
-    border-radius: 16px;
-    max-height: 260px;
+    max-height: 320px;
+    aspect-ratio: auto;
   }
 
-  .detail h2 {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-bottom: 48px;
+  }
+
+  .col {
+    border-left: none;
+    border-top: 1px solid rgba(56, 24, 72, 0.08);
+    padding: 32px 0 0;
+  }
+
+  .col:first-child {
+    border-top: none;
+    padding-top: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .metaDivider {
+    display: none;
+  }
+
+  .colTitle {
     font-size: 20px;
+  }
+
+  .consultPrompt {
+    padding: 24px 20px;
   }
 }

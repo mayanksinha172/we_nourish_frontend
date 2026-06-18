@@ -19,6 +19,12 @@
   align-self: flex-start;
 }
 
+.logoWrap img {
+  height: 58px;
+  width: auto;
+  display: block;
+}
+
 .about {
   color: rgba(255, 255, 255, 0.65);
   font-size: 14px;
