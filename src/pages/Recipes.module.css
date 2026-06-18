@@ -336,14 +336,28 @@
 
 .booksGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 5vw;
+  align-items: stretch;
+}
+
+.booksGrid > * {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-height: 100%;
 }
 
 .bookCard {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-card);
@@ -373,6 +387,10 @@
 }
 
 .bookBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 20px;
 }
 
@@ -380,23 +398,37 @@
   color: white;
   font-size: 17px;
   margin-bottom: 6px;
+  line-height: 1.35;
+  min-height: calc(1.35em * 2);
 }
 
-.bookBody p {
+.bookBody > p:not(.bookPrice) {
   color: rgba(255, 255, 255, 0.75);
   font-size: 14px;
   line-height: 1.55;
+  flex: 1 1 auto;
+  margin: 0;
+}
+
+.bookFooter {
+  margin-top: auto;
+  padding-top: 12px;
+  flex-shrink: 0;
 }
 
 .bookPrice {
   color: var(--green-tint) !important;
   font-size: 20px !important;
   font-weight: 800;
-  margin: 10px 0 14px !important;
+  margin: 0 0 14px !important;
+  padding: 0;
+  flex-shrink: 0;
 }
 
 .buyBtn {
   width: 100%;
+  margin-top: 0;
+  flex-shrink: 0;
   padding: 12px 20px;
   border-radius: var(--radius-pill);
   border: none;
@@ -411,14 +443,14 @@
 
 .buyBtn:hover { background: #1e5f25; }
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
 
   .booksGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 480px) {
   .booksGrid {
     grid-template-columns: 1fr;
   }

@@ -170,16 +170,18 @@ export default function Recipes() {
               <div className={styles.bookBody}>
                 <h3>{p.title}</h3>
                 <p>{p.description}</p>
-                <p className={styles.bookPrice}>₹{p.price_inr}</p>
-                <motion.button
-                  type="button"
-                  className={styles.buyBtn}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: .98 }}
-                  onClick={() => openBuy(p)}
-                >
-                  Buy — ₹{p.price_inr}
-                </motion.button>
+                <div className={styles.bookFooter}>
+                  <p className={styles.bookPrice}>₹{p.price_inr}</p>
+                  <motion.button
+                    type="button"
+                    className={styles.buyBtn}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: .98 }}
+                    onClick={() => openBuy(p)}
+                  >
+                    Buy — ₹{p.price_inr}
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           ))}
