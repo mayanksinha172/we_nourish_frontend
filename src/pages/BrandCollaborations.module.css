@@ -1,6 +1,11 @@
 .hero {
   margin-top: var(--nav-h);
-  background: var(--plum);
+  background-image:
+    linear-gradient(rgba(56, 24, 72, 0.58), rgba(56, 24, 72, 0.58)),
+    url('/brand-collab-hero-bg.png');
+  background-position: center, right center;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding: 80px 5vw;
   text-align: center;
   min-height: 420px;
@@ -10,6 +15,8 @@
 }
 
 .heroInner {
+  position: relative;
+  z-index: 1;
   max-width: 680px;
 }
 
@@ -42,39 +49,71 @@
 
 .card {
   background: white;
-  border: 1px solid var(--stone);
+  border: 1px solid rgba(56, 24, 72, 0.08);
   border-radius: var(--radius-card);
-  padding: 32px 28px;
+  overflow: hidden;
   transition: box-shadow .25s, transform .25s;
 }
 
 .card:hover {
-  box-shadow: 0 10px 36px rgba(56, 24, 72, .1);
+  box-shadow: 0 14px 40px rgba(56, 24, 72, .12);
+}
+
+.cardVisual {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
 }
 
 .icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--green-tint);
-  color: var(--green);
+  position: absolute;
+  left: 20px;
+  bottom: -22px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--green);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  margin-bottom: 16px;
+  box-shadow: 0 8px 20px rgba(40, 120, 48, 0.35);
+  z-index: 1;
 }
 
-.card h3 {
+.iconSvg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.cardBody {
+  padding: 36px 28px 28px;
+}
+
+.cardBody h3 {
   font-size: 18px;
   color: var(--plum);
   margin-bottom: 8px;
 }
 
-.card p {
+.cardBody p {
   font-size: 15px;
   color: var(--muted-plum);
   line-height: 1.65;
+  margin: 0;
 }
 
 .cta {

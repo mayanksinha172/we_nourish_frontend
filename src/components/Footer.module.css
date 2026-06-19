@@ -43,13 +43,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.9);
-  transition: color 0.2s, transform 0.2s;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.95);
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .socialIcon:hover {
-  color: var(--green-tint);
+  background: var(--green);
+  color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(40, 120, 48, 0.45);
 }
 
 .iconSvg {
@@ -93,7 +98,7 @@
 .heading {
   font-weight: 700;
   font-size: 18px;
-  color: var(--green);
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
@@ -111,11 +116,21 @@
 
 .footer .link:hover,
 .footer .link:focus-visible {
-  color: var(--green-tint);
+  color: #C5E8C8;
+}
+
+.footer .link:hover .linkArrow,
+.footer .link:focus-visible .linkArrow {
+  color: #ffffff;
 }
 
 .footer .link:visited {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.footer .link:visited:hover,
+.footer .link:visited:focus-visible {
+  color: #C5E8C8;
 }
 
 .linkArrow {
@@ -153,10 +168,11 @@
 }
 
 .contactIcon:hover {
-  background: rgba(40, 120, 48, 0.35);
-  border-color: var(--green-tint);
+  background: var(--green);
+  border-color: var(--green);
   color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(40, 120, 48, 0.45);
 }
 
 .signup {
