@@ -1,5 +1,7 @@
 .hero {
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 82% 38%, rgba(251, 250, 247, 0.95) 0%, rgba(251, 250, 247, 0.55) 32%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 68%, #FBFAF7 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,11 +9,52 @@
   padding: calc(var(--nav-h) + 32px) 8vw 0;
   min-height: 620px;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 520px at 78% 42%, rgba(168, 188, 152, 0.22), transparent 65%),
+    radial-gradient(ellipse 380px 320px at 96% 82%, rgba(230, 210, 185, 0.40), transparent 70%),
+    radial-gradient(ellipse 260px 220px at 12% 22%, rgba(168, 188, 152, 0.10), transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 252, 246, 0.00) 0%,
+      rgba(255, 250, 240, 0.55) 3.5%,
+      rgba(255, 252, 246, 0.00) 8%,
+      rgba(255, 250, 240, 0.38) 12%,
+      rgba(255, 252, 246, 0.00) 18%,
+      transparent 28%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(56, 24, 72, 0.055) 0%,
+      rgba(56, 24, 72, 0.018) 5%,
+      transparent 17%
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .heroText {
   flex: 1 1 52%;
   max-width: 620px;
+  position: relative;
+  z-index: 2;
 }
 
 .heroText h1 {
@@ -38,19 +81,11 @@
   max-width: 410px;
   height: 500px;
   align-self: flex-end;
+  z-index: 2;
 }
 
 .heroBlob {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  z-index: 0;
-  width: 100%;
-  height: 84%;
-  background: var(--green-tint);
-  border: 1px solid rgba(40, 120, 48, 0.12);
-  border-radius: 999px 999px 0 0;
-  transform: translateX(-50%);
+  display: none;
 }
 
 .photo {
@@ -68,6 +103,10 @@
 
 .plans {
   padding: 72px 5vw 88px;
+  background: #FBFAF7;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .consultIntro {
@@ -505,12 +544,14 @@
   }
 
   .heroPhoto {
-    width: 82%;
-    max-width: 320px;
-    height: 360px;
-    align-self: center;
-  }
-
+  flex: 0 0 auto;
+  position: relative;
+  width: 36%;
+  max-width: 410px;
+  height: 500px;
+  align-self: flex-end;
+  z-index: 2;
+}
   .includedBlock,
   .oneTimeBlock {
     grid-template-columns: 1fr;

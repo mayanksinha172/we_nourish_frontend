@@ -1,9 +1,11 @@
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import FadeUp from '../components/FadeUp';
 import ClosingCTA from '../sections/ClosingCTA';
 import PageMeta from '../components/PageMeta';
 import arjita from '../assets/arjita.png';
 import styles from './About.module.css';
+
 
 const ABOUT_SCHEMA = {
   '@context': 'https://schema.org',
@@ -11,15 +13,21 @@ const ABOUT_SCHEMA = {
   name: 'Arjita',
   jobTitle: 'Nutritionist',
   url: 'https://wenourish.in',
+  email: 'wenourish.arjita@gmail.com',
   description: 'Registered nutritionist with 10+ years of experience. Founder of WeNourish.',
   worksFor: { '@type': 'Organization', name: 'WeNourish' },
+  sameAs: [
+    'https://www.instagram.com/we_nourish',
+    'https://www.facebook.com/wenourish.arjita',
+    'https://www.youtube.com/@WeNourish',
+  ],
 };
 
 const STATS = [
-  { num: '600K+', label: 'Community members' },
-  { num: '10+',   label: 'Years of experience' },
-  { num: '5000+', label: 'Clients coached' },
-  { num: '4',     label: 'Published recipe books' },
+  { value: 600, suffix: 'K+', label: 'Community members' },
+  { value: 10, suffix: '+', label: 'Years of experience' },
+  { value: 5000, suffix: '+', label: 'Clients coached' },
+  { value: 4, suffix: '', label: 'Published recipe books' },
 ];
 
 const VALUES = [
@@ -42,6 +50,49 @@ const VALUES = [
     alt: 'Simple everyday breakfast on a kitchen table',
   },
 ];
+function CountUpNumber({ value, suffix = '' }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.4 });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let animationFrame;
+
+    if (!isInView) {
+      setCount(0);
+      return;
+    }
+
+    const start = 0;
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function animate(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(start + (value - start) * eased);
+
+      setCount(current);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [isInView, value]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 export default function About() {
   return (
@@ -72,6 +123,46 @@ export default function About() {
           <p>WeNourish was born from a simple belief: nourishment should feel good. Not punishing. Not complicated. When you eat in a way that genuinely supports your body, everything else falls into place — your energy, your mood, your confidence.</p>
           <p>I've worked with clients across India and internationally — from athletes and new mothers to professionals managing PCOS, thyroid conditions, and gut issues. Whatever your starting point, we build from where you are.</p>
           <span className="editorial" style={{ fontSize: 22, display: 'block', marginTop: 20 }}>— Arjita, Founder & Lead Nutritionist</span>
+         <div className={styles.socialLinks}>
+  <a
+    href="https://www.instagram.com/we_nourish"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram"
+  >
+    <i className="fa-brands fa-instagram"></i>
+  </a>
+
+  <a
+    href="https://www.facebook.com/wenourish.arjita"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Facebook"
+  >
+    <i className="fa-brands fa-facebook-f"></i>
+  </a>
+
+  <a
+    href="https://www.youtube.com/@WeNourish"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="YouTube"
+  >
+    <i className="fa-brands fa-youtube"></i>
+  </a>
+
+  <a
+    href="mailto:wenourish.arjita@gmail.com"
+    aria-label="Email"
+  >
+    <i className="fa-regular fa-envelope"></i>
+  </a>
+</div>
+<div className={styles.credentialChips}>
+  <span>Registered Nutritionist</span>
+  <span>10+ Years Experience</span>
+  <span>PCOS · Thyroid · Gut Health</span>
+</div>
         </motion.div>
       </section>
 
@@ -85,7 +176,9 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: .45, ease: [.22,1,.36,1], delay: i * .08 }}
           >
-            <span className={styles.statNum}>{s.num}</span>
+           <span className={styles.statNum}>
+             <CountUpNumber value={s.value} suffix={s.suffix} />
+           </span>
             <span className={styles.statLabel}>{s.label}</span>
           </motion.div>
         ))}
@@ -96,7 +189,7 @@ export default function About() {
         <FadeUp className="section-header">
           <span className="eyebrow">OUR MISSION</span>
           <h2>Nourishment without noise</h2>
-          <p style={{ maxWidth: 560, margin: '16px auto 0', color: 'rgba(255,255,255,.75)' }}>
+          <p style={{ maxWidth: 560, margin: '14px auto 0', color: 'rgba(255,255,255,.75)' }}>
             To make evidence-based nutrition accessible, personal and kind — so that every person can eat in a way that truly supports their life.
           </p>
         </FadeUp>
