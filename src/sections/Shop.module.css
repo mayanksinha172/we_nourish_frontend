@@ -46,10 +46,14 @@
   gap: 24px;
   max-width: 1060px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 .card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: #FFFFFF;
   border: 1px solid rgba(56, 24, 72, 0.08);
   border-radius: 20px;
@@ -90,12 +94,17 @@
 }
 
 .body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 0 20px 24px;
 }
 
 .body h3 {
   margin: 16px 0 8px;
   font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.35;
+  min-height: calc(1.35em * 2);
   color: var(--plum);
 }
 
@@ -110,6 +119,7 @@
   font-weight: 800;
   font-size: 20px;
   color: var(--gold) !important;
+  margin-top: auto;
   margin-bottom: 16px !important;
 }
 
