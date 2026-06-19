@@ -875,7 +875,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80',
     seoTitle:         'Weight Loss Nutritionist India — Why Protein Matters | WeNourish',
     seoDescription:   'Work with a weight loss nutritionist in India. Learn why protein beats calorie counting for sustainable fat loss — practical advice from WeNourish.',
-    relatedRecipes:   ['quinoa-power-bowl', 'air-fried-paneer-tikka'],
+    relatedRecipes:   ['high-protein-malai-pyaz', 'one-pan-shakshuka'],
     body: [
       'Most people begin their health journey by counting calories. It makes intuitive sense — eat less, weigh less. But this view misses something fundamental: not all calories do the same thing inside your body. A 200-calorie handful of almonds and a 200-calorie packet of biscuits trigger entirely different hormonal and metabolic responses.',
       'Protein is the macronutrient that changes the game. It has the highest thermic effect of any food — your body burns around 25–30% of protein calories just digesting it. It preserves lean muscle mass during weight loss, which is critical because muscle is metabolically active tissue that keeps your resting metabolism high. And it directly reduces hunger by suppressing ghrelin (the hunger hormone) and boosting satiety signals.',
@@ -893,7 +893,7 @@ export const BLOG_POSTS = [
     img:              '/blog/mangoes.jpg',
     seoTitle:         'Diabetes-Friendly Nutrition India — Mangoes & Blood Sugar | WeNourish',
     seoDescription:   'Can you eat mangoes with diabetes? Evidence-based nutrition advice from a nutritionist in India on fruit, fibre and balanced blood sugar.',
-    relatedRecipes:   ['overnight-oats-with-berries', 'coconut-chia-pudding'],
+    relatedRecipes:   ['protein-power-thalipeeth', 'tahini-crispy-chickpeas'],
     body: [
       'Every summer, without fail, I get the same question: "Should I avoid mangoes because of the sugar?" The short answer is no — and the full answer reveals a lot about how we\'ve been taught to fear fruit unnecessarily.',
       'Mangoes are rich in fibre, vitamin C, vitamin A, folate, and a range of polyphenol antioxidants including mangiferin, which has been shown in research to support blood sugar regulation and reduce inflammation. The natural sugar in a mango comes packaged with fibre that slows absorption, making the glycaemic impact far lower than the same amount of sugar from a processed source. One cup of mango (around 165g) contains about 25g of carbohydrates and 3g of fibre — a perfectly reasonable part of a balanced meal.',
@@ -911,7 +911,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80',
     seoTitle:         'Gut Health Nutritionist India — Gut-Hormone Link | WeNourish',
     seoDescription:   'How gut health affects hormones, energy and weight. Practical gut nutrition advice from a registered nutritionist in India.',
-    relatedRecipes:   ['green-detox-salad', 'tomato-lentil-soup', 'roasted-garlic-hummus'],
+    relatedRecipes:   ['bhuna-tamatar-amla-mooli-chokha', 'protein-power-thalipeeth', 'tahini-crispy-chickpeas'],
     body: [
       'The gut is sometimes called the second brain — and for good reason. Your gastrointestinal tract contains over 100 million neurons, produces around 95% of the body\'s serotonin, and hosts roughly 38 trillion microbial cells that influence everything from how you absorb nutrients to how your stress response behaves. When gut health is disrupted, the effects ripple outward in ways that can look like fatigue, mood swings, hormonal imbalance, or stubborn weight that won\'t shift.',
       'One of the most important gut-hormone links is with cortisol, your primary stress hormone. Chronic gut inflammation signals the immune system to stay on alert, which keeps cortisol elevated. Elevated cortisol disrupts sleep, increases appetite for high-sugar foods, promotes fat storage around the abdomen, and suppresses thyroid function. This is why clients with persistent gut issues often report weight gain, low energy, and difficulty sleeping — even when their diet looks reasonable on paper.',
@@ -929,7 +929,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80',
     seoTitle:         'PCOS Nutritionist India — What to Eat for PCOS | WeNourish',
     seoDescription:   'Looking for a PCOS nutritionist in India? Learn evidence-based meal strategies for insulin balance, hormones and sustainable weight management.',
-    relatedRecipes:   ['quinoa-power-bowl', 'roasted-beetroot-walnut-salad', 'green-detox-salad'],
+    relatedRecipes:   ['high-protein-blender-brownies', 'high-protein-malai-pyaz', 'protein-power-thalipeeth'],
     body: [
       'PCOS affects roughly 1 in 5 Indian women, yet most nutrition advice online is either too generic or too restrictive. The goal is not to eliminate entire food groups — it is to stabilise blood sugar, reduce inflammation, and support hormone balance through consistent, realistic eating patterns.',
       'Prioritise protein at every meal (eggs, paneer, dal, fish, chicken), pair carbohydrates with fibre and fat to slow glucose spikes, and choose low-GI whole grains like jowar, bajra and oats over refined flour. Include anti-inflammatory fats from nuts, seeds and ghee in moderation. Regular meal timing matters as much as food choice — skipping meals often worsens insulin resistance.',
@@ -947,7 +947,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80',
     seoTitle:         'Thyroid Diet Plan India — Nutritionist Guide | WeNourish',
     seoDescription:   'Personalised thyroid diet plan India from a clinical nutritionist. Key nutrients, meal ideas and what to avoid for hypothyroid and Hashimoto\'s support.',
-    relatedRecipes:   ['turmeric-golden-milk', 'tomato-lentil-soup', 'quinoa-power-bowl'],
+    relatedRecipes:   ['one-pan-shakshuka', 'protein-power-thalipeeth', 'high-protein-malai-pyaz'],
     body: [
       'Thyroid conditions are among the most common reasons clients reach out — and among the most misunderstood online. Your thyroid needs specific nutrients to produce and convert hormones efficiently, and Indian diets can either support or undermine that depending on how meals are structured.',
       'Iodine (from iodised salt, fish, eggs), selenium (brazil nuts, eggs, dals), zinc (pumpkin seeds, legumes), and adequate protein are foundational. Vitamin D deficiency is extremely common in India and closely linked to autoimmune thyroid conditions — testing and correcting it is often a priority. Cruciferous vegetables like cabbage and cauliflower are fine when cooked; the raw-only restriction is largely overstated.',
@@ -965,7 +965,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80',
     seoTitle:         'Hormonal Health Nutritionist India — After 30 Guide | WeNourish',
     seoDescription:   'Hormonal health nutrition for women in India. Expert advice on blood sugar, stress, sleep and food choices from WeNourish nutritionist Arjita.',
-    relatedRecipes:   ['almond-date-energy-balls', 'overnight-oats-with-berries', 'coconut-chia-pudding'],
+    relatedRecipes:   ['high-protein-tiramisu-rice-cake', 'one-pan-shakshuka', 'high-protein-strawberry-cheesecake-icecream'],
     body: [
       'Hormonal shifts in your 30s and 40s are normal — but they don\'t have to mean constant fatigue, cravings, or feeling like your body is working against you. Nutrition cannot replace medical treatment, but it is one of the most powerful levers for stabilising the inputs your hormones respond to daily.',
       'Blood sugar stability is the foundation. Erratic eating patterns and high-refined-carb meals drive insulin spikes that disrupt oestrogen, progesterone and cortisol balance. Prioritise protein and fibre at breakfast, avoid going more than 4–5 hours without eating during the day, and limit alcohol which impairs liver detoxification of excess oestrogen.',
@@ -983,7 +983,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80',
     seoTitle:         'Weight Loss Nutritionist India — Plate Method Guide | WeNourish',
     seoDescription:   'Sustainable weight loss meal planning for Indian diets. Expert plate method advice from a nutritionist in India.',
-    relatedRecipes:   ['green-detox-salad', 'quinoa-power-bowl'],
+    relatedRecipes:   ['protein-power-thalipeeth', 'bhuna-tamatar-amla-mooli-chokha'],
     body: [
       'The plate method is one of the simplest frameworks for weight loss that actually sticks. Fill half your plate with vegetables, one quarter with protein, and one quarter with whole grains or starchy vegetables. It works seamlessly with dal-rice, roti-sabzi, and thali-style meals.',
       'For Indian households, this might look like: two servings of sabzi, one katori dal or chicken, and one small portion of brown rice or two rotis. Add a spoon of ghee or curd for satiety. The goal is volume from fibre-rich vegetables that keeps you full without excess calories.',
@@ -1001,7 +1001,7 @@ export const BLOG_POSTS = [
     img:              '/blog/breakfast.jpg',
     seoTitle:         'Diabetes Diet India — Low-GI Breakfast Ideas | WeNourish',
     seoDescription:   'Blood sugar-friendly Indian breakfast ideas from a clinical nutritionist. Low glycaemic meals for diabetes management.',
-    relatedRecipes:   ['overnight-oats-with-berries', 'coconut-chia-pudding'],
+    relatedRecipes:   ['protein-power-thalipeeth', 'tahini-crispy-chickpeas'],
     body: [
       'Breakfast sets your blood sugar trajectory for the entire day. A high-GI breakfast — white bread, sweetened chai with biscuits, or poha made with refined poha alone — creates a spike followed by a crash that triggers cravings by 11am.',
       'Better options: vegetable upma with extra peas and beans, moong dal chilla with mint chutney, eggs with sautéed vegetables and one slice of wholegrain toast, or Greek yoghurt with nuts and a small portion of fruit. Always include protein and fibre.',
@@ -1019,7 +1019,7 @@ export const BLOG_POSTS = [
     img:              '/blog/fermented.jpg',
     seoTitle:         'Gut Health Nutritionist India — Fermented Foods | WeNourish',
     seoDescription:   'How traditional Indian fermented foods support gut health. Expert advice from a nutritionist in India.',
-    relatedRecipes:   ['roasted-garlic-hummus', 'tomato-lentil-soup'],
+    relatedRecipes:   ['bhuna-tamatar-amla-mooli-chokha', 'tahini-crispy-chickpeas'],
     body: [
       'Indian cuisine has always included fermented foods — they predate the probiotic supplement industry by centuries. Curd, idli-dosa batter, kanji, pickled vegetables, and fermented rice dishes all introduce beneficial bacteria that support gut diversity.',
       'Aim for one fermented food daily. Homemade curd is excellent; store-bought works too if live cultures are present. Idli and dosa made from fermented batter are gentler on digestion than many Western breakfast options.',
@@ -1037,7 +1037,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=600&q=80',
     seoTitle:         'PCOS Nutritionist India — Anti-Inflammatory Foods | WeNourish',
     seoDescription:   'Anti-inflammatory nutrition for PCOS from a specialist nutritionist in India. Practical food swaps that reduce inflammation.',
-    relatedRecipes:   ['roasted-beetroot-walnut-salad', 'turmeric-golden-milk'],
+    relatedRecipes:   ['high-protein-blender-brownies', 'bhuna-tamatar-amla-mooli-chokha'],
     body: [
       'PCOS is closely linked to chronic inflammation, which drives insulin resistance, androgen excess, and difficulty losing weight. Nutrition cannot cure PCOS, but an anti-inflammatory eating pattern consistently improves symptoms in clinical practice.',
       'Prioritise: fatty fish, walnuts, flaxseed, turmeric, leafy greens, berries, and colourful vegetables. Cook with olive oil or ghee in moderation. Include spices like ginger and cinnamon which have documented anti-inflammatory properties.',
@@ -1055,7 +1055,7 @@ export const BLOG_POSTS = [
     img:              '/blog/thyroid-breakfast.jpg',
     seoTitle:         'Thyroid Diet Plan India — Breakfast Ideas | WeNourish',
     seoDescription:   'Hypothyroid-friendly Indian breakfast ideas from a thyroid nutrition specialist. Quick meals rich in selenium, iodine and protein.',
-    relatedRecipes:   ['overnight-oats-with-berries', 'turmeric-golden-milk'],
+    relatedRecipes:   ['one-pan-shakshuka', 'protein-power-thalipeeth'],
     body: [
       'Hypothyroid clients often skip breakfast because mornings feel sluggish — but skipping meals slows metabolism further and worsens afternoon fatigue. The solution is quick, prep-ahead options that require minimal morning effort.',
       'Try: overnight oats with chia and walnuts (selenium and fibre), two eggs with sautéed spinach (iron and protein), besan chilla with grated vegetables, or a smoothie with curd, banana, flaxseed and a handful of berries. All take under 10 minutes or can be prepped the night before.',
@@ -1073,7 +1073,7 @@ export const BLOG_POSTS = [
     img:              'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80',
     seoTitle:         'Hormonal Health Nutritionist India — PMS Guide | WeNourish',
     seoDescription:   'Evidence-based PMS nutrition from a hormonal health nutritionist in India. Manage cravings, bloating and mood with food.',
-    relatedRecipes:   ['almond-date-energy-balls', 'coconut-chia-pudding'],
+    relatedRecipes:   ['high-protein-strawberry-cheesecake-icecream', 'high-protein-tiramisu-rice-cake'],
     body: [
       'Premenstrual cravings for chocolate and carbs are not a willpower failure — they reflect real shifts in serotonin, progesterone, and blood sugar in the luteal phase. Understanding this removes guilt and allows smarter food choices.',
       'In the week before your period: increase complex carbs slightly (sweet potato, oats, wholegrain roti) to support serotonin production, prioritise magnesium-rich foods (dark leafy greens, pumpkin seeds, dark chocolate above 70%), and maintain regular protein intake to stabilise blood sugar.',

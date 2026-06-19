@@ -48,9 +48,6 @@
 }
 
 .filterBar {
-  position: sticky;
-  top: var(--nav-sticky-top);
-  z-index: 100;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;

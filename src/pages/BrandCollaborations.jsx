@@ -4,11 +4,69 @@ import FadeUp from '../components/FadeUp';
 import PageMeta from '../components/PageMeta';
 import styles from './BrandCollaborations.module.css';
 
+function IconSponsored() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 10v4h2l4 3V7L6 10H4z" fill="currentColor" />
+      <path d="M16 8a4 4 0 0 1 0 8M18 6a7 7 0 0 1 0 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconVideo() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="6" width="14" height="12" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M17 10l4-2v8l-4-2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconAmbassador() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 2l2.2 4.5 5 .7-3.6 3.5.9 5L12 13.8 7.5 15.7l.9-5L4.8 7.2l5-.7L12 2z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function IconRecipe() {
+  return (
+    <svg className={styles.iconSvg} viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 4h12a2 2 0 0 1 2 2v14H4V6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path d="M8 8h8M8 12h8M8 16h5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 const COLLAB_TYPES = [
-  { icon: 'fa-bullhorn',       title: 'Sponsored Content',       body: 'Authentic recipe development and content creation featuring your product, published to a 600K+ engaged community.' },
-  { icon: 'fa-video',          title: 'Video & Reel Integration', body: 'Product integrations within recipe reels and long-form videos across Instagram and YouTube.' },
-  { icon: 'fa-handshake',      title: 'Brand Ambassadorship',    body: 'Long-term partnership to represent your brand across multiple formats and platforms over a sustained period.' },
-  { icon: 'fa-book-open',      title: 'Recipe Development',      body: 'Custom recipe creation using your products for use on your own channels, website, or packaging.' },
+  {
+    Icon: IconSponsored,
+    title: 'Sponsored Content',
+    body: 'Authentic recipe development and content creation featuring your product, published to a 600K+ engaged community.',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80',
+  },
+  {
+    Icon: IconVideo,
+    title: 'Video & Reel Integration',
+    body: 'Product integrations within recipe reels and long-form videos across Instagram and YouTube.',
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80',
+  },
+  {
+    Icon: IconAmbassador,
+    title: 'Brand Ambassadorship',
+    body: 'Long-term partnership to represent your brand across multiple formats and platforms over a sustained period.',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80',
+  },
+  {
+    Icon: IconRecipe,
+    title: 'Recipe Development',
+    body: 'Custom recipe creation using your products for use on your own channels, website, or packaging.',
+    image: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=600&q=80',
+  },
 ];
 
 export default function BrandCollaborations() {
@@ -61,9 +119,16 @@ export default function BrandCollaborations() {
               transition={{ duration: .5, ease: [.22, 1, .36, 1], delay: i * .1 }}
               whileHover={{ y: -5 }}
             >
-              <div className={styles.icon}><i className={`fa-solid ${c.icon}`} /></div>
-              <h3>{c.title}</h3>
-              <p>{c.body}</p>
+              <div className={styles.cardVisual}>
+                <img src={c.image} alt="" className={styles.cardImage} loading="lazy" aria-hidden="true" />
+                <div className={styles.icon}>
+                  <c.Icon />
+                </div>
+              </div>
+              <div className={styles.cardBody}>
+                <h3>{c.title}</h3>
+                <p>{c.body}</p>
+              </div>
             </motion.div>
           ))}
         </div>
