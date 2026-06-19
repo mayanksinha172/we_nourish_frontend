@@ -5,15 +5,10 @@ import styles from './RecipeDetail.module.css';
 
 const CAT_LABELS = {
   'high-protein': 'High-Protein',
-  'fat-loss': 'Fat-Loss',
   breakfast: 'Breakfast',
   snacks: 'Snacks',
-  drinks: 'Drinks',
   desserts: 'Desserts',
-  salads: 'Salads',
-  soups: 'Soups & Curries',
   dips: 'Dips & Chutneys',
-  'air-fried': 'Air-Fried',
 };
 
 const NUTRITION_LABELS = [
@@ -83,80 +78,170 @@ export default function RecipeDetail() {
         schema={recipeSchema}
       />
       <article className={styles.page}>
-        <section className={styles.hero}>
-          <div className={styles.heroText}>
-            <p className={styles.eyebrow}>We Nourish Recipe</p>
-            <div className={styles.tags}>
-              <span className="recipe-tag">{CAT_LABELS[recipe.tag] || recipe.tag}</span>
-              {recipe.free && <span className="recipe-tag">Free</span>}
-            </div>
-            <h1>{recipe.title}</h1>
-            <p className={styles.desc}>{recipe.description}</p>
-            <div className={styles.heroMeta}>
-              <span className={styles.metaItem}>
-                <svg className={styles.metaIcon} viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
-                  <path d="M12 7v5l3 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-                Prep: {recipe.time}
-              </span>
-              <span className={styles.metaDivider} aria-hidden="true" />
-              <span className={styles.metaItem}>
-                <svg className={styles.metaIcon} viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 10h16v10H4z" fill="none" stroke="currentColor" strokeWidth="2" />
-                  <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" strokeWidth="2" />
-                </svg>
-                {servings} serving{servings > 1 ? 's' : ''}
-              </span>
-              <span className={styles.metaDivider} aria-hidden="true" />
-              <span className={styles.metaItem}>{recipe.kcal}</span>
-            </div>
-          </div>
-          <div className={styles.heroImageWrap}>
-            <img src={recipe.img} alt={recipe.title} className={styles.heroImg} loading="lazy" />
-          </div>
-        </section>
-
-        <section className={styles.grid}>
-          <div className={styles.col}>
-            <h2 className={styles.colTitle}>Ingredients</h2>
-            <ul className={styles.ingredientList}>
-              {recipe.ingredients.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className={styles.col}>
-            <h2 className={styles.colTitle}>Method</h2>
-            <ol className={styles.methodList}>
-              {recipe.steps.map((step, i) => (
-                <li key={step}>
-                  <span className={styles.stepNum}>{i + 1}</span>
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className={styles.col}>
-            <h2 className={styles.colTitle}>Nutrition</h2>
-            <p className={styles.nutritionSub}>Per serving</p>
-            <div className={styles.nutritionGrid}>
-              {NUTRITION_LABELS.map(({ key, label, unit }) => (
-                <div key={key} className={styles.nutritionPill}>
-                  <span className={styles.nutritionValueBubble}>
-                    {formatNutritionValue(key, nutrition[key], unit)}
-                  </span>
-                  <span className={styles.nutritionLabel}>{label}</span>
+        {recipe.videoSrc ? (
+          /* ── Video layout: sticky sidebar ── */
+          <div className={styles.videoLayout}>
+            {/* Left: scrollable recipe content */}
+            <div className={styles.recipeContent}>
+              <div className={styles.heroText}>
+                <p className={styles.eyebrow}>We Nourish Recipe</p>
+                <div className={styles.tags}>
+                  <span className="recipe-tag">{CAT_LABELS[recipe.tag] || recipe.tag}</span>
+                  {recipe.free && <span className="recipe-tag">Free</span>}
                 </div>
-              ))}
+                <h1>{recipe.title}</h1>
+                <p className={styles.desc}>{recipe.description}</p>
+                <div className={styles.heroMeta}>
+                  <span className={styles.metaItem}>
+                    <svg className={styles.metaIcon} viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <path d="M12 7v5l3 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    Prep: {recipe.time}
+                  </span>
+                  <span className={styles.metaDivider} aria-hidden="true" />
+                  <span className={styles.metaItem}>
+                    <svg className={styles.metaIcon} viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 10h16v10H4z" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                    {servings} serving{servings > 1 ? 's' : ''}
+                  </span>
+                  <span className={styles.metaDivider} aria-hidden="true" />
+                  <span className={styles.metaItem}>{recipe.kcal}</span>
+                </div>
+              </div>
+
+              <div className={styles.inlineGrid}>
+                <div className={styles.col}>
+                  <h2 className={styles.colTitle}>Ingredients</h2>
+                  <ul className={styles.ingredientList}>
+                    {recipe.ingredients.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className={styles.col}>
+                  <h2 className={styles.colTitle}>Method</h2>
+                  <ol className={styles.methodList}>
+                    {recipe.steps.map((step, i) => (
+                      <li key={step}>
+                        <span className={styles.stepNum}>{i + 1}</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <div className={styles.col}>
+                  <h2 className={styles.colTitle}>Nutrition</h2>
+                  <p className={styles.nutritionSub}>Per serving</p>
+                  <div className={styles.nutritionGrid}>
+                    {NUTRITION_LABELS.map(({ key, label, unit }) => (
+                      <div key={key} className={styles.nutritionPill}>
+                        <span className={styles.nutritionValueBubble}>
+                          {formatNutritionValue(key, nutrition[key], unit)}
+                        </span>
+                        <span className={styles.nutritionLabel}>{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className={styles.nutritionNote}>
+                    Values are approximate and may vary based on ingredients used.
+                  </p>
+                </div>
+              </div>
             </div>
-            <p className={styles.nutritionNote}>
-              Values are approximate and may vary based on ingredients used.
-            </p>
+
+            {/* Right: sticky video */}
+            <div className={styles.videoSidebar}>
+              <video
+                src={recipe.videoSrc}
+                className={styles.sidebarVideo}
+                controls
+                playsInline
+                poster={recipe.img}
+              />
+            </div>
           </div>
-        </section>
+        ) : (
+          /* ── Standard layout: image in hero ── */
+          <>
+            <section className={styles.hero}>
+              <div className={styles.heroText}>
+                <p className={styles.eyebrow}>We Nourish Recipe</p>
+                <div className={styles.tags}>
+                  <span className="recipe-tag">{CAT_LABELS[recipe.tag] || recipe.tag}</span>
+                  {recipe.free && <span className="recipe-tag">Free</span>}
+                </div>
+                <h1>{recipe.title}</h1>
+                <p className={styles.desc}>{recipe.description}</p>
+                <div className={styles.heroMeta}>
+                  <span className={styles.metaItem}>
+                    <svg className={styles.metaIcon} viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <path d="M12 7v5l3 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    Prep: {recipe.time}
+                  </span>
+                  <span className={styles.metaDivider} aria-hidden="true" />
+                  <span className={styles.metaItem}>
+                    <svg className={styles.metaIcon} viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 10h16v10H4z" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                    {servings} serving{servings > 1 ? 's' : ''}
+                  </span>
+                  <span className={styles.metaDivider} aria-hidden="true" />
+                  <span className={styles.metaItem}>{recipe.kcal}</span>
+                </div>
+              </div>
+              <div className={styles.heroImageWrap}>
+                <img src={recipe.img} alt={recipe.title} className={styles.heroImg} loading="lazy" />
+              </div>
+            </section>
+
+            <section className={styles.grid}>
+              <div className={styles.col}>
+                <h2 className={styles.colTitle}>Ingredients</h2>
+                <ul className={styles.ingredientList}>
+                  {recipe.ingredients.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.col}>
+                <h2 className={styles.colTitle}>Method</h2>
+                <ol className={styles.methodList}>
+                  {recipe.steps.map((step, i) => (
+                    <li key={step}>
+                      <span className={styles.stepNum}>{i + 1}</span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <div className={styles.col}>
+                <h2 className={styles.colTitle}>Nutrition</h2>
+                <p className={styles.nutritionSub}>Per serving</p>
+                <div className={styles.nutritionGrid}>
+                  {NUTRITION_LABELS.map(({ key, label, unit }) => (
+                    <div key={key} className={styles.nutritionPill}>
+                      <span className={styles.nutritionValueBubble}>
+                        {formatNutritionValue(key, nutrition[key], unit)}
+                      </span>
+                      <span className={styles.nutritionLabel}>{label}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className={styles.nutritionNote}>
+                  Values are approximate and may vary based on ingredients used.
+                </p>
+              </div>
+            </section>
+          </>
+        )}
 
         <div className={styles.consultPrompt}>
           <p className={styles.consultEyebrow}>Want more like this?</p>
@@ -165,12 +250,7 @@ export default function RecipeDetail() {
             Get a personalised nutrition plan with recipes tailored to your goals —
             weight loss, PCOS, thyroid, diabetes and more. Free 15-minute call, no commitment.
           </p>
-          <a
-            href={CALENDLY}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-          >
+          <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Book Free Call
           </a>
         </div>

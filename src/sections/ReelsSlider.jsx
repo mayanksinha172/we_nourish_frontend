@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { REELS, SOCIAL_LINKS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import styles from './ReelsSlider.module.css';
@@ -24,7 +25,7 @@ function ReelCard({ reel, onOpen, shouldPause, onHover }) {
       onClick={() => onOpen(reel)}
       onMouseEnter={onHover}
       onFocus={onHover}
-      aria-label={`View recipe for ${reel.caption}`}
+      aria-label={`Options for ${reel.caption}`}
     >
       <div className={styles.videoWrapper}>
         <video
@@ -40,7 +41,7 @@ function ReelCard({ reel, onOpen, shouldPause, onHover }) {
         />
         <div className={styles.videoFooter}>
           <span className={styles.cardTag}>{reel.tag}</span>
-          <span className={styles.viewRecipe}>View Recipe</span>
+          <span className={styles.viewHint}>Tap for options</span>
         </div>
       </div>
       <p className={styles.caption}>{reel.caption}</p>
@@ -48,53 +49,35 @@ function ReelCard({ reel, onOpen, shouldPause, onHover }) {
   );
 }
 
-function RecipeModal({ reel, onClose }) {
-  const r = reel.recipe;
+function ActionSheet({ reel, onClose }) {
   return (
-    <div className={styles.overlay} onClick={onClose} role="dialog" aria-modal="true" aria-label={r.title}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeBtn} onClick={onClose} aria-label="Close recipe">
-          <i className="fa-solid fa-xmark" />
+    <div className={styles.sheetOverlay} onClick={onClose}>
+      <div className={styles.sheet} onClick={(e) => e.stopPropagation()}>
+        <p className={styles.sheetCaption}>{reel.caption}</p>
+
+        <a
+          href={reel.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.sheetBtn}
+          onClick={onClose}
+        >
+          <i className="fa-brands fa-instagram" />
+          View on Instagram
+        </a>
+
+        <Link
+          to={`/recipes/${reel.recipeSlug}`}
+          className={`${styles.sheetBtn} ${styles.sheetBtnPrimary}`}
+          onClick={onClose}
+        >
+          <i className="fa-solid fa-book-open" />
+          View Recipe
+        </Link>
+
+        <button className={styles.sheetCancel} onClick={onClose}>
+          Cancel
         </button>
-
-        <div className={styles.modalInner}>
-          <span className={`eyebrow ${styles.modalTag}`}>{reel.tag}</span>
-          <h2 className={styles.modalTitle}>{r.title}</h2>
-
-          <div className={styles.metaRow}>
-            <span><i className="fa-regular fa-clock" /> {r.time}</span>
-            <span><i className="fa-solid fa-utensils" /> {r.servings}</span>
-            {r.macros && (
-              <>
-                <span><i className="fa-solid fa-fire" /> {r.macros.kcal}</span>
-                <span><i className="fa-solid fa-drumstick-bite" /> {r.macros.protein}</span>
-              </>
-            )}
-          </div>
-
-          <p className={styles.intro}>{r.intro}</p>
-
-          <h3 className={styles.sectionHeading}>Ingredients</h3>
-          <ul className={styles.ingredientList}>
-            {r.ingredients.map((ing, i) => (
-              <li key={i} className={ing === '' ? styles.ingredientSpacer : ''}>{ing}</li>
-            ))}
-          </ul>
-
-          <h3 className={styles.sectionHeading}>Method</h3>
-          <ol className={styles.stepList}>
-            {r.steps.map((step, i) => (
-              <li key={i}>{step}</li>
-            ))}
-          </ol>
-
-          {r.tip && (
-            <div className={styles.tip}>
-              <i className="fa-solid fa-lightbulb" />
-              <p>{r.tip}</p>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
@@ -102,7 +85,7 @@ function RecipeModal({ reel, onClose }) {
 
 export default function ReelsSlider() {
   const [page, setPage] = useState(0);
-  const [activeReel, setActiveReel] = useState(null);
+  const [actionReel, setActionReel] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
 
   const totalPages = Math.ceil(REELS.length / PAGE_SIZE);
@@ -115,11 +98,11 @@ export default function ReelsSlider() {
           <span className="eyebrow">Follow Along</span>
           <h2>See it in action</h2>
           <p className={styles.sub}>
-            Tap any video to get the full recipe. Follow{' '}
+            Tap any video for the recipe or to watch on Instagram. Follow{' '}
             <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className={styles.igLink}>
               @we_nourish
             </a>{' '}
-            on Instagram for more.
+            for more.
           </p>
         </div>
       </FadeUp>
@@ -136,15 +119,12 @@ export default function ReelsSlider() {
           </svg>
         </button>
 
-        <div
-          className={styles.track}
-          onMouseLeave={() => setHoveredId(null)}
-        >
+        <div className={styles.track} onMouseLeave={() => setHoveredId(null)}>
           {visible.map((reel) => (
             <ReelCard
               key={reel.id}
               reel={reel}
-              onOpen={setActiveReel}
+              onOpen={setActionReel}
               shouldPause={hoveredId !== null && hoveredId !== reel.id}
               onHover={() => setHoveredId(reel.id)}
             />
@@ -163,7 +143,6 @@ export default function ReelsSlider() {
         </button>
       </div>
 
-      {/* Dot indicators */}
       <div className={styles.dots}>
         {Array.from({ length: totalPages }).map((_, i) => (
           <button
@@ -183,7 +162,7 @@ export default function ReelsSlider() {
         </div>
       </FadeUp>
 
-      {activeReel && <RecipeModal reel={activeReel} onClose={() => setActiveReel(null)} />}
+      {actionReel && <ActionSheet reel={actionReel} onClose={() => setActionReel(null)} />}
     </section>
   );
 }

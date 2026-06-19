@@ -30,8 +30,16 @@ export default function HowItWorks() {
       </div>
 
       <FadeUp className={styles.videoSlot} delay={.15}>
-        <span className={styles.videoLeaf} aria-hidden="true">🌿</span>
-        <p>Video: Arjita explaining her approach (slot ready — upload via Admin)</p>
+        <video
+          src="/train.mp4"
+          className={styles.demoVideo}
+          controls
+          playsInline
+          preload="metadata"
+        />
+        <p className={styles.demoNote}>
+          🎬 This is a demo placeholder to show how Arjita's intro video will appear here. The final video will be uploaded via Admin.
+        </p>
       </FadeUp>
 
       <FadeUp className="section-cta" delay={.2}>
