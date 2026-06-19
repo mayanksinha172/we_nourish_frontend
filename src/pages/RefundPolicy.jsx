@@ -1,5 +1,6 @@
 import PageMeta from '../components/PageMeta';
-import styles from './PolicyPage.module.css';
+import policyStyles from './PolicyPage.module.css';
+import heroStyles from './RefundPolicy.module.css';
 
 export default function RefundPolicy() {
   return (
@@ -8,11 +9,13 @@ export default function RefundPolicy() {
         title="Refund Policy — WeNourish"
         description="Refund and cancellation policy for WeNourish digital products and nutrition consulting plans."
       />
-      <section className={styles.hero}>
-        <span className="eyebrow" style={{ color: 'rgba(255,255,255,.7)' }}>LEGAL</span>
-        <h1>Refund Policy</h1>
+      <section className={`${policyStyles.hero} ${heroStyles.hero}`}>
+        <div className={heroStyles.heroCopy}>
+          <span className="eyebrow" style={{ color: 'rgba(255,255,255,.85)' }}>LEGAL</span>
+          <h1>Refund Policy</h1>
+        </div>
       </section>
-      <div className={styles.body}>
+      <div className={policyStyles.body}>
         <p>Last updated: June 2026</p>
 
         <p>

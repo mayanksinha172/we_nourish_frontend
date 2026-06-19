@@ -1,0 +1,41 @@
+.hero {
+  background-image:
+    linear-gradient(rgba(56, 24, 72, 0.58), rgba(56, 24, 72, 0.58)),
+    url('/refund-hero-bg.png');
+  background-position: center, center 62%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 5vw;
+  text-align: center;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.heroCopy h1 {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroCopy :global(.eyebrow) {
+  display: block;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 300px;
+    background-position: center, center 58%;
+    padding: 40px 5vw;
+  }
+}

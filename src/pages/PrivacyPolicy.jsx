@@ -1,5 +1,6 @@
 import PageMeta from '../components/PageMeta';
-import styles from './PolicyPage.module.css';
+import policyStyles from './PolicyPage.module.css';
+import styles from './PrivacyPolicy.module.css';
 
 export default function PrivacyPolicy() {
   return (
@@ -8,11 +9,11 @@ export default function PrivacyPolicy() {
         title="Privacy Policy — WeNourish"
         description="How WeNourish collects, uses and protects your personal information."
       />
-      <section className={styles.hero}>
+      <section className={`${policyStyles.hero} ${styles.hero}`}>
         <span className="eyebrow" style={{ color: 'rgba(255,255,255,.7)' }}>LEGAL</span>
         <h1>Privacy Policy</h1>
       </section>
-      <div className={styles.body}>
+      <div className={policyStyles.body}>
         <p>Last updated: June 2026</p>
 
         <h2>Who we are</h2>
