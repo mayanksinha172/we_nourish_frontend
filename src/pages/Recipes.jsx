@@ -19,10 +19,9 @@ function toBackendShape(p, i) {
 }
 
 const CAT_LABELS = {
-  all: 'All', 'high-protein': 'High-Protein', 'fat-loss': 'Fat-Loss',
-  breakfast: 'Breakfast', snacks: 'Snacks', drinks: 'Drinks',
-  desserts: 'Desserts', salads: 'Salads', soups: 'Soups & Curries',
-  dips: 'Dips & Chutneys', 'air-fried': 'Air-Fried',
+  all: 'All', 'high-protein': 'High-Protein',
+  breakfast: 'Breakfast', snacks: 'Snacks',
+  desserts: 'Desserts', dips: 'Dips & Chutneys',
 };
 
 export default function Recipes() {

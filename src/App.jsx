@@ -22,6 +22,7 @@ import PrivacyPolicy       from './pages/PrivacyPolicy';
 import TermsOfService      from './pages/TermsOfService';
 import RefundPolicy        from './pages/RefundPolicy';
 import BrandCollaborations from './pages/BrandCollaborations';
+import ReelRecipePage     from './pages/ReelRecipePage';
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/terms"                  element={<TermsOfService />} />
           <Route path="/refund-policy"          element={<RefundPolicy />} />
           <Route path="/brand-collaborations"   element={<BrandCollaborations />} />
+          <Route path="/reel-recipe/:id"        element={<ReelRecipePage />} />
         </Routes>
       </main>
       <Footer />

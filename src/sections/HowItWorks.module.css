@@ -79,11 +79,24 @@
   margin-bottom: 12px;
 }
 
-.videoSlot p {
-  font-size: 14px;
+.demoVideo {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  background: var(--stone);
+}
+
+.demoNote {
+  margin-top: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--plum);
+  color: var(--muted-plum);
   line-height: 1.6;
+  text-align: center;
+  padding: 10px 16px;
+  background: rgba(56, 24, 72, 0.04);
+  border-radius: 8px;
+  border: 1px dashed rgba(56, 24, 72, 0.15);
 }
 
 @media (max-width: 1024px) {
