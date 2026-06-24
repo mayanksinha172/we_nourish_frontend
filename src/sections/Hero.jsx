@@ -2,8 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { CALENDLY, WA_NUTRITION, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
-import arjita from '../assets/arjita.png';
-import decor  from '../assets/decor.png';
+import heroBg from '../assets/arjita-hero-wide.png';
 import styles from './Hero.module.css';
 
 function LeafBranch({ className }) {
@@ -117,122 +116,127 @@ function PressDropdown({ item }) {
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: .12, delayChildren: .25 } },
+  show: { transition: { staggerChildren: .11, delayChildren: .55 } },
 };
 const item = {
   hidden: { opacity: 0, y: 28 },
-  show:   { opacity: 1, y: 0, transition: { duration: .55, ease: [.22,1,.36,1] } },
+  show:   { opacity: 1, y: 0, transition: { duration: .55, ease: [.22, 1, .36, 1] } },
 };
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      {/* Depth layers */}
+      {/* Single full-bleed hero photo */}
+      <div className={styles.heroBg}>
+        <motion.img
+          src={heroBg}
+          alt="Arjita — WeNourish nutritionist"
+          className={styles.heroBgImg}
+          fetchPriority="high"
+          decoding="sync"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.85, ease: [.22, 1, .36, 1] }}
+        />
+        <div className={styles.heroOverlay} aria-hidden="true" />
+      </div>
+
+      {/* Depth layers — left side only */}
       <div className={styles.grain}       aria-hidden="true" />
       <div className={styles.accentLine}  aria-hidden="true" />
       <LeafBranch className={styles.leafShadow} />
       <LeafBranch className={styles.leafShadowAlt} />
 
-      {/* ── Left: text ── */}
-      <motion.div className={styles.content} variants={container} initial="hidden" animate="show">
-        <motion.span className="eyebrow" variants={item}>
-          Nutritionist · Wellness Expert · Author
-        </motion.span>
+      {/* ── Text overlay ── */}
+      <div className={styles.heroInner}>
+        <motion.div className={styles.content} variants={container} initial="hidden" animate="show">
+          <motion.span className="eyebrow" variants={item}>
+            Nutritionist · Wellness Expert · Author
+          </motion.span>
 
-        <motion.h1 className={styles.headline} variants={item}>
-          Real food.<br />
-          <em className="editorial">Real results.</em>
-        </motion.h1>
+          <motion.h1 className={styles.headline} variants={item}>
+            Real food.<br />
+            <em className="editorial">Real results.</em>
+          </motion.h1>
 
-        <motion.p className={styles.sub} variants={item}>
-          Personalised nutrition consulting built on a decade of clinical experience —
-          no deprivation, no crash diets, no guilt.
-        </motion.p>
+          <motion.p className={styles.sub} variants={item}>
+            Personalised nutrition consulting built on a decade of clinical experience —
+            no deprivation, no crash diets, no guilt.
+          </motion.p>
 
-        <motion.div className={styles.btns} variants={item}>
-          <motion.a
-            href={CALENDLY} target="_blank" rel="noopener"
-            className="btn-primary lg"
-            whileHover={{ scale: 1.04 }} whileTap={{ scale: .97 }}
-          >
-            Book Free Call
-          </motion.a>
-          <motion.a
-            href={WA_NUTRITION} target="_blank" rel="noopener"
-            className="btn-wa"
-            whileHover={{ scale: 1.03 }} whileTap={{ scale: .97 }}
-          >
-            <i className="fa-brands fa-whatsapp" /> Message on WhatsApp
-          </motion.a>
-        </motion.div>
+          <motion.div className={styles.btns} variants={item}>
+            <motion.a
+              href={CALENDLY} target="_blank" rel="noopener"
+              className="btn-primary lg"
+              whileHover={{ scale: 1.04 }} whileTap={{ scale: .97 }}
+            >
+              Book Free Call
+            </motion.a>
+            <motion.a
+              href={WA_NUTRITION} target="_blank" rel="noopener"
+              className="btn-wa"
+              whileHover={{ scale: 1.03 }} whileTap={{ scale: .97 }}
+            >
+              <i className="fa-brands fa-whatsapp" /> Message on WhatsApp
+            </motion.a>
+          </motion.div>
 
-        {/* Trust note under CTAs */}
-        <motion.p className={styles.trustNote} variants={item}>
-          <i className="fa-solid fa-shield-halved" aria-hidden="true" />
-          Free 15-min call · zero commitment
-        </motion.p>
+          <motion.p className={styles.trustNote} variants={item}>
+            <i className="fa-solid fa-shield-halved" aria-hidden="true" />
+            Free 15-min call · zero commitment
+          </motion.p>
 
-        <motion.div className={styles.cred} variants={item}>
-          <div className={styles.credCard}>
-            <div className={styles.credRow}>
-              <div className={styles.credStat}>
-                <span className={styles.credNum}>600K+</span>
-                <span className={styles.credLabel}>community</span>
+          <motion.div className={styles.cred} variants={item}>
+            <div className={styles.credCard}>
+              <div className={styles.credRow}>
+                <div className={styles.credStat}>
+                  <span className={styles.credNum}>600K+</span>
+                  <span className={styles.credLabel}>community</span>
+                </div>
+                <span className={styles.credDivider} aria-hidden="true" />
+                <div className={styles.credStat}>
+                  <span className={styles.credNum}>10+</span>
+                  <span className={styles.credLabel}>years experience</span>
+                </div>
               </div>
-              <span className={styles.credDivider} aria-hidden="true" />
-              <div className={styles.credStat}>
-                <span className={styles.credNum}>10+</span>
-                <span className={styles.credLabel}>years experience</span>
+            </div>
+            <div className={styles.pressBlock}>
+              <span className={styles.pressLabel}>As seen in</span>
+              <div className={styles.pressRow}>
+                {PRESS_ITEMS.map((pressItem) =>
+                  pressItem.articles ? (
+                    <PressDropdown key={pressItem.name} item={pressItem} />
+                  ) : (
+                    <a
+                      key={pressItem.name}
+                      href={PRESS_LINKS[pressItem.name] || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.pressChip}
+                      title={pressItem.name}
+                      aria-label={pressItem.name}
+                    >
+                      <img src={pressItem.logo} alt="" className={styles.pressLogo} loading="lazy" />
+                    </a>
+                  )
+                )}
               </div>
             </div>
-          </div>
-          <div className={styles.pressBlock}>
-            <span className={styles.pressLabel}>As seen in</span>
-            <div className={styles.pressRow}>
-              {PRESS_ITEMS.map((pressItem) =>
-                pressItem.articles ? (
-                  <PressDropdown key={pressItem.name} item={pressItem} />
-                ) : (
-                  <a
-                    key={pressItem.name}
-                    href={PRESS_LINKS[pressItem.name] || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.pressChip}
-                    title={pressItem.name}
-                    aria-label={pressItem.name}
-                  >
-                    <img src={pressItem.logo} alt="" className={styles.pressLogo} loading="lazy" />
-                  </a>
-                )
-              )}
-            </div>
-          </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* ── Right: visual ── */}
-      <motion.div
-        className={styles.visualCol}
-        initial={{ opacity: 0, x: 60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: .7, ease: [.22,1,.36,1], delay: .2 }}
-      >
-        <div className={styles.photoWrap}>
-          <div className={styles.photoStack}>
-            <div className={styles.photoFrame}>
-              <img
-                src={arjita}
-                alt="Arjita — WeNourish nutritionist"
-                className={styles.photo}
-              />
-            </div>
-            <p className={styles.caption}>Arjita — Guiding your journey to better health.</p>
-          </div>
-        </div>
-      </motion.div>
+      <div className={styles.captionWrap}>
+        <motion.p
+          className={styles.caption}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [.22, 1, .36, 1], delay: 0.35 }}
+        >
+          Arjita — Guiding your journey to better health.
+        </motion.p>
+      </div>
 
-      {/* Double-layer wave into next section */}
       <div className={styles.heroWave} aria-hidden="true">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path
