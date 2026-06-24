@@ -5,30 +5,63 @@
 ══════════════════════════════════════════════════════════════ */
 
 .hero {
-  background:
-    radial-gradient(circle at 82% 38%, rgba(251, 250, 247, 0.95) 0%, rgba(251, 250, 247, 0.55) 32%, rgba(255, 255, 255, 0) 58%),
-    linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 68%, #FCF8F1 100%);
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 40px;
+  align-items: center;
   padding: 48px 7vw 118px;
-  min-height: 720px;
+  min-height: min(760px, 100vh);
   height: auto;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
   z-index: 3;
   margin-top: var(--nav-h);
 }
 
+/* ── Full-bleed background (cover) ── */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--paper);
+  overflow: hidden;
+}
+
+.heroBgImg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 82% center;
+  filter: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* White cover — left text only */
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(34%, 480px);
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.92) 0%,
+    rgba(255,255,255,0.75) 35%,
+    rgba(255,255,255,0.10) 70%,
+    transparent 100%
+  );
+}
 /* Atmospheric light — sage glow behind arch, warm accent bottom-right */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 600px 520px at 78% 42%, rgba(168,188,152,0.22), transparent 65%),
-    radial-gradient(ellipse 380px 320px at 96% 82%, rgba(230,210,185,0.40), transparent 70%),
     radial-gradient(ellipse 260px 220px at 12% 22%, rgba(168,188,152,0.10), transparent 72%);
   pointer-events: none;
   z-index: 0;
@@ -51,6 +84,8 @@
       rgba(56,24,72,0.055) 0%,
       rgba(56,24,72,0.018) 5%,
       transparent 17%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 50%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -63,6 +98,8 @@
   pointer-events: none;
   opacity: 0.028;
   mix-blend-mode: multiply;
+  mask-image: linear-gradient(90deg, #000 0%, #000 46%, transparent 58%);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 46%, transparent 58%);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 220px 220px;
 }
@@ -112,14 +149,21 @@
 /* ══════════════════════════════════════════════════════════════
    Left column — text
 ══════════════════════════════════════════════════════════════ */
+.heroInner {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: min(580px, 46vw);
+}
+
 .content {
-  flex: 1;
-  max-width: 548px;
+  flex: none;
+  width: 100%;
+  max-width: 580px;
   padding-top: 4px;
   padding-bottom: 24px;
   overflow: visible;
   position: relative;
-  z-index: 2;
 }
 .content .eyebrow { margin-bottom: 14px; }
 
@@ -176,15 +220,15 @@
 /* Frosted stat card */
 .credCard {
   display: inline-flex;
-  background: rgba(255,255,255,0.62);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(56,24,72,0.08);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 24, 72, 0.1);
   border-radius: 16px;
   padding: 14px 22px;
   box-shadow:
-    0 2px 12px rgba(56,24,72,0.05),
-    inset 0 1px 0 rgba(255,255,255,0.8);
+    0 4px 20px rgba(56, 24, 72, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   width: fit-content;
 }
 
@@ -334,115 +378,40 @@
 .pressMenuItem:hover i        { opacity: 1; color: var(--green); transform: translate(1px,-1px); }
 
 /* ══════════════════════════════════════════════════════════════
-   Right column — visual
+   Caption — pill tag directly below her photo (right side)
 ══════════════════════════════════════════════════════════════ */
-.visualCol {
-  flex: 0 1 50%;
-  position: relative;
-  z-index: 6;
-  align-self: flex-start;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  min-width: 0;
-  overflow: visible;
-  margin-top: -28px;
-}
-
-.photoWrap {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 0 auto;
-  overflow: visible;
-}
-
-.photoStack {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  width: min(36vw, 380px);
-  max-width: 100%;
-}
-
-.photoFrame {
-  width: min(36vw, 380px);
-  max-width: 100%;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-/* ── Floating experience chip ── */
-.floatChip {
+.captionWrap {
   position: absolute;
-  top: 26px;
-  left: 2px;
-  z-index: 8;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 14px 8px 11px;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(40,120,48,0.16);
-  border-radius: var(--radius-pill);
-  box-shadow:
-    0 4px 16px rgba(56,24,72,0.08),
-    0 1px 4px rgba(56,24,72,0.04),
-    inset 0 1px 0 rgba(255,255,255,0.9);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--plum);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  pointer-events: none;
-}
-.floatChip i {
-  color: var(--green);
-  font-size: 13px;
-}
-
-.photo {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 8%;
-  mix-blend-mode: multiply;
-}
-
-/* Tagline — premium pill below the photo */
-.caption {
-  position: relative;
-  margin: 0;
+  right: 3.5vw;
+  left: auto;
+  bottom: clamp(100px, 11vh, 138px);
   z-index: 6;
-  width: 100%;
+  width: auto;
+  max-width: min(28vw, 320px);
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  transform: none;
+}
+
+.caption {
+  display: inline-block;
+  margin: 0;
+  padding: 9px 20px;
   max-width: 100%;
-  padding: 11px 20px;
-  font-size: 13px;
+  font-size: clamp(11px, 0.95vw, 13px);
   font-weight: 600;
   color: var(--plum);
   text-align: center;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(229, 240, 230, 0.96) 100%);
-  border: 1.5px solid rgba(40, 120, 48, 0.35);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(56, 24, 72, 0.14);
   border-radius: var(--radius-pill);
-  box-shadow:
-    0 0 0 1px rgba(201, 162, 75, 0.18),
-    0 6px 18px rgba(56, 24, 72, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 14px rgba(56, 24, 72, 0.07);
+  text-shadow: none;
+  opacity: 1;
 }
 
 /* ── Decor: vase + books ── */
@@ -495,33 +464,53 @@
    Responsive
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 1180px) {
-  .photoFrame { width: min(38vw, 340px); }
-  .photoStack { width: min(38vw, 340px); }
-  .heroDeco { right: 2px; height: 260px; }
+  .heroBgImg { object-position: 74% center; }
+  .captionWrap { right: 2.5vw; left: auto; bottom: clamp(92px, 10vh, 128px); max-width: min(30vw, 300px); }
+  .heroInner { max-width: min(540px, 50vw); }
 }
 
 @media (max-width: 900px) {
   .hero {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
     padding: 0 5vw 100px;
-    min-height: auto;
-    gap: 0;
-    overflow: hidden;
+    min-height: min(680px, 100vh);
   }
   .accentLine { display: none; }
-  .content    { padding: 36px 0 8px; max-width: 100%; }
+  .content { padding: 28px 0 8px; max-width: 100%; }
+  .heroInner { max-width: 100%; }
 
-  .visualCol {
-    width: 100%; flex: none;
-    align-self: center;
-    margin-top: 0;
-    padding-top: 24px;
+  .heroBgImg { object-position: 62% 42%; }
+
+  .heroOverlay {
+    width: 100%;
+    height: 55%;
+    bottom: auto;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.28) 24%,
+      rgba(255, 255, 255, 0.88) 40%,
+      rgba(255, 255, 255, 0.97) 100%
+    );
   }
-  .photoWrap { width: 100%; margin: 0 auto; }
-  .photoFrame { width: min(54vw, 320px); }
-  .photoStack { width: min(54vw, 320px); }
-  .heroDeco { right: -10px; bottom: -8px; height: 240px; }
-  .floatChip { top: 14px; left: 4px; font-size: 11px; padding: 6px 10px 6px 9px; }
+
+  .captionWrap {
+    position: relative;
+    left: auto;
+    transform: none;
+    bottom: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 16px;
+    justify-content: center;
+  }
+
+  .caption {
+    white-space: normal;
+    text-align: center;
+  }
 
   .leafShadow    { left: -6%; top: -50px; width: 220px; height: 270px; }
   .leafShadowAlt { left: 56%; top: -80px; width: 170px; height: 210px; }
@@ -531,11 +520,10 @@
 }
 
 @media (max-width: 600px) {
-  .photoFrame { width: min(64vw, 270px); }
-  .heroDeco { right: -8px; bottom: -6px; height: 195px; }
-  .caption { font-size: 11px; }
-  .photoStack { width: min(64vw, 270px); }
-  .floatChip { display: none; }
+  .hero { min-height: min(640px, 100svh); }
+  .heroBgImg { object-position: 56% 40%; }
+  .captionWrap { margin-top: 12px; }
+  .caption { font-size: 11px; padding: 8px 16px; }
 
   .btns { flex-direction: column; align-items: stretch; }
   .btns :global(.btn-primary),

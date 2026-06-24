@@ -22,12 +22,12 @@ export default function Navbar() {
       const y = window.scrollY;
       setScrolled(y > 20);
 
-      if (y <= 20) {
+      if (y <= NAV_HIDE_OFFSET) {
+        setHidden(false);
+      } else if (y < lastScrollY.current) {
         setHidden(false);
       } else if (y > lastScrollY.current + 6) {
         setHidden(true);
-      } else if (y < lastScrollY.current - 6) {
-        setHidden(false);
       }
 
       lastScrollY.current = y;
