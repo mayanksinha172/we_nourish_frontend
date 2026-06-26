@@ -57,6 +57,14 @@ export default function Recipes() {
       .catch(() => setProducts(PRODUCTS.map(toBackendShape)));
   }, []);
 
+  useEffect(() => {
+    if (window.location.hash !== '#premium-books') return undefined;
+    const timer = setTimeout(() => {
+      document.getElementById('premium-books')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const displayProducts = products.length
     ? products
     : PRODUCTS.map(toBackendShape);
@@ -145,7 +153,7 @@ export default function Recipes() {
       </section>
 
       {/* Premium Recipe Books */}
-      <section className={`section-plum ${styles.books_section}`}>
+      <section id="premium-books" className={`section-plum ${styles.books_section}`}>
         <FadeUp className="section-header">
           <span className="eyebrow" style={{ color: 'var(--green-tint)' }}>RECIPE BOOKS</span>
           <h2 style={{ color: 'white' }}>Take the kitchen with you</h2>

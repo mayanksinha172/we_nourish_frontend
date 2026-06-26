@@ -1,5 +1,5 @@
 .section {
-  padding: 104px 5vw;
+  padding: 72px 4vw 36px;
   position: relative;
   background: #FFFFFF;
 }
@@ -58,10 +58,11 @@
 }
 
 .videoSlot {
-  margin: 56px auto 0;
-  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1060px;
   min-height: 130px;
-  padding: 32px 28px;
+  padding: 24px 20px;
   border: 1px solid rgba(56, 24, 72, 0.08);
   border-radius: 18px;
   background: #FFFFFF;
@@ -99,6 +100,11 @@
   border: 1px dashed rgba(56, 24, 72, 0.15);
 }
 
+.cta {
+  text-align: center;
+  margin-top: 28px;
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -108,13 +114,13 @@
 
 @media (max-width: 900px) {
   .section {
-    padding: 80px 5vw;
+    padding: 56px 5vw 28px;
   }
 }
 
 @media (max-width: 600px) {
   .section {
-    padding: 64px 5vw;
+    padding: 48px 5vw 24px;
   }
 
   .grid {

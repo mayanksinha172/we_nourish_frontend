@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CALENDLY, WA_NUTRITION } from '../data/content';
+import { WA_NUTRITION } from '../data/content';
 import {
   INCLUDED_IN_ALL_PLANS,
   ONE_TIME_CONSULTATION,
@@ -51,7 +51,7 @@ export default function NutritionPlans() {
 
           <div className={styles.heroActions}>
             <motion.a
-              href={CALENDLY}
+              href={WA_NUTRITION}
               target="_blank"
               rel="noopener"
               className="btn-primary lg"

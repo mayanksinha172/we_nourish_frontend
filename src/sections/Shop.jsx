@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { PRODUCTS as STATIC_PRODUCTS } from '../data/content';
@@ -30,6 +31,9 @@ export default function Shop() {
     ? products
     : STATIC_PRODUCTS.map(toBackendShape);
 
+  const previewProducts = displayProducts.slice(0, 2);
+  const hasMoreBooks = displayProducts.length > 2;
+
   return (
     <>
       <section className={styles.section}>
@@ -39,7 +43,7 @@ export default function Shop() {
         </FadeUp>
 
         <div className={styles.grid}>
-          {displayProducts.map((p, i) => (
+          {previewProducts.map((p, i) => (
             <motion.div
               key={p.id}
               className={styles.card}
@@ -47,7 +51,6 @@ export default function Shop() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: .5, ease: [.22, 1, .36, 1], delay: i * .1 }}
-              whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(0,0,0,.2)' }}
             >
               <span className={styles.badge}>Premium</span>
               <img src={p.img_url} alt={p.title} className={styles.cover} loading="lazy" />
@@ -66,6 +69,16 @@ export default function Shop() {
             </motion.div>
           ))}
         </div>
+
+        {hasMoreBooks && (
+          <div className={styles.showMoreWrap}>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
+              <Link to="/recipes#premium-books" className={styles.showMoreBtn}>
+                Show more
+              </Link>
+            </motion.div>
+          </div>
+        )}
       </section>
 
       {modals}

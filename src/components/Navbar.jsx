@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS, CALENDLY } from '../data/content';
+import { NAV_LINKS, WA_NUTRITION } from '../data/content';
 import Logo from './Logo';
 import styles from './Navbar.module.css';
 
@@ -79,7 +79,7 @@ export default function Navbar() {
 
         <div className={styles.actions}>
          <motion.a
-           href={CALENDLY}
+           href={WA_NUTRITION}
            target="_blank"
            rel="noopener"
            className={`btn-primary ${styles.bookCall}`}
@@ -121,7 +121,7 @@ export default function Navbar() {
                   {label}
                 </NavLink>
               ))}
-              <a href={CALENDLY} target="_blank" rel="noopener" className={`btn-primary ${styles.mobileBook}`} onClick={() => setMenuOpen(false)}>
+              <a href={WA_NUTRITION} target="_blank" rel="noopener" className={`btn-primary ${styles.mobileBook}`} onClick={() => setMenuOpen(false)}>
                 Book Free Call
               </a>
             </motion.div>
