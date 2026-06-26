@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NUTRITION_PLANS, PLATE_IMAGE, CALENDLY } from '../data/content';
+import { NUTRITION_PLANS, PLATE_IMAGE, WA_NUTRITION } from '../data/content';
 import Logo from '../components/Logo';
 import styles from './RotatingPlateSection.module.css';
 
@@ -48,7 +48,7 @@ export default function RotatingPlateSection() {
               <h3>{plan.title}</h3>
               <p className={styles.kcal}>{plan.kcal}</p>
               <p className={styles.desc}>{plan.description}</p>
-              <a href={CALENDLY} target="_blank" rel="noopener" className="btn-primary">
+              <a href={WA_NUTRITION} target="_blank" rel="noopener" className="btn-primary">
                 Book Free Call
               </a>
             </div>

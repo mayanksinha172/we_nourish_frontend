@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
-import { CALENDLY, WA_NUTRITION, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
+import { WA_NUTRITION, WA_COLLAB, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
 import heroBg from '../assets/arjita-hero-wide.png';
 import styles from './Hero.module.css';
 
@@ -166,18 +166,18 @@ export default function Hero() {
 
           <motion.div className={styles.btns} variants={item}>
             <motion.a
-              href={CALENDLY} target="_blank" rel="noopener"
+              href={WA_NUTRITION} target="_blank" rel="noopener"
               className="btn-primary lg"
               whileHover={{ scale: 1.04 }} whileTap={{ scale: .97 }}
             >
               Book Free Call
             </motion.a>
             <motion.a
-              href={WA_NUTRITION} target="_blank" rel="noopener"
+              href={WA_COLLAB} target="_blank" rel="noopener"
               className="btn-wa"
               whileHover={{ scale: 1.03 }} whileTap={{ scale: .97 }}
             >
-              <i className="fa-brands fa-whatsapp" /> Message on WhatsApp
+              <i className="fa-brands fa-whatsapp" /> Message on brand collaboration
             </motion.a>
           </motion.div>
 

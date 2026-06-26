@@ -39,12 +39,12 @@ export default function Home() {
         schema={HOME_SCHEMA}
       />
       <Hero />
+      <Testimonials />
+      <CredibilityBand />
+      <ReelsSlider />
       <HowItWorks />
       <RecipesTeaser />
       <Shop />
-      <CredibilityBand />
-      <ReelsSlider />
-      <Testimonials />
       <CommunitySignup />
       <FAQ />
       <ClosingCTA />

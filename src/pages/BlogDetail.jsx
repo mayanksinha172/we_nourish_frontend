@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { BLOG_POSTS, getRecipeBySlug, CALENDLY } from '../data/content';
+import { BLOG_POSTS, getRecipeBySlug, WA_NUTRITION } from '../data/content';
 import ClosingCTA from '../sections/ClosingCTA';
 import PageMeta from '../components/PageMeta';
 import styles from './BlogDetail.module.css';
@@ -198,7 +198,7 @@ export default function BlogDetail() {
           <h2 className={styles.consultTitle}>Book a free consultation with Arjita</h2>
           <p className={styles.consultText}>{consultText}</p>
           <a
-            href={CALENDLY}
+            href={WA_NUTRITION}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"

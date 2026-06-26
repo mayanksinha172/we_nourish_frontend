@@ -125,26 +125,80 @@
 
 .inlineGrid {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
+  grid-template-columns: 1fr;
   gap: 0;
   margin-top: 40px;
 }
 
-/* Nutrition spans full width below ingredients + method */
-.inlineGrid .col:last-child {
-  grid-column: 1 / -1;
+.recipeTabs {
+  padding: 0;
+  min-width: 0;
+}
+
+.tabBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.tabBtn {
+  border: 1.5px solid rgba(56, 24, 72, 0.14);
+  background: white;
+  color: var(--plum);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.tabBtn:hover {
+  border-color: rgba(40, 120, 48, 0.35);
+  color: var(--green);
+}
+
+.tabBtnActive {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.tabBtnActive:hover {
+  color: white;
+}
+
+/* Nutrition spans full width below ingredients / method tabs */
+.inlineGrid .nutritionCol,
+.grid .nutritionCol {
   border-left: none;
   border-top: 1px solid rgba(56, 24, 72, 0.08);
   padding-left: 0;
 }
 
+.inlineGrid .nutritionCol {
+  grid-column: 1 / -1;
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1.2fr 1fr;
   gap: 0;
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 5vw 64px;
+}
+
+.grid .recipeTabs {
+  padding: 40px 32px 0 0;
+  border-left: none;
+}
+
+.grid .nutritionCol {
+  padding: 40px 0 0 32px;
+  border-left: 1px solid rgba(56, 24, 72, 0.08);
+  border-top: none;
 }
 
 .col {
@@ -361,6 +415,22 @@
     padding-bottom: 48px;
   }
 
+  .grid .recipeTabs,
+  .grid .nutritionCol {
+    padding: 32px 0 0;
+    border-left: none;
+    border-top: 1px solid rgba(56, 24, 72, 0.08);
+  }
+
+  .grid .recipeTabs {
+    border-top: none;
+    padding-top: 32px;
+  }
+
+  .recipeTabs {
+    padding: 32px 0 0;
+  }
+
   .col {
     border-left: none;
     border-top: 1px solid rgba(56, 24, 72, 0.08);
@@ -392,7 +462,12 @@
   }
 
   .inlineGrid {
+    grid-template-columns: 1fr;
     margin-top: 28px;
+  }
+
+  .inlineGrid .recipeTabs {
+    padding: 0;
   }
 }
 

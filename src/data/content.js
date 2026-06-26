@@ -550,6 +550,18 @@ export const PRODUCTS = [
     price: '₹599',
     img: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/keto.jpg',
   },
+  {
+    title: 'Thyroid-Friendly Recipe Collection',
+    desc: 'Balanced Indian meals to support thyroid health and steady energy all day.',
+    price: '₹449',
+    img: 'https://www.fitmeals.co.in/wp-content/uploads/2021/05/maintenance.jpg',
+  },
+  {
+    title: 'Diabetes Support Recipe Book',
+    desc: 'Low-GI Indian recipes for blood sugar management — flavourful, not restrictive.',
+    price: '₹549',
+    img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80',
+  },
 ];
 
 export const EVENTS_BG =
