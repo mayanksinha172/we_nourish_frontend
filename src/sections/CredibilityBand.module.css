@@ -14,8 +14,28 @@
 }
 
 /* ── Brand associations marquee ── */
+.marqueeGroup {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+  padding-right: 24px;
+}
+
 .brandInner {
+  gap: 0;
+  animation-name: brandMarquee;
   animation-duration: 55s;
+}
+
+@keyframes brandMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .brandItem {
@@ -121,7 +141,23 @@
   filter: contrast(1.08);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  .brandTrack {
+    mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+  }
+
+  .brandInner {
+    animation-name: brandMarquee;
+    animation-duration: 95s;
+    will-change: auto;
+  }
+
+  .marqueeGroup {
+    gap: 20px;
+    padding-right: 20px;
+  }
+
   .brandItem {
     padding: 10px 20px;
     gap: 12px;
@@ -132,9 +168,11 @@
     max-width: 140px;
     max-height: 50px;
   }
+}
 
+@media (max-width: 600px) {
   .brandInner {
-    animation-duration: 40s;
+    animation-duration: 110s;
   }
 
   .pressItem {

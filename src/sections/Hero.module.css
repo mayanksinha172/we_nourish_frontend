@@ -474,7 +474,8 @@
 }
 
 @media (max-width: 900px) {
-  .hero {
+  /* Beat global `section:not(.section-fullbleed)` padding-top on mobile only */
+  section.hero {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -597,7 +598,7 @@
 }
 
 @media (max-width: 600px) {
-  .hero {
+  section.hero {
     padding-bottom: 48px;
   }
 

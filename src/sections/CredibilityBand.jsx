@@ -6,9 +6,26 @@ const HALF_REPEAT = 4;
 const half = Array.from({ length: HALF_REPEAT }, () => PRESS_ITEMS).flat();
 const pressMarquee = [...half, ...half];
 
-const BRAND_REPEAT = 2;
-const brandHalf = Array.from({ length: BRAND_REPEAT }, () => BRAND_ASSOCIATIONS).flat();
-const brandMarquee = [...brandHalf, ...brandHalf];
+function BrandMarqueeItem({ brand }) {
+  return (
+    <div className={`${styles.pressItem} ${styles.brandItem}`}>
+      {brand.logo && (
+        <img
+          src={brand.logo}
+          alt={`${brand.name} logo`}
+          className={styles.brandLogo}
+          loading="eager"
+          decoding="async"
+          draggable="false"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+      )}
+      <span>{brand.name}</span>
+    </div>
+  );
+}
 
 export default function CredibilityBand() {
   return (
@@ -20,22 +37,17 @@ export default function CredibilityBand() {
         </span>
       </FadeUp>
 
-      <div className={styles.track}>
+      <div className={`${styles.track} ${styles.brandTrack}`}>
         <div className={`${styles.inner} ${styles.brandInner}`}>
-          {brandMarquee.map((brand, i) => (
-            <div key={`${brand.name}-${i}`} className={`${styles.pressItem} ${styles.brandItem}`}>
-              {brand.logo && (
-                <img
-                  src={brand.logo}
-                  alt={`${brand.name} logo`}
-                  className={styles.brandLogo}
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-              )}
-              <span>{brand.name}</span>
+          {[0, 1].map((group) => (
+            <div
+              key={group}
+              className={styles.marqueeGroup}
+              aria-hidden={group === 1 ? true : undefined}
+            >
+              {BRAND_ASSOCIATIONS.map((brand) => (
+                <BrandMarqueeItem key={`${group}-${brand.name}`} brand={brand} />
+              ))}
             </div>
           ))}
         </div>
