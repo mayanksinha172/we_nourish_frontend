@@ -2,9 +2,9 @@ import { BRAND_ASSOCIATIONS, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import styles from './CredibilityBand.module.css';
 
-const HALF_REPEAT = 4;
-const half = Array.from({ length: HALF_REPEAT }, () => PRESS_ITEMS).flat();
-const pressMarquee = [...half, ...half];
+/* Repeat within each half so the track fills wide screens; two identical groups = seamless -50% loop */
+const PRESS_GROUP_REPEAT = 4;
+const pressGroupItems = Array.from({ length: PRESS_GROUP_REPEAT }, () => PRESS_ITEMS).flat();
 
 function BrandMarqueeItem({ brand }) {
   return (
@@ -24,6 +24,27 @@ function BrandMarqueeItem({ brand }) {
       )}
       <span>{brand.name}</span>
     </div>
+  );
+}
+
+function PressMarqueeItem({ item }) {
+  return (
+    <a
+      href={PRESS_LINKS[item.name] || '#'}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.pressItem}
+    >
+      <img
+        src={item.logo}
+        alt={`${item.name} logo`}
+        className={styles.pressLogo}
+        loading="eager"
+        decoding="async"
+        draggable="false"
+      />
+      <span>{item.name}</span>
+    </a>
   );
 }
 
@@ -62,24 +83,18 @@ export default function CredibilityBand() {
         </span>
       </FadeUp>
 
-      <div className={styles.track}>
-        <div className={styles.inner}>
-          {pressMarquee.map((item, i) => (
-            <a
-              key={`${item.name}-${i}`}
-              href={PRESS_LINKS[item.name] || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.pressItem}
+      <div className={`${styles.track} ${styles.pressTrack}`}>
+        <div className={`${styles.inner} ${styles.pressInner}`}>
+          {[0, 1].map((group) => (
+            <div
+              key={group}
+              className={styles.marqueeGroup}
+              aria-hidden={group === 1 ? true : undefined}
             >
-              <img
-                src={item.logo}
-                alt={`${item.name} logo`}
-                className={styles.pressLogo}
-                loading="lazy"
-              />
-              <span>{item.name}</span>
-            </a>
+              {pressGroupItems.map((item, i) => (
+                <PressMarqueeItem key={`${group}-${item.name}-${i}`} item={item} />
+              ))}
+            </div>
           ))}
         </div>
       </div>
