@@ -13,7 +13,7 @@
   border-radius: 2px;
 }
 
-/* ── Brand associations marquee ── */
+/* ── Shared marquee groups ── */
 .marqueeGroup {
   display: flex;
   align-items: center;
@@ -22,13 +22,32 @@
   padding-right: 24px;
 }
 
-.brandInner {
+.brandInner,
+.pressInner {
   gap: 0;
+}
+
+.brandInner {
   animation-name: brandMarquee;
   animation-duration: 55s;
 }
 
+.pressInner {
+  animation-name: pressMarquee;
+  animation-duration: 45s;
+}
+
 @keyframes brandMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes pressMarquee {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -71,7 +90,7 @@
   opacity: 1;
 }
 
-/* ── Marquee ── */
+/* ── Marquee track ── */
 .track {
   overflow: hidden;
   width: 100%;
@@ -82,24 +101,18 @@
 .inner {
   display: flex;
   align-items: center;
-  gap: 24px;
   width: max-content;
   flex-wrap: nowrap;
-  animation: marquee 45s linear infinite;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-.track:hover .inner {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
+@media (hover: hover) and (pointer: fine) {
+  .track:hover .inner {
+    animation-play-state: paused;
   }
 }
 
@@ -142,15 +155,18 @@
 }
 
 @media (max-width: 900px) {
-  .brandTrack {
+  .brandTrack,
+  .pressTrack {
     mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
   }
 
   .brandInner {
-    animation-name: brandMarquee;
     animation-duration: 95s;
-    will-change: auto;
+  }
+
+  .pressInner {
+    animation-duration: 55s;
   }
 
   .marqueeGroup {
@@ -175,6 +191,15 @@
     animation-duration: 110s;
   }
 
+  .pressInner {
+    animation-duration: 40s;
+  }
+
+  .marqueeGroup {
+    gap: 16px;
+    padding-right: 16px;
+  }
+
   .pressItem {
     font-size: 14px;
     padding: 6px 16px;
@@ -184,10 +209,5 @@
   .pressLogo {
     height: 18px;
     max-width: 80px;
-  }
-
-  .inner {
-    gap: 16px;
-    animation-duration: 35s;
   }
 }
