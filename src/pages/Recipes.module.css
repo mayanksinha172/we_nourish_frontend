@@ -502,7 +502,23 @@
 
   }
 
+  .filterBar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 16px 4vw;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
 
+  .filterBar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .searchWrap {
+    width: calc(100% - 8vw);
+    margin-top: 20px;
+  }
 
   .grid {
 

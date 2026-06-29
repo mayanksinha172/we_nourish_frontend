@@ -90,16 +90,17 @@
 }
 .drawer {
   position: fixed; top: 0; right: 0; bottom: 0;
-  width: 280px;
+  width: min(280px, 85vw);
   background: var(--plum); z-index: 999;
   display: flex; flex-direction: column;
   padding: 80px 32px 32px; gap: 4px;
   box-shadow: -4px 0 24px rgba(0,0,0,.12);
+  overflow-y: auto;
 }
 .drawerClose {
   position: absolute; top: 20px; right: 20px;
   background: none; border: none;
-  font-size: 22px; color: var(--plum); cursor: pointer;
+  font-size: 22px; color: #ffffff; cursor: pointer;
 }
 .mobileLink {
   font-weight: 600; font-size: 16px; color: #fff;

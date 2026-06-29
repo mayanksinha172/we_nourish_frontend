@@ -2,7 +2,8 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { WA_NUTRITION, WA_COLLAB, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
-import heroBg from '../assets/arjita-hero-wide.png';
+import heroBgWide from '../assets/arjita-hero-wide.png';
+import heroBgMobile from '../assets/arjita-hero.png';
 import styles from './Hero.module.css';
 
 function LeafBranch({ className }) {
@@ -129,11 +130,20 @@ export default function Hero() {
       {/* Single full-bleed hero photo */}
       <div className={styles.heroBg}>
         <motion.img
-          src={heroBg}
+          src={heroBgWide}
           alt="Arjita — WeNourish nutritionist"
-          className={styles.heroBgImg}
+          className={`${styles.heroBgImg} ${styles.heroBgWide}`}
           fetchPriority="high"
           decoding="sync"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.85, ease: [.22, 1, .36, 1] }}
+        />
+        <motion.img
+          src={heroBgMobile}
+          alt="Arjita — WeNourish nutritionist"
+          className={`${styles.heroBgImg} ${styles.heroBgMobile}`}
+          decoding="async"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.85, ease: [.22, 1, .36, 1] }}
@@ -197,6 +207,11 @@ export default function Hero() {
                 <div className={styles.credStat}>
                   <span className={styles.credNum}>10+</span>
                   <span className={styles.credLabel}>years experience</span>
+                </div>
+                <span className={styles.credDivider} aria-hidden="true" />
+                <div className={styles.credStat}>
+                  <span className={styles.credNum}>1000+</span>
+                  <span className={styles.credLabel}>clients</span>
                 </div>
               </div>
             </div>

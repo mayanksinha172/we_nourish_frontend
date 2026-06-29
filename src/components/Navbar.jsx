@@ -53,6 +53,15 @@ export default function Navbar() {
     lastScrollY.current = 0;
   }, [pathname]);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <motion.nav
