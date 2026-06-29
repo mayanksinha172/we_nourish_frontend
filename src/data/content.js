@@ -188,14 +188,30 @@ export const TESTIMONIALS = [
 export const CREDIBILITY_STATS = [
   { num: '600K+', label: 'Community' },
   { num: '10+',   label: 'Years Experience' },
-  { num: '500+',  label: 'Happy Clients' },
+  { num: '1000+', label: 'Happy Clients' },
 ];
 
 export const BRAND_ASSOCIATIONS = [
-  { name: 'Healthify Me',  logo: '/brands/healthify.svg'  },
-  { name: 'Cult.fit',      logo: '/brands/cultfit.svg'    },
-  { name: 'GOQii',         logo: '/brands/goqii.svg'      },
-  { name: 'Mamaearth',     logo: '/brands/mamaearth.svg'  },
+  { name: 'Aashirvaad',              logo: '/brands/aashirvaad.png' },
+  { name: 'Everest Spices',          logo: '/brands/everest.png' },
+  { name: 'Lenovo',                  logo: '/brands/lenovo.png' },
+  { name: 'Sensodyne',               logo: '/brands/sensodyne.png' },
+  { name: 'Rajdhani Foods',          logo: '/brands/rajdhani.png' },
+  { name: 'Wipro',                   logo: '/brands/wipro.png' },
+  { name: 'Hello Tempayy',           logo: '/brands/hello-tempayy.png' },
+  { name: 'Dabur',                   logo: '/brands/dabur.png' },
+  { name: 'Kapiva',                  logo: '/brands/kapiva.png' },
+  { name: 'Pride of Cows',           logo: '/brands/pride-of-cows.png' },
+  { name: 'Aashirvaad Organic',      logo: '/brands/aashirvaad-organic.png' },
+  { name: 'Gritzo Super Milk',       logo: '/brands/gritzo.png' },
+  { name: 'Pigeon',                  logo: '/brands/pigeon.png' },
+  { name: 'Real',                    logo: '/brands/real.png' },
+  { name: 'Farmley',                 logo: '/brands/farmley.png' },
+  { name: 'Nua',                     logo: '/brands/nua.png' },
+  { name: 'Real Thai Foods',         logo: '/brands/real-thai.png' },
+  { name: 'WishCare',                logo: '/brands/wishcare.png' },
+  { name: 'Daawat',                  logo: '/brands/daawat.png' },
+  { name: 'Wellbeing Nutrition',     logo: '/brands/wellbeing-nutrition.png' },
 ];
 
 export const REELS = [

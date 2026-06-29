@@ -65,10 +65,6 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
-
-      <div className={styles.veggieWrap}>
-        <img src="/testimonials-bg.png" alt="" loading="lazy" />
-      </div>
     </section>
   );
 }

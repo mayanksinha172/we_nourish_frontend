@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getRecipeBySlug, WA_NUTRITION } from '../data/content';
 import PageMeta from '../components/PageMeta';
@@ -40,78 +39,75 @@ function getNutrition(recipe) {
   };
 }
 
-function IngredientsMethodTabs({ recipe }) {
-  const [tab, setTab] = useState(null);
+function scrollToSection(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
+function RecipeSections({ recipe, nutrition }) {
   return (
-    <div className={styles.recipeTabs}>
-      <div className={styles.tabBar} role="tablist" aria-label="Recipe details">
+    <div className={styles.recipeSections}>
+      <nav className={styles.tabBar} aria-label="Recipe details">
         <button
           type="button"
-          role="tab"
-          aria-selected={tab === 'ingredients'}
-          className={`${styles.tabBtn} ${tab === 'ingredients' ? styles.tabBtnActive : ''}`}
-          onClick={() => setTab(tab === 'ingredients' ? null : 'ingredients')}
+          className={styles.tabBtn}
+          onClick={() => scrollToSection('recipe-ingredients')}
         >
           Ingredients
         </button>
         <button
           type="button"
-          role="tab"
-          aria-selected={tab === 'method'}
-          className={`${styles.tabBtn} ${tab === 'method' ? styles.tabBtnActive : ''}`}
-          onClick={() => setTab(tab === 'method' ? null : 'method')}
+          className={styles.tabBtn}
+          onClick={() => scrollToSection('recipe-method')}
         >
           Method
         </button>
-      </div>
+        <button
+          type="button"
+          className={styles.tabBtn}
+          onClick={() => scrollToSection('recipe-nutrition')}
+        >
+          Nutrition
+        </button>
+      </nav>
 
-      {tab === 'ingredients' && (
-        <div role="tabpanel">
-          <h2 className={styles.colTitle}>Ingredients</h2>
-          <ul className={styles.ingredientList}>
-            {recipe.ingredients.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+      <section id="recipe-ingredients" className={styles.recipeSection}>
+        <h2 className={styles.colTitle}>Ingredients</h2>
+        <ul className={styles.ingredientList}>
+          {recipe.ingredients.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="recipe-method" className={styles.recipeSection}>
+        <h2 className={styles.colTitle}>Method</h2>
+        <ol className={styles.methodList}>
+          {recipe.steps.map((step, i) => (
+            <li key={step}>
+              <span className={styles.stepNum}>{i + 1}</span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="recipe-nutrition" className={styles.recipeSection}>
+        <h2 className={styles.colTitle}>Nutrition</h2>
+        <p className={styles.nutritionSub}>Per serving</p>
+        <div className={styles.nutritionGrid}>
+          {NUTRITION_LABELS.map(({ key, label, unit }) => (
+            <div key={key} className={styles.nutritionPill}>
+              <span className={styles.nutritionValueBubble}>
+                {formatNutritionValue(key, nutrition[key], unit)}
+              </span>
+              <span className={styles.nutritionLabel}>{label}</span>
+            </div>
+          ))}
         </div>
-      )}
-
-      {tab === 'method' && (
-        <div role="tabpanel">
-          <h2 className={styles.colTitle}>Method</h2>
-          <ol className={styles.methodList}>
-            {recipe.steps.map((step, i) => (
-              <li key={step}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <span>{step}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function NutritionPanel({ nutrition }) {
-  return (
-    <div className={`${styles.col} ${styles.nutritionCol}`}>
-      <h2 className={styles.colTitle}>Nutrition</h2>
-      <p className={styles.nutritionSub}>Per serving</p>
-      <div className={styles.nutritionGrid}>
-        {NUTRITION_LABELS.map(({ key, label, unit }) => (
-          <div key={key} className={styles.nutritionPill}>
-            <span className={styles.nutritionValueBubble}>
-              {formatNutritionValue(key, nutrition[key], unit)}
-            </span>
-            <span className={styles.nutritionLabel}>{label}</span>
-          </div>
-        ))}
-      </div>
-      <p className={styles.nutritionNote}>
-        Values are approximate and may vary based on ingredients used.
-      </p>
+        <p className={styles.nutritionNote}>
+          Values are approximate and may vary based on ingredients used.
+        </p>
+      </section>
     </div>
   );
 }
@@ -190,8 +186,7 @@ export default function RecipeDetail() {
               </div>
 
               <div className={styles.inlineGrid}>
-                <IngredientsMethodTabs recipe={recipe} />
-                <NutritionPanel nutrition={nutrition} />
+                <RecipeSections recipe={recipe} nutrition={nutrition} />
               </div>
             </div>
 
@@ -244,8 +239,7 @@ export default function RecipeDetail() {
             </section>
 
             <section className={styles.grid}>
-              <IngredientsMethodTabs recipe={recipe} />
-              <NutritionPanel nutrition={nutrition} />
+              <RecipeSections recipe={recipe} nutrition={nutrition} />
             </section>
           </>
         )}

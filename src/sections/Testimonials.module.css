@@ -114,6 +114,7 @@
   flex: 1;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
   overflow: hidden;
 }
 
@@ -171,13 +172,10 @@
 .veggieWrap {
   margin-top: 48px;
   line-height: 0;
-  width: calc(100% + 10vw);
-  margin-left: calc(-5vw);
-  margin-right: calc(-5vw);
+  width: 100%;
 }
 .veggieWrap img {
   width: 100%;
-  max-width: none;
   height: auto;
   display: block;
   object-fit: cover;
@@ -185,6 +183,13 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .section { padding: 72px 0 0; }
+  .header { margin-bottom: 36px; }
+  .card { width: 290px; }
+  .fadeLeft, .fadeRight { width: 48px; }
+}
+
 @media (max-width: 700px) {
   .section { padding: 56px 0 0; }
   .card { width: 270px; padding: 20px; }

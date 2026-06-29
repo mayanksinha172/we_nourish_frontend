@@ -30,6 +30,8 @@
   --radius-pill: 50px;
   --nav-h: 72px;
   --nav-sticky-top: 72px;
+  --section-pad-x: clamp(16px, 4vw, 80px);
+  --mobile-cta-h: calc(76px + env(safe-area-inset-bottom, 0px));
 
   --font-main: 'Manrope', sans-serif;
   --font-accent: 'Manrope', sans-serif;
@@ -45,6 +47,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -180,7 +184,7 @@ p {
 }
 
 section {
-  padding: 104px 5vw;
+  padding: 104px var(--section-pad-x);
   background: var(--white);
 }
 
@@ -348,7 +352,7 @@ main {
 
 @media (max-width: 900px) {
   main {
-    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: var(--mobile-cta-h);
   }
 
   section:not(.section-fullbleed) {
@@ -360,12 +364,27 @@ main {
     margin-bottom: 36px;
   }
 
+  .section-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-cta .btn-primary,
+  .section-cta .btn-outline,
+  .section-cta .btn-wa {
+    width: min(100%, 360px);
+    justify-content: center;
+  }
+
   .btn-primary,
   .btn-outline,
   .btn-outline-white,
   .btn-wa {
     white-space: normal;
     max-width: 100%;
+    text-align: center;
   }
 }
 
@@ -401,5 +420,14 @@ main {
 
   .btn-wa {
     justify-content: center;
+    min-height: 44px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .btn-outline {
+    min-height: 44px;
+    padding: 0 22px;
+    font-size: 14px;
   }
 }

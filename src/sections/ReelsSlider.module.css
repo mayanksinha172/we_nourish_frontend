@@ -331,6 +331,33 @@
 }
 
 /* ── Mobile ── */
+@media (max-width: 900px) {
+  .section {
+    padding: 40px 0 64px;
+  }
+
+  .header {
+    margin-bottom: 28px;
+    padding: 0 16px;
+  }
+
+  .sliderWrapper {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .track {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .arrow {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+}
+
 @media (max-width: 600px) {
   .sliderWrapper {
     padding: 0 12px;

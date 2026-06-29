@@ -189,6 +189,10 @@
     padding: 40px 5vw 28px;
   }
 
+  .title {
+    white-space: normal;
+  }
+
   .header {
     margin-bottom: 40px;
   }
