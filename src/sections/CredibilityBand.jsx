@@ -1,4 +1,4 @@
-import { CREDIBILITY_STATS, BRAND_ASSOCIATIONS, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
+import { BRAND_ASSOCIATIONS, PRESS_ITEMS, PRESS_LINKS } from '../data/content';
 import FadeUp from '../components/FadeUp';
 import styles from './CredibilityBand.module.css';
 
@@ -13,26 +13,13 @@ const brandMarquee = [...brandHalf, ...brandHalf];
 export default function CredibilityBand() {
   return (
     <section className={styles.section}>
-      {/* Stats strip */}
-      <FadeUp>
-        <div className={styles.statsRow}>
-          {CREDIBILITY_STATS.map((stat, i) => (
-            <div key={i} className={styles.statItem}>
-              <span className={styles.statNum}>{stat.num}</span>
-              <span className={styles.statLabel}>{stat.label}</span>
-            </div>
-          ))}
-        </div>
-      </FadeUp>
-
-      <div className={styles.divider} />
-
       {/* Brand Associations */}
       <FadeUp>
         <span className="eyebrow" style={{ textAlign: 'center', marginBottom: 20 }}>
           Brand Associations
         </span>
       </FadeUp>
+
       <div className={styles.track}>
         <div className={`${styles.inner} ${styles.brandInner}`}>
           {brandMarquee.map((brand, i) => (
@@ -40,7 +27,7 @@ export default function CredibilityBand() {
               {brand.logo && (
                 <img
                   src={brand.logo}
-                  alt=""
+                  alt={`${brand.name} logo`}
                   className={styles.brandLogo}
                   loading="lazy"
                   onError={(e) => {
@@ -62,6 +49,7 @@ export default function CredibilityBand() {
           As Seen In
         </span>
       </FadeUp>
+
       <div className={styles.track}>
         <div className={styles.inner}>
           {pressMarquee.map((item, i) => (
@@ -72,7 +60,12 @@ export default function CredibilityBand() {
               rel="noopener noreferrer"
               className={styles.pressItem}
             >
-              <img src={item.logo} alt="" className={styles.pressLogo} loading="lazy" />
+              <img
+                src={item.logo}
+                alt={`${item.name} logo`}
+                className={styles.pressLogo}
+                loading="lazy"
+              />
               <span>{item.name}</span>
             </a>
           ))}
